@@ -18,5 +18,7 @@ let URL_checkEmail = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\
 let URL_updateProfile = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/update"
 let URL_updatePassword = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/updatePassword"
 let URL_AddAddress = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/addAddress"
+let URL_DelAddress = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/address/deleteAddress"
+let URL_GetAddress = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/getAllAddress"
 
 let s3_baseURL = "https://s3.us-east-2.amazonaws.com/maidpickers/"

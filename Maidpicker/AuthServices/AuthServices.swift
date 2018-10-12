@@ -294,7 +294,7 @@ class AuthServices {
     
     // add address
     
-    func add_Address(uid: String, address1: String, address2: String, rooms: String, washrooms: String, area: String, completion: @escaping CompletionHanlder){
+    func add_Address(uid: String, address1: String, address2: String, rooms: String, washrooms: String, otherroom: String, area: String, completion: @escaping CompletionHanlder){
         
         let parameters: Parameters = [
             "uid": uid,
@@ -302,6 +302,7 @@ class AuthServices {
             "address2": address2,
             "rooms": rooms,
             "washrooms": washrooms,
+            "otherrooms": otherroom,
             "area": area
         ]
         
@@ -314,6 +315,85 @@ class AuthServices {
             else{
                 completion(false)
                 debugPrint(response.result.error as Any)
+            }
+            
+        }
+        
+    }
+    
+    
+    func Delete_Address(uid: String, id: String, completion: @escaping CompletionHanlder){
+        
+        let parameters: Parameters = [
+            "uid": uid,
+            "id": id
+        ]
+        
+        Alamofire.request(URL_DelAddress, method: .post, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseString {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            if response.result.error == nil{
+                completion(true)
+                print("API CALL: Address added to database successfully \(response.value)")
+            }
+            else{
+                completion(false)
+                debugPrint(response.result.error as Any)
+            }
+            
+        }
+        
+    }
+    
+    func getAddressbyID(userid: String, completion: @escaping CompletionHanlder) {
+        let parameters: Parameters = [
+            "uid": userid
+        ]
+        Alamofire.request(URL_GetAddress, method: .get, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                json = try JSON(data: data)
+                print(json)
+                print(json.count)
+                
+                // removing all data from arrays
+//                AddressArray.singleton.addressArray.removeAll()
+//                AddressArray.singleton.roomDetailsArray.removeAll()
+                
+                for i in 0..<json.count {
+                    
+                    let Addressobj = Address_RoomsDetail()
+                    Addressobj.addressID = json[i]["id"].intValue
+                    Addressobj.AddressName = json[i]["address1"].stringValue
+                    Addressobj.AddressDetail = json[i]["address2"].stringValue
+                    
+                    AddressArray.singleton.addressArray.append(Addressobj)
+
+                    let roomsObj = RoomDetails()
+                    roomsObj.numberOfRooms = json[i]["rooms"].stringValue
+                    roomsObj.numberOfBathrooms = json[i]["washrooms"].stringValue
+                    roomsObj.otherRooms = json[i]["otherrooms"].stringValue
+                    roomsObj.AreaOfRoom = json[i]["area"].stringValue
+                    
+                    AddressArray.singleton.roomDetailsArray.append(roomsObj)
+                    
+                }
+                completion(true)
+                print("address Array count(API): \(AddressArray.singleton.addressArray.count)")
+                print("room detail Array count(API): \(AddressArray.singleton.roomDetailsArray.count)")
+                
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
             }
             
         }

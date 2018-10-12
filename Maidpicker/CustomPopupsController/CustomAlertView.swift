@@ -12,13 +12,13 @@ class CustomAlertView: UIViewController {
     
     @IBOutlet weak var roomsTextField: UITextField!
     @IBOutlet weak var bathroomsTextField: UITextField!
+    @IBOutlet weak var otherRoomsTextField: UITextField!
     @IBOutlet weak var AreaTextField: UITextField!
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var okButton: UIButton!
     
     var delegate: CustomAlertViewDelegate?
-    var selectedOption = "First"
     let alertViewGrayColor = UIColor(red: 224.0/255.0, green: 224.0/255.0, blue: 224.0/255.0, alpha: 1)
     
     override func viewDidLoad() {
@@ -58,11 +58,11 @@ class CustomAlertView: UIViewController {
     @IBAction func onTapOkButton(_ sender: Any) {
         guard let room = roomsTextField.text,
               let bathrooms = bathroomsTextField.text,
+              let otherRooms = otherRoomsTextField.text,
               let area = AreaTextField.text
         else {return}
         roomsTextField.resignFirstResponder()
-        delegate?.okButtonTapped(roomTextField: room, bathroomTextField: bathrooms, AreaTextfield: area)
-
+        delegate?.okButtonTapped(roomTextField: room, bathroomTextField: bathrooms, otherRoomTextField: otherRooms, AreaTextfield: area)
         self.dismiss(animated: true, completion: nil)
     }
     

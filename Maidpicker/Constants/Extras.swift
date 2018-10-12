@@ -7,11 +7,28 @@
 //
 
 import Foundation
-import UIKit
 
 class Extras {
     static let singleton = Extras()
     
-
+    var addressID: Int?
+    
+    func getCurrentTime() -> String {
+        
+        let date = Date()
+        let calender = Calendar.current
+        let components = calender.dateComponents([.month,.day,.hour,.minute], from: date)
+        
+        let month = components.month
+        let day = components.day
+        let hour = components.hour
+        let minute = components.minute
+        
+        let today_string = String(month!) + ":" + String(day!) + ":" + String(hour!)  + ":" + String(minute!)
+        print("currentDate&Time: \(today_string)")
+        
+        return today_string
+    }
+    
     
 }

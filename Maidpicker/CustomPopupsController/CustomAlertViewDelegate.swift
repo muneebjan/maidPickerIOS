@@ -7,6 +7,6 @@
 //
 
 protocol CustomAlertViewDelegate: class {
-    func okButtonTapped(roomTextField: String, bathroomTextField: String, AreaTextfield: String)
+    func okButtonTapped(roomTextField: String, bathroomTextField: String, otherRoomTextField: String, AreaTextfield: String)
     func cancelButtonTapped()
 }

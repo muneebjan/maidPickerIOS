@@ -16,7 +16,7 @@ protocol AddressSelectionDelegate {
 
 class MapsViewController: UIViewController, CLLocationManagerDelegate {
     
-
+    
     @IBOutlet weak var SearchTextField: UITextField!
     
     var resultsViewController: GMSAutocompleteResultsViewController?
@@ -79,15 +79,48 @@ extension MapsViewController: GMSAutocompleteViewControllerDelegate, CustomAlert
     
     
     
-    func okButtonTapped(roomTextField: String, bathroomTextField: String, AreaTextfield: String) {
+    func okButtonTapped(roomTextField: String, bathroomTextField: String, otherRoomTextField: String, AreaTextfield: String) {
+        
+        //roomdataDelegate.sendRoomsData(nRooms: roomTextField, nBathrooms: bathroomTextField, totalArea: AreaTextfield)
         print("rooms are: \(roomTextField)")
-        print("bathrooms are: \(bathroomTextField)")
-        print("area is: \(AreaTextfield)")
+        print("bathroom are: \(bathroomTextField)")
+        print("bathroom are: \(otherRoomTextField)")
+        print("area are: \(AreaTextfield)")
+        print("address is: \(AddressArray.singleton.addressArray[0].AddressName)")
+        print("detail address is: \(AddressArray.singleton.addressArray[0].AddressDetail)")
+        
+        let obj = RoomDetails()
+        obj.numberOfRooms = roomTextField
+        obj.numberOfBathrooms = bathroomTextField
+        obj.otherRooms = otherRoomTextField
+        obj.AreaOfRoom = AreaTextfield
+
+        AddressArray.singleton.roomDetailsArray.append(obj)
+        
+        let address = AddressArray.singleton.addressArray[0].AddressName
+        let Detailedaddress = AddressArray.singleton.addressArray[0].AddressDetail
+        
+        AuthServices.instance.add_Address(uid: User.userInstance.Userid!, address1: address!, address2: Detailedaddress!, rooms: roomTextField, washrooms: bathroomTextField, otherroom: otherRoomTextField, area: AreaTextfield) { (success) in
+            if(success){
+                print("address added successfull")
+            }else{
+                print("not successfuly")
+            }
+        }
+    
+        AddressArray.singleton.addressArray.removeAll()
+        AddressArray.singleton.roomDetailsArray.removeAll()
+        // unwind segue
+        self.performSegue(withIdentifier: "gotoAddressofServices", sender: self)
+    }
+
+
+    func cancelButtonTapped() {
+        AddressArray.singleton.addressArray.removeAll()
+        print("cancel button pressed")
     }
     
-    func cancelButtonTapped() {
-        print("cancelButtonTapped")
-    }
+
     
     
     // Handle the user's selection.

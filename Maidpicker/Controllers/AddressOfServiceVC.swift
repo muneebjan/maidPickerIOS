@@ -8,46 +8,57 @@
 
 import UIKit
 
-class AddressDetail {
-    
-    var AddressName: String = ""
-    var AddressDetail: String = ""
-    var room: UIImage?
-    var bath: UIImage?
-    var area: UIImage?
-}
-
 class AddressOfServiceVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
 
     @IBOutlet weak var AddressTableView: UITableView!
     
-    var address: [AddressDetail] = []
+    override func viewWillAppear(_ animated: Bool) {
+        
+        AddressArray.singleton.addressArray.removeAll()
+        AddressArray.singleton.roomDetailsArray.removeAll()
+        
+        AuthServices.instance.getAddressbyID(userid: User.userInstance.Userid!) { (success) in
+            if(success){
+                print("address Array count: \(AddressArray.singleton.addressArray.count)")
+                print("room detail Array count: \(AddressArray.singleton.roomDetailsArray.count)")
+                self.AddressTableView.reloadData()
+            }
+        }
+        
+
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         AddressTableView.delegate = self
         AddressTableView.dataSource = self
-        
+    
         
     }
     
     // Table view functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return address.count
+        return AddressArray.singleton.addressArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "addressIdentifier") as? LocationAddTVC{
             
-            cell.AddressLabel.text = address[indexPath.row].AddressName
-            cell.detailedAddressLabel.text = address[indexPath.row].AddressDetail
+            cell.AddressLabel.text = AddressArray.singleton.addressArray[indexPath.row].AddressName
+            cell.detailedAddressLabel.text = AddressArray.singleton.addressArray[indexPath.row].AddressDetail
             cell.rooms.image = UIImage(named: "room.png")
             cell.bathrooms.image = UIImage(named: "bath.png")
+            cell.otherRooms.image = UIImage(named: "room.png")
             cell.area.image = UIImage(named: "area.png")
-            cell.layer.borderColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        
+            cell.no_Rooms.text = AddressArray.singleton.roomDetailsArray[indexPath.row].numberOfRooms
+            cell.no_Bathrooms.text = AddressArray.singleton.roomDetailsArray[indexPath.row].numberOfBathrooms
+            cell.otherRoomslabel.text = AddressArray.singleton.roomDetailsArray[indexPath.row].otherRooms
+            cell.Area_Room.text = AddressArray.singleton.roomDetailsArray[indexPath.row].AreaOfRoom
             
             return cell
             
@@ -56,6 +67,43 @@ class AddressOfServiceVC: UIViewController, UITableViewDataSource, UITableViewDe
             return LocationAddTVC()
         }
         
+    }
+    
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+
+        if tableView.isEditing {
+            print("returning delete")
+            return .none
+        }
+        print("returning none")
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let Deletebutton = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexpath) in
+            print("Delete Button Clicked")
+
+            //delete API CALLING:
+//            AuthServices.instance.Delete_Address(uid: User.userInstance.Userid!, id: <#T##String#>, completion: { (<#Bool#>) in
+//                <#code#>
+//            })
+            
+            self.AddressTableView.reloadData()
+            print("Record Deleted")
+        }
+        Deletebutton.backgroundColor = UIColor.red
+        
+        let editbutton = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexpath) in
+            print("Edit Clicked")
+        }
+        editbutton.backgroundColor = UIColor.green
+        
+        return [Deletebutton,editbutton]
     }
 
     // IBAction Functions
@@ -82,16 +130,24 @@ class AddressOfServiceVC: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
 }
-extension AddressOfServiceVC: AddressSelectionDelegate{
+extension AddressOfServiceVC: AddressSelectionDelegate {
+    
 
     func didTapAddress(Address: String, DetailAddress: String) {
-        let obj = AddressDetail()
-        obj.AddressName = Address
-        obj.AddressDetail = DetailAddress
-        address.append(obj)
-        self.AddressTableView.reloadData()
+        
+        AddressArray.singleton.addressArray.removeAll()
+        AddressArray.singleton.roomDetailsArray.removeAll()
+        
+        let addressobj = Address_RoomsDetail()
+        addressobj.AddressName = Address
+        addressobj.AddressDetail = DetailAddress
+        AddressArray.singleton.addressArray.append(addressobj)
+        //self.AddressTableView.reloadData()
     }
     
+    @IBAction func unwindToAddressOfServices(unwind: UIStoryboardSegue){
+        
+    }
     
 }
 

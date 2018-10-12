@@ -27,7 +27,7 @@
 		1833E5C9214153B9006FACAC /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1833E5C3214153B8006FACAC /* Montserrat-Thin.ttf */; };
 		1833E5CA214153B9006FACAC /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1833E5C4214153B8006FACAC /* Montserrat-Medium.ttf */; };
 		1835234F215F79B2001FB353 /* CustomCalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835234E215F79B2001FB353 /* CustomCalenderCell.swift */; };
-		18352351215F7C27001FB353 /* Home_When_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18352350215F7C27001FB353 /* Home_When_VC.swift */; };
+		18352351215F7C27001FB353 /* Home_When_Future_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18352350215F7C27001FB353 /* Home_When_Future_VC.swift */; };
 		185CC13321660C140034E287 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CC13221660C140034E287 /* CustomAlertView.swift */; };
 		185CC13521660CAB0034E287 /* CustomAlertViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CC13421660CAB0034E287 /* CustomAlertViewDelegate.swift */; };
 		185CC13721660DA00034E287 /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CC13621660DA00034E287 /* UIButton+Border.swift */; };
@@ -36,9 +36,18 @@
 		1866868D2142824100194B4D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866868C2142824100194B4D /* Constants.swift */; };
 		1866868F2142837F00194B4D /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866868E2142837F00194B4D /* AuthServices.swift */; };
 		186686922142841D00194B4D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186686912142841D00194B4D /* User.swift */; };
+		187009DF216C9F1A0008680D /* Home_When_MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187009DE216C9F1A0008680D /* Home_When_MainVC.swift */; };
+		187009E1216CA31E0008680D /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187009E0216CA31E0008680D /* TimeModel.swift */; };
+		187009E5216D04B20008680D /* CustomPopupSliderView copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187009E4216D04B10008680D /* CustomPopupSliderView copy.swift */; };
 		187472B6214BCA4700F3F6AE /* DesignableTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187472B5214BCA4700F3F6AE /* DesignableTextFields.swift */; };
 		1874B1A2215E0F210020D96B /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1874B1A1215E0F210020D96B /* Home.storyboard */; };
+		189731A0216B77060034963F /* Address_RoomsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1897319F216B77060034963F /* Address_RoomsDetail.swift */; };
+		189731A2216B775F0034963F /* AddressArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189731A1216B775F0034963F /* AddressArray.swift */; };
+		189731A4216B7BEB0034963F /* TaskSizeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189731A3216B7BEB0034963F /* TaskSizeTVC.swift */; };
+		189731A6216B7C550034963F /* Home_TaskAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189731A5216B7C550034963F /* Home_TaskAddressVC.swift */; };
+		1898B2272170BB5E00CDA70E /* RoomDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898B2262170BB5E00CDA70E /* RoomDetails.swift */; };
 		189F7D63214FADDE0076D12B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F7D62214FADDE0076D12B /* HomeViewController.swift */; };
+		18A413A4216E286700A2EA8D /* WhenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A413A3216E286700A2EA8D /* WhenModel.swift */; };
 		18A8211F21635F69003501C6 /* CustomPicturesCollectioncell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8211E21635F69003501C6 /* CustomPicturesCollectioncell.swift */; };
 		18A8212121635FC5003501C6 /* Home_Pictures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8212021635FC5003501C6 /* Home_Pictures.swift */; };
 		18CB3B68213FEE070008D6F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB3B67213FEE070008D6F0 /* AppDelegate.swift */; };
@@ -71,7 +80,7 @@
 		1833E5C3214153B8006FACAC /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
 		1833E5C4214153B8006FACAC /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		1835234E215F79B2001FB353 /* CustomCalenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalenderCell.swift; sourceTree = "<group>"; };
-		18352350215F7C27001FB353 /* Home_When_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_When_VC.swift; sourceTree = "<group>"; };
+		18352350215F7C27001FB353 /* Home_When_Future_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_When_Future_VC.swift; sourceTree = "<group>"; };
 		185CC13221660C140034E287 /* CustomAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		185CC13421660CAB0034E287 /* CustomAlertViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertViewDelegate.swift; sourceTree = "<group>"; };
 		185CC13621660DA00034E287 /* UIButton+Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Border.swift"; sourceTree = "<group>"; };
@@ -80,9 +89,18 @@
 		1866868C2142824100194B4D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1866868E2142837F00194B4D /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		186686912142841D00194B4D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		187009DE216C9F1A0008680D /* Home_When_MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_When_MainVC.swift; sourceTree = "<group>"; };
+		187009E0216CA31E0008680D /* TimeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
+		187009E4216D04B10008680D /* CustomPopupSliderView copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomPopupSliderView copy.swift"; sourceTree = "<group>"; };
 		187472B5214BCA4700F3F6AE /* DesignableTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTextFields.swift; sourceTree = "<group>"; };
 		1874B1A1215E0F210020D96B /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		1897319F216B77060034963F /* Address_RoomsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address_RoomsDetail.swift; sourceTree = "<group>"; };
+		189731A1216B775F0034963F /* AddressArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressArray.swift; sourceTree = "<group>"; };
+		189731A3216B7BEB0034963F /* TaskSizeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSizeTVC.swift; sourceTree = "<group>"; };
+		189731A5216B7C550034963F /* Home_TaskAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_TaskAddressVC.swift; sourceTree = "<group>"; };
+		1898B2262170BB5E00CDA70E /* RoomDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetails.swift; sourceTree = "<group>"; };
 		189F7D62214FADDE0076D12B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		18A413A3216E286700A2EA8D /* WhenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenModel.swift; sourceTree = "<group>"; };
 		18A8211E21635F69003501C6 /* CustomPicturesCollectioncell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicturesCollectioncell.swift; sourceTree = "<group>"; };
 		18A8212021635FC5003501C6 /* Home_Pictures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Pictures.swift; sourceTree = "<group>"; };
 		18CB3B64213FEE070008D6F0 /* Maidpicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maidpicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +158,6 @@
 				18CB3B69213FEE070008D6F0 /* ViewController.swift */,
 				1866868621426A7900194B4D /* LoginSignUpPageVC.swift */,
 				1866868821426AFD00194B4D /* RegistrationVC.swift */,
-				189F7D62214FADDE0076D12B /* HomeViewController.swift */,
 				180C015421512564009DA3C1 /* tabBarViewController.swift */,
 				180C015921513F74009DA3C1 /* ProfileMainViewController.swift */,
 				18331F3B2152385F005A265B /* SettingCenterViewController.swift */,
@@ -148,7 +165,11 @@
 				18331F3F215238C3005A265B /* PasswordSettingVC.swift */,
 				18331F4121523979005A265B /* AddressOfServiceVC.swift */,
 				1832C5DC2153901700315A53 /* MapsViewController.swift */,
-				18352350215F7C27001FB353 /* Home_When_VC.swift */,
+				189F7D62214FADDE0076D12B /* HomeViewController.swift */,
+				189731A5216B7C550034963F /* Home_TaskAddressVC.swift */,
+				187009DE216C9F1A0008680D /* Home_When_MainVC.swift */,
+				187009E4216D04B10008680D /* CustomPopupSliderView copy.swift */,
+				18352350215F7C27001FB353 /* Home_When_Future_VC.swift */,
 				18F20384216210EB00A4E1C9 /* Home_TaskSizeVC.swift */,
 				18A8212021635FC5003501C6 /* Home_Pictures.swift */,
 			);
@@ -176,9 +197,15 @@
 			isa = PBXGroup;
 			children = (
 				186686912142841D00194B4D /* User.swift */,
+				187009E0216CA31E0008680D /* TimeModel.swift */,
 				182E648A215CCCB400A729D1 /* LocationAddTVC.swift */,
 				1835234E215F79B2001FB353 /* CustomCalenderCell.swift */,
 				18A8211E21635F69003501C6 /* CustomPicturesCollectioncell.swift */,
+				1898B2262170BB5E00CDA70E /* RoomDetails.swift */,
+				1897319F216B77060034963F /* Address_RoomsDetail.swift */,
+				189731A1216B775F0034963F /* AddressArray.swift */,
+				189731A3216B7BEB0034963F /* TaskSizeTVC.swift */,
+				18A413A3216E286700A2EA8D /* WhenModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,10 +216,17 @@
 				185CC13621660DA00034E287 /* UIButton+Border.swift */,
 				187472B5214BCA4700F3F6AE /* DesignableTextFields.swift */,
 				182C4661215E60B30041F123 /* CustomView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18A413A2216DE4E000A2EA8D /* CustomPopupsController */ = {
+			isa = PBXGroup;
+			children = (
 				185CC13221660C140034E287 /* CustomAlertView.swift */,
 				185CC13421660CAB0034E287 /* CustomAlertViewDelegate.swift */,
 			);
-			path = View;
+			path = CustomPopupsController;
 			sourceTree = "<group>";
 		};
 		18CB3B5B213FEE070008D6F0 = {
@@ -220,6 +254,7 @@
 				1866868B21426E4300194B4D /* Constants */,
 				18668690214283F500194B4D /* Model */,
 				187472B4214BCA0F00F3F6AE /* View */,
+				18A413A2216DE4E000A2EA8D /* CustomPopupsController */,
 				1833E5BA21415297006FACAC /* Controllers */,
 				18CB3B67213FEE070008D6F0 /* AppDelegate.swift */,
 				180C0156215135E3009DA3C1 /* Storyboards */,
@@ -359,6 +394,7 @@
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -372,6 +408,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -411,29 +448,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				185CC13321660C140034E287 /* CustomAlertView.swift in Sources */,
+				189731A0216B77060034963F /* Address_RoomsDetail.swift in Sources */,
 				1866868D2142824100194B4D /* Constants.swift in Sources */,
 				18CB3B6A213FEE070008D6F0 /* ViewController.swift in Sources */,
 				18CB3B68213FEE070008D6F0 /* AppDelegate.swift in Sources */,
 				1866868F2142837F00194B4D /* AuthServices.swift in Sources */,
 				180C015521512564009DA3C1 /* tabBarViewController.swift in Sources */,
+				189731A4216B7BEB0034963F /* TaskSizeTVC.swift in Sources */,
+				187009DF216C9F1A0008680D /* Home_When_MainVC.swift in Sources */,
 				18A8212121635FC5003501C6 /* Home_Pictures.swift in Sources */,
+				187009E5216D04B20008680D /* CustomPopupSliderView copy.swift in Sources */,
 				18F20385216210EB00A4E1C9 /* Home_TaskSizeVC.swift in Sources */,
 				186686922142841D00194B4D /* User.swift in Sources */,
 				18331F3C2152385F005A265B /* SettingCenterViewController.swift in Sources */,
 				182C4662215E60B30041F123 /* CustomView.swift in Sources */,
 				185CC13521660CAB0034E287 /* CustomAlertViewDelegate.swift in Sources */,
+				189731A2216B775F0034963F /* AddressArray.swift in Sources */,
 				1835234F215F79B2001FB353 /* CustomCalenderCell.swift in Sources */,
+				189731A6216B7C550034963F /* Home_TaskAddressVC.swift in Sources */,
 				180C015A21513F74009DA3C1 /* ProfileMainViewController.swift in Sources */,
 				18A8211F21635F69003501C6 /* CustomPicturesCollectioncell.swift in Sources */,
 				182E648B215CCCB400A729D1 /* LocationAddTVC.swift in Sources */,
 				18331F40215238C3005A265B /* PasswordSettingVC.swift in Sources */,
+				1898B2272170BB5E00CDA70E /* RoomDetails.swift in Sources */,
 				189F7D63214FADDE0076D12B /* HomeViewController.swift in Sources */,
+				187009E1216CA31E0008680D /* TimeModel.swift in Sources */,
+				18A413A4216E286700A2EA8D /* WhenModel.swift in Sources */,
 				1832C5DD2153901700315A53 /* MapsViewController.swift in Sources */,
 				1866868721426A7900194B4D /* LoginSignUpPageVC.swift in Sources */,
 				185CC13721660DA00034E287 /* UIButton+Border.swift in Sources */,
 				1866868921426AFD00194B4D /* RegistrationVC.swift in Sources */,
 				18331F4221523979005A265B /* AddressOfServiceVC.swift in Sources */,
-				18352351215F7C27001FB353 /* Home_When_VC.swift in Sources */,
+				18352351215F7C27001FB353 /* Home_When_Future_VC.swift in Sources */,
 				187472B6214BCA4700F3F6AE /* DesignableTextFields.swift in Sources */,
 				18331F44215242EF005A265B /* Extras.swift in Sources */,
 				18331F3E215238B0005A265B /* ProfileSettingVC.swift in Sources */,

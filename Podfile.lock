@@ -3,6 +3,7 @@ PODS:
   - AWSCore (2.6.18)
   - AWSS3 (2.6.18):
     - AWSCore (= 2.6.18)
+  - DropDown (2.3.2)
   - Firebase/Core (5.0.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.0.0)
@@ -52,6 +53,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AWSS3
+  - DropDown
   - Firebase/Core
   - Firebase/Messaging
   - GoogleMaps
@@ -65,6 +67,7 @@ SPEC REPOS:
     - Alamofire
     - AWSCore
     - AWSS3
+    - DropDown
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -84,6 +87,7 @@ SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AWSCore: 5594f02730a821907d155ac28e96593d1caa6f64
   AWSS3: 659953f91bf85f62b6290625e86c45e3b9dd8dee
+  DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
   Firebase: d6861c2059d8c32d1e6dd8932e22ada346d90a3a
   FirebaseAnalytics: 19812b49fa5f283dd6b23edf8a14b5d477029ab8
   FirebaseCore: cafc814b2d84fc8733f09e653041cc2165332ad7
@@ -99,6 +103,6 @@ SPEC CHECKSUMS:
   ValidationComponents: fad1f9e9d7fbf3e10c893c880ef9d27627e90382
   ValidationToolkit: ce8e9c1a5d49eddc3266a009d46df5ea22042dbc
 
-PODFILE CHECKSUM: 4f870033555536aab6a69d60130c0afab4aa416e
+PODFILE CHECKSUM: cbd053b53eb672fb8b7e51985bb30f9b1d8ecc19
 
 COCOAPODS: 1.5.3

@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         
         if(preferences.string(forKey: "id") != nil)
         {
+            
             User.userInstance.Userid = preferences.string(forKey: "id")
             User.userInstance.name = preferences.string(forKey: "name")
             User.userInstance.email = preferences.string(forKey: "email")
@@ -58,7 +59,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.present(Mainvc, animated: true, completion: nil)
             }
-            //self.performSegue(withIdentifier: "gotoHome", sender: self)
+
             
             
         }
