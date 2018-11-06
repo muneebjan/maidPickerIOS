@@ -73,9 +73,12 @@ class AuthServices {
                     preferences.set(User.userInstance.fcmToken, forKey: "fcm_token")
                     
                     
-                    
-                    User.userInstance.image = json[0]["image"].stringValue
-                    preferences.set(User.userInstance.image, forKey: "image")
+                    // username.png to complete ImageURL
+                    let userimage = json[0]["image"].stringValue
+                    let imageURL = "\(s3_baseURL)\(userimage)"
+                    print("complete image URL: \(imageURL)")
+                    User.userInstance.imageURL = imageURL
+                    preferences.set(User.userInstance.imageURL, forKey: "imageURL")
                     
                     
                     User.userInstance.zipcode = json[0]["zipcode"].stringValue
@@ -83,19 +86,11 @@ class AuthServices {
                     
 //=================================== convert imageURL to UIImage: ========================================
                     
-                    if let userimage = User.userInstance.image{
-                        let imageURL = "\(s3_baseURL)\(userimage)"
-                        print("complete image URL: \(imageURL)")
-                        preferences.set(imageURL, forKey: "imageURL")
-                        let url = URL(string: imageURL)
-                        if let data = try? Data(contentsOf: url!)
-                        {
-                            User.userInstance.userImage = UIImage(data: data)
-                        }
-                    }
-                    else{
-                        return
-                    }
+//                    let url = URL(string: imageURL)
+//                    if let data = try? Data(contentsOf: url!)
+//                    {
+//                        User.userInstance.userImage = UIImage(data: data)
+//                    }
 
                     
 // =========================================================================================================
@@ -400,5 +395,307 @@ class AuthServices {
         
     }
     
+    // Service provider API'S
+    
+    
+    func SPloginUser(email: String, password: String, completion: @escaping CompletionHanlder) {
+        
+        let parameters: Parameters = [
+            
+            "email":email,
+            "password":password
+            
+        ]
+        Alamofire.request(URL_SPLogin, method: .get, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseString {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            if response.result.error == nil{
+                
+                
+                guard let data = response.data else{return}
+                let json: JSON
+                do{
+                    json = try JSON(data: data)
+                    print("Getting data from Service Provider Login Api \(json)")
+                    
+                    let preferences = UserDefaults.standard
+                    
+                    
+                    
+                    
+                    // model initializer
+                    ServiceProviderUser.instance.id = json[0]["id"].stringValue
+                    preferences.set(ServiceProviderUser.instance.id, forKey: "SPid")
+                    
+                    
+                    
+                    ServiceProviderUser.instance.name = json[0]["name"].stringValue
+                    preferences.set(ServiceProviderUser.instance.name, forKey: "name")
+                    
+                    
+                    
+                    ServiceProviderUser.instance.email = json[0]["email"].stringValue
+                    preferences.set(ServiceProviderUser.instance.email, forKey: "email")
+                    
+                    
+                    
+                    ServiceProviderUser.instance.password = json[0]["password"].stringValue
+                    preferences.set(ServiceProviderUser.instance.password, forKey: "password")
+                    
+                    
+                    ServiceProviderUser.instance.experience = json[0]["experience"].stringValue
+                    preferences.set(ServiceProviderUser.instance.experience, forKey: "experience")
+                    
+                    
+                    ServiceProviderUser.instance.contact = json[0]["contact"].stringValue
+                    preferences.set(ServiceProviderUser.instance.contact, forKey: "contact")
+                    
+                    
+                    
+                    ServiceProviderUser.instance.document = json[0]["document"].stringValue
+                    preferences.set(User.userInstance.fcmToken, forKey: "document")
+                    
+                    
+                    ServiceProviderUser.instance.zipcode = json[0]["zipcode"].stringValue
+                    preferences.set(ServiceProviderUser.instance.zipcode, forKey: "zipcode")
+                    
+                    
+                    ServiceProviderUser.instance.bio = json[0]["bio"].stringValue
+                    preferences.set(ServiceProviderUser.instance.bio, forKey: "bio")
+                    
+                    
+                    ServiceProviderUser.instance.hourlyrate = json[0]["hourlyrate"].stringValue
+                    preferences.set(ServiceProviderUser.instance.hourlyrate, forKey: "hourlyrate")
+                    
+                    
+                    ServiceProviderUser.instance.image = json[0]["image"].stringValue
+                    preferences.set(ServiceProviderUser.instance.image, forKey: "image")
+                    
+                    // username.png to complete ImageURL
+                    let userimage = json[0]["image"].stringValue
+                    let imageURL = "\(s3_baseURL)\(userimage)"
+                    print("complete image URL: \(imageURL)")
+                    ServiceProviderUser.instance.imageURL = imageURL
+                    preferences.set(ServiceProviderUser.instance.imageURL, forKey: "imageURL")
+                    
+                    // =========================================================================================================
+                    
+                    if(ServiceProviderUser.instance.name != ""){
+                        
+                        self.loginstatus = "successsful"
+                        completion(true)
+                    }else{
+                        self.loginstatus = "not success"
+                        completion(true)
+                    }
+                    
+                    
+                    self.didsave(preferences: preferences)
+                }
+                catch
+                {
+                    if response.result.error == nil{
+                        completion(true)
+                    }
+                    else{
+                        completion(false)
+                        debugPrint(response.result.error as Any)
+                    }
+                }
+                
+                completion(true)
+            }
+            else{
+                completion(false)
+                debugPrint(response.result.error as Any)
+            }
+        }
+    }
+    
+    
+    func ServiceProviderSignUP(name: String, email: String, password: String, experience: String, contact: String, document: String, zipcode: String, bio: String, completion: @escaping CompletionHanlder) {
+        
+        let parameters: Parameters = [
+            "name": name,
+            "email":email,
+            "password":password,
+            "experience": experience,
+            "contact": contact,
+            "document": document,
+            "zipcode": zipcode,
+            "bio": bio
+        ]
+        
+        Alamofire.request(URL_SPSignUP, method: .post, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseString {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            if response.result.error == nil{
+                print("response data: \(response.result.value)")
+                completion(true)
+            }
+            else{
+                completion(false)
+                debugPrint(response.result.error as Any)
+            }
+        }
+    }
+    
+    
+    func ServiceProviderUpdateProfile(name: String, email: String, mobilephone: String, hourlyrate: Int, bio: String, image: String, completion: @escaping CompletionHanlder){
+        
+        let parameters: Parameters = [
+            "name": name,
+            "email":email,
+            "mobilephone": mobilephone,
+            "hourlyrate": hourlyrate,
+            "bio": bio,
+            "image": image
+        ]
+        
+        Alamofire.request(URL_SPupdateProfile, method: .post, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                json = try JSON(data: data)
+                print("Json data = \(json[0]["error"])")
+                if(self.JsonResult(json: json)){
+                    print("Data not updated")
+                }else{
+                    print("Data updated Successfull")
+                }
+                completion(true)
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+            
+        }
+        
+    }
+    
+    // HomeWhen dataStoring API // ===== ?type=abc&subtype=ahtasham&stime=shami&etime=zub
+    
+    func HomeWhenDataSending(type: String, subtype: String, startTime: String, endTime: String, completion: @escaping CompletionHanlder){
+        
+        let parameters: Parameters = [
+            "type": type,
+            "subtype":subtype,
+            "stime": startTime,
+            "etime": endTime
+        ]
+        
+        Alamofire.request(URL_Home_When, method: .post, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                json = try JSON(data: data)
+                print("Json data = \(json[0]["error"])")
+                if(self.JsonResult(json: json)){
+                    print("Data not updated")
+                }else{
+                    print("Data updated Successfull")
+                }
+                completion(true)
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+            
+        }
+        
+    }
+    
+    // HomeTaskSize dataStoring API // ===== ?bedrooms=5&bathrooms=8&otherrooms=7&area=142525sqft
+    
+    func HomeTaskSizeDataSending(bed: String, bath: String, otherrooms: String, area: String, completion: @escaping CompletionHanlder){
+        
+        let parameters: Parameters = [
+            "bedrooms": bed,
+            "bathrooms":bath,
+            "otherrooms": otherrooms,
+            "area": area
+        ]
+        
+        Alamofire.request(URL_Home_TaskSize, method: .post, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                json = try JSON(data: data)
+                print("Json data = \(json[0]["error"])")
+                if(self.JsonResult(json: json)){
+                    print("Data not updated")
+                }else{
+                    print("Data updated Successfull")
+                }
+                completion(true)
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+            
+        }
+        
+    }
+    
+    // GETTING EXTRA DATA
+    
+    
+    func gettingExtraData(id: Int, completion: @escaping CompletionHanlder) {
+        let parameters: Parameters = [
+            "id": id
+        ]
+        Alamofire.request(URL_gettingExtraData, method: .get, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                json = try JSON(data: data)
+                print(json)
+                print(json.count)
+
+
+                ExtraModel.singleton.money = json[0]["price"].intValue
+                ExtraModel.singleton.eta = json[0]["time"].intValue
+                
+                completion(true)
+                
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+            
+        }
+        
+    }
     
 }

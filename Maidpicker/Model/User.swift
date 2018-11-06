@@ -19,7 +19,7 @@ class User {
     var password: String?
     var mobilephone: String?
     var fcmToken: String?
-    var image: String?
+    var imageURL: String?
     var zipcode: String?
     var userImage: UIImage?
 

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+//import RealmSwift
 
 class ViewController: UIViewController {
 
+//    var realmobject = RealmUser()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,34 +32,24 @@ class ViewController: UIViewController {
             User.userInstance.password = preferences.string(forKey: "password")
             User.userInstance.mobilephone = preferences.string(forKey: "mobilephone")
             User.userInstance.fcmToken = preferences.string(forKey: "fcm_token")
-            User.userInstance.image = preferences.string(forKey: "image")
+            User.userInstance.imageURL = preferences.string(forKey: "imageURL")
             User.userInstance.zipcode = preferences.string(forKey: "zipcode")
-            print("0: here we are")
-            guard let imageURL = preferences.string(forKey: "imageURL")else {
-                print("error here 111")
-                return
-            }
-            print("1: string:  \(imageURL)")
-            let url = URL(string: imageURL)
-            guard let data = try? Data(contentsOf: url!)else{return}
-            User.userInstance.userImage = UIImage(data: data)
-            print("2; successfull")
-            
+            print(User.userInstance.imageURL)
             
 
             
             print("this is TOKEN: \(User.userInstance.fcmToken)")
             
             
-//            let url = URL(string: User.userInstance.imgurl!)
-//            if let data = try? Data(contentsOf: url!)
-//            {
-//
-//                User.userInstance.userImage = UIImage(data: data)
-//            }
+            let url = URL(string: User.userInstance.imageURL!)
+            if let data = try? Data(contentsOf: url!)
+            {
+                User.userInstance.userImage = UIImage(data: data)
+            }
             
             let Mainvc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarViewController") as! tabBarViewController
             DispatchQueue.main.async {
+                print("Client User ID Found")
                 self.present(Mainvc, animated: true, completion: nil)
             }
 
@@ -64,10 +57,56 @@ class ViewController: UIViewController {
             
         }
         else{
-            print("NOT EXISTING"
+            print("Client Side ID NOT EXISTING"
+            )
+        }
+// =========================================================================================================
+// // ==============================SERVICE PROVIDER USERDEFAULTS (AUTO SIGNIN)// ==========================
+// =========================================================================================================
+        
+        if(preferences.string(forKey: "SPid") != nil)
+        {
+            
+            ServiceProviderUser.instance.id = preferences.string(forKey: "SPid")
+            ServiceProviderUser.instance.name = preferences.string(forKey: "name")
+            ServiceProviderUser.instance.email = preferences.string(forKey: "email")
+            ServiceProviderUser.instance.password = preferences.string(forKey: "password")
+            ServiceProviderUser.instance.contact = preferences.string(forKey: "mobilephone")
+            ServiceProviderUser.instance.zipcode = preferences.string(forKey: "zipcode")
+            ServiceProviderUser.instance.document = preferences.string(forKey: "document")
+            ServiceProviderUser.instance.experience = preferences.string(forKey: "experience")
+            ServiceProviderUser.instance.hourlyrate = preferences.string(forKey: "hourlyrate")
+            ServiceProviderUser.instance.image = preferences.string(forKey: "image")
+            ServiceProviderUser.instance.imageURL = preferences.string(forKey: "imageURL")
+            
+            print("this is imageURL: \(ServiceProviderUser.instance.imageURL)")
+            
+            if let imageurl = ServiceProviderUser.instance.imageURL{
+                let url = URL(string: imageurl)
+                if let data = try? Data(contentsOf: url!)
+                {
+                    ServiceProviderUser.instance.spuserImage = UIImage(data: data)
+                }
+            }else{
+                print("Image not found")
+            }
+    
+            let Mainvc = self.storyboard?.instantiateViewController(withIdentifier: "ServiceProviderTabBarVC") as! ServiceProvidertabBarVC
+            DispatchQueue.main.async {
+                print("Service Provider User ID Found")
+                self.present(Mainvc, animated: true, completion: nil)
+            }
+            
+        }
+        else{
+            print("Service Provider Side ID NOT EXISTING"
             )
         }
         
+        
+// =========================================================================================================
+// ============================ END (SERVICE PROVIDER USERDEFAULTS (AUTO SIGNIN)) ==========================
+// =========================================================================================================
         
         
     }
@@ -77,7 +116,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func ServiceBtnPressed(_ sender: Any) {
-        //self.performSegue(withIdentifier: "LoginSignupPage", sender: self)
+        self.performSegue(withIdentifier: "gotoLoginServiceProvider", sender: self)
     }
     
     @IBAction func unwindfromLoginScreen(unwind: UIStoryboardSegue){

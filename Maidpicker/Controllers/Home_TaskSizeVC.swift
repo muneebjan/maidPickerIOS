@@ -25,6 +25,7 @@ class Home_TaskSizeVC: UIViewController{
     @IBOutlet weak var bedroomDownView: UIView!
     @IBOutlet weak var bathroomDownView: UIView!
     @IBOutlet weak var otherRoomDownView: UIView!
+    @IBOutlet weak var sqftTextField: UITextField!
     
     // BUTTON and LABEL OUTLETS
     
@@ -32,7 +33,6 @@ class Home_TaskSizeVC: UIViewController{
     @IBOutlet weak var labelBedrooms: UILabel!
     @IBOutlet weak var labelBathrooms: UILabel!
     @IBOutlet weak var labelOtherrooms: UILabel!
-    @IBOutlet weak var labelSQFT: UILabel!
     
     
     // VARIABLES
@@ -46,6 +46,10 @@ class Home_TaskSizeVC: UIViewController{
     var bedroomsData: [String] = []
     var bathroomsData: [String] = []
     var otherRoomsData: [String] = []
+    var Selectedbedrooms: String?
+    var Selectedbathrooms: String?
+    var SelectedotherRooms: String?
+    var Selectedsqft1: String?
     //
     var delegate: SelectionDelegate?
     // VIEWDID LOAD FUNCTION
@@ -96,12 +100,15 @@ class Home_TaskSizeVC: UIViewController{
             //self.delegate?.setTextLabel(text: item)
             if(whichbuttonTappe == "bedroom"){
                 self.labelBedrooms.text = item
+                self.Selectedbedrooms = item
             }
             if(whichbuttonTappe == "bathroom"){
                 self.labelBathrooms.text = item
+                self.Selectedbathrooms = item
             }
             if(whichbuttonTappe == "otherRoom"){
                 self.labelOtherrooms.text = item
+                self.SelectedotherRooms = item
             }
             self.dropDown.hide()
         }
@@ -129,6 +136,37 @@ class Home_TaskSizeVC: UIViewController{
         datadisplay(dataSource: otherRoomsData, whichbuttonTappe: otherRooms)
         dropDown.anchorView = otherRoomDownView
         dropDown.show()
+    }
+    
+    @IBAction func ConfirmPressed(_ sender: Any) {
+        if let gettingSqureFeets = self.sqftTextField.text{
+            self.Selectedsqft1 = gettingSqureFeets
+        }
+        if(self.Selectedbedrooms != nil && self.Selectedbathrooms != nil && self.SelectedotherRooms != nil && self.Selectedsqft1 != nil && self.Selectedsqft1 != "") {
+            if(self.Selectedsqft1 == "0"){
+                print("Squrefeet value cant be 0")
+            }else{
+                print(self.Selectedbedrooms)
+                print(self.Selectedbathrooms)
+                print(self.SelectedotherRooms)
+                print(self.Selectedsqft1)
+                AuthServices.instance.HomeTaskSizeDataSending(bed: self.Selectedbedrooms!, bath: self.Selectedbathrooms!, otherrooms: self.SelectedotherRooms!, area: self.Selectedsqft1!) { (success) in
+                    if(success){
+                        print("Home Task Size Data Updated Successfully (Api call)")
+                        self.performSegue(withIdentifier: "goToHome", sender: nil)
+                    }else{
+                        print("Not successfull")
+                    }
+                }
+            }
+        }else{
+            print("Value is missing")
+        }
+    }
+    
+    //  METHOD TO DISABLE KEYBOARD
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     // DISPLAY ALERT FUNCTION

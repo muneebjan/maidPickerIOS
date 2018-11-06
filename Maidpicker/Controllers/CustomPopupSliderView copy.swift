@@ -80,6 +80,17 @@ class CustomPopupSliderView: UIViewController {
         }else{
             print("time is correct")
             delegate?.confirmButtonTapped(startime: "\(startSlider):00", endTime: "\(endSlider):00")
+            
+            // API CALLING
+            AuthServices.instance.HomeWhenDataSending(type: "Today", subtype: "Specific", startTime: "\(startSlider):00", endTime: "\(endSlider):00") { (success) in
+                if(success){
+                    print("Today Calling Api: Successfull")
+                }
+                else{
+                    print("Not successfully")
+                }
+            }
+            
             self.dismiss(animated: true, completion: nil)
         }
         

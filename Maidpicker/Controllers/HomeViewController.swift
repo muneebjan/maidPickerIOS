@@ -42,6 +42,31 @@ class HomeViewController: UIViewController, sendingData {
         
     }
     
+    @IBAction func gotoHome_HowOften(_ sender: Any) {
+        
+        let VC = storyboard?.instantiateViewController(withIdentifier: "Home_howOften") as! Home_HowOftenVC
+        VC.delegate = self
+        self.navigationController?.pushViewController(VC, animated: true)
+        
+    }
+    
+    @IBAction func gotoHome_Extras(_ sender: Any) {
+        
+        let VC = storyboard?.instantiateViewController(withIdentifier: "Home_Extras") as! Home_ExtrasVC
+        VC.delegate = self
+        self.navigationController?.pushViewController(VC, animated: true)
+        
+    }
+    
+    @IBAction func gotoHome_SpecialServices(_ sender: Any) {
+        
+        let VC = storyboard?.instantiateViewController(withIdentifier: "Home_SpecialServices") as! Home_SpecialServicesMainVC
+        //VC.delegate = self
+        self.navigationController?.pushViewController(VC, animated: true)
+        
+    }
+    
+    
     func settingTime(startDate: String, endDate: String) {
         When.text = "When: "+startDate+"-"+endDate
     }
@@ -49,10 +74,25 @@ class HomeViewController: UIViewController, sendingData {
     @IBAction func unwindTo_HomeMain(unwind: UIStoryboardSegue){
         
     }
+    @IBAction func confirmButtonPressed(_ sender: Any) {
+        print("confirm button Pressed")
+        let VC = storyboard?.instantiateViewController(withIdentifier: "ServicesPage") as! ServicesVC
+        self.navigationController?.pushViewController(VC, animated: true)
+    }
     
 }
 
-extension HomeViewController: dataprotocol{
+extension HomeViewController: dataprotocol, HowOftenProtocol, ExtasClassProtocol{
+    func sendingDataExtra(data: [String]) {
+        Extras.text = data.joined(separator: ", ")
+    }
+    
+
+    
+    func sendingData(data: String) {
+        HowOften.text = data
+    }
+    
     func settingTime(address: String) {
         taskAddress.text = address
     }

@@ -9,6 +9,9 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+//import RealmSwift
+//
+//var realmfile = try! Realm()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

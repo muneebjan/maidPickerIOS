@@ -18,5 +18,4 @@ pod 'ValidationComponents'
 pod 'JTAppleCalendar'
 pod 'DropDown'
 
-
 end

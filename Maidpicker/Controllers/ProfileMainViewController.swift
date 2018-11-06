@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import RealmSwift
 
 class ProfileMainViewController: UIViewController {
 
@@ -16,27 +17,33 @@ class ProfileMainViewController: UIViewController {
     @IBOutlet weak var zipTextfield: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
     
+    //var realm = try! Realm()
     
     override func viewWillAppear(_ animated: Bool) {
-        //viewDidLoad()
-        
-//        AuthServices.instance.loginUser(email: User.userInstance.email!, password: User.userInstance.password!) { (success) in
-//            if(success){
-//                self.dataTextFields()
-//            }
-//        }
-        
+        //self.dataTextFields()
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        let results = realm.objects(RealmUser.self)
+//        print(results)
+        //self.convertImageURLtoUIimage()
         self.dataTextFields()
     }
     
+    func convertImageURLtoUIimage() {
+        print("starting URL: \(User.userInstance.imageURL)")
+        if let imageurl = User.userInstance.imageURL{
+            let url = URL(string: imageurl)
+            guard let data = try? Data(contentsOf: url!)else{return}
+            User.userInstance.userImage = UIImage(data: data)
+        }
+    }
+    
     func dataTextFields() {
-
+        //self.convertImageURLtoUIimage()
         if let image = User.userInstance.userImage{
             
             self.profileImage.contentMode = .scaleAspectFill

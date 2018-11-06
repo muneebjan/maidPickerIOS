@@ -20,5 +20,15 @@ let URL_updatePassword = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.c
 let URL_AddAddress = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/addAddress"
 let URL_DelAddress = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/address/deleteAddress"
 let URL_GetAddress = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/getAllAddress"
+// =============== HomeWhen ==================== 
+let URL_Home_When = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/when"
+let URL_Home_TaskSize = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/size"
 
+// service provider
+
+let URL_SPLogin = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/provider/login"
+let URL_SPSignUP = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/provider/signup"
+let URL_SPupdateProfile = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/provider/update"
+// getting Extra Data:
+let URL_gettingExtraData = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/GetExtrasData"
 let s3_baseURL = "https://s3.us-east-2.amazonaws.com/maidpickers/"

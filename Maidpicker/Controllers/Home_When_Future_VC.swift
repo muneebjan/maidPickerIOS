@@ -135,9 +135,22 @@ class Home_When_Future_VC: UIViewController, JTAppleCalendarViewDelegate, JTAppl
     // deSelection cell tapped
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         guard let validCell = cell as? CustomCalenderCell else { return }
-        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd"
         validCell.selectedCellView.isHidden = true
         handleCellTextColor(view: cell, cellState: cellState)
+        let dateDeselect = formatter.string(from: cellState.date)
+        print("this date is deSelected: \(dateDeselect)")
+//        for dates in 0..<TimeModel.TimeInstance.dateArray.count{
+//            if((TimeModel.TimeInstance.dateArray[dates]) == (formatter.string(from: cellState.date))){
+//                print("this is: \(TimeModel.TimeInstance.dateArray[dates]) at index: \(dates)")
+//                TimeModel.TimeInstance.dateArray.remove(at: dates)
+//            }else{
+//                print("Not found")
+//            }
+//        }
+        TimeModel.TimeInstance.dateArray.removeAll { $0 == dateDeselect }
+        dump(TimeModel.TimeInstance.dateArray)
     }
     
     
@@ -192,14 +205,29 @@ class Home_When_Future_VC: UIViewController, JTAppleCalendarViewDelegate, JTAppl
     var delegate: SliderPopupDelegate?
     @IBAction func confirmButton(_ sender: Any) {
         
-        if ((startTime.text == nil) || (startTime.text == "")){
-            print("please select proper date and time")
+        
+        if (startSlider >= endSlider) {
+            self.displayMyAlertMessage(userMessage: "Start Time must be Smaller than End Time")
         }else{
-            print("confirm button pressed")
-            print(startTime.text)
-            print(endTime.text)
-            delegate?.confirmButtonTapped(startime: startT, endTime: endT)
-            //self.performSegue(withIdentifier: "gotoHomeMain", sender: self)
+            
+            if ((startTime.text == nil) || (startTime.text == "")){
+                print("please select proper date and time")
+            }else{
+                print("confirm button pressed")
+                print(startTime.text)
+                print(endTime.text)
+                delegate?.confirmButtonTapped(startime: startT, endTime: endT)
+                //self.performSegue(withIdentifier: "gotoHomeMain", sender: self)
+                // API CALLING
+                AuthServices.instance.HomeWhenDataSending(type: "Future", subtype: "Specific", startTime: startT, endTime: endT) { (success) in
+                    if(success){
+                        print("Future Calling Api: Successfull")
+                    }
+                    else{
+                        print("Not successfully")
+                    }
+                }
+            }
         }
 
     }
@@ -210,6 +238,19 @@ class Home_When_Future_VC: UIViewController, JTAppleCalendarViewDelegate, JTAppl
             cell.dateLabel.text = cellState.text
         }
     }
+    
+    
+    // DISPLAY ALERT FUNCTION
+    
+    func displayMyAlertMessage(userMessage: String) {
+        var myalert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+        
+        myalert.addAction(okAction)
+        present(myalert, animated: true, completion: nil)
+        
+    }
+    
     
 }
 

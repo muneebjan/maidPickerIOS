@@ -20,10 +20,27 @@ class Home_When_MainVC: UIViewController {
     var mins: String = ""
     
     var delegate: sendingData?
-// view did load
+    
+    
+    @IBOutlet weak var Nowbutton: UIButton!
+    @IBOutlet weak var TodayButton: UIButton!
+    @IBOutlet weak var FutureButton: UIButton!
+    
+    
+    // view did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if (Extras.singleton.addressID == nil) {
+            self.displayMyAlertMessage(userMessage: "Please First Select Location")
+            self.Nowbutton.isEnabled = false
+            self.TodayButton.isEnabled = false
+            self.FutureButton.isEnabled = false
+        }else{
+            print("address ID: \(Extras.singleton.addressID)")
+            self.Nowbutton.isEnabled = true
+            self.TodayButton.isEnabled = true
+            self.FutureButton.isEnabled = true
+        }
         //currentSplitDateandTime()
     }
 
@@ -58,13 +75,20 @@ class Home_When_MainVC: UIViewController {
         
 
         if let startT = TimeModel.TimeInstance.startTime, let endT = TimeModel.TimeInstance.endTime{
-            //self.dismiss(animated: true, completion: nil)
             delegate?.settingTime(startDate: startT, endDate: endT)
-            self.performSegue(withIdentifier: "unwindToHome", sender: self)
+            // API CALLING
+            AuthServices.instance.HomeWhenDataSending(type: "Now", subtype: "Specific", startTime: startT, endTime: endT) { (success) in
+                if(success){
+                    print("NowButton Calling Api: Successfull")
+                    self.performSegue(withIdentifier: "unwindToHome", sender: self)
+                }
+                else{
+                    print("Not successfully")
+                }
+            }
         }else{
             print("Something is wrong")
         }
-        
     }
 
     @IBAction func TodayButtonPressed(_ sender: Any) {
@@ -103,7 +127,16 @@ extension Home_When_MainVC: SliderPopupDelegate{
         print("cancel button pressed")
     }
     
+    // DISPLAY ALERT FUNCTION
     
+    func displayMyAlertMessage(userMessage: String) {
+        var myalert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+        
+        myalert.addAction(okAction)
+        present(myalert, animated: true, completion: nil)
+        
+    }
     
     
 }
