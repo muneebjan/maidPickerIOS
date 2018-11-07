@@ -17,9 +17,25 @@ class HomeViewController: UIViewController, sendingData {
     @IBOutlet weak var When: UILabel!
     @IBOutlet weak var TaskSize: UILabel!
     @IBOutlet weak var HowOften: UILabel!
-    @IBOutlet weak var Extras: UILabel!
+    @IBOutlet weak var ExtrasLbel: UILabel!
     @IBOutlet weak var SpecialServices: UILabel!
+    @IBOutlet weak var confirmBtn: UIButton!{
+        didSet {
+            confirmBtn.setTitleColor(UIColor.init(white: 1, alpha: 0.3), for: .disabled)
+            confirmBtn.setTitleColor(UIColor.init(white: 1, alpha: 1), for: .normal)
+        }
+    }
     
+    // VIEW WILL APPEAR
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if (Extras.singleton.addressID == nil) {
+            self.confirmBtn.isEnabled = false
+        }else{
+            print("address ID: \(Extras.singleton.addressID)")
+            self.confirmBtn.isEnabled = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +100,7 @@ class HomeViewController: UIViewController, sendingData {
 
 extension HomeViewController: dataprotocol, HowOftenProtocol, ExtasClassProtocol{
     func sendingDataExtra(data: [String]) {
-        Extras.text = data.joined(separator: ", ")
+        ExtrasLbel.text = data.joined(separator: ", ")
     }
     
 

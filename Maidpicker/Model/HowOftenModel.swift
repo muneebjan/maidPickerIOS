@@ -13,4 +13,5 @@ class HowOften_Extra_Model {
     
     var howOften: String?
     var Extra: [String]?
+    var completeExtraDataArray = [String:[String]]()
 }

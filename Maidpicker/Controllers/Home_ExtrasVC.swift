@@ -32,8 +32,26 @@ class Home_ExtrasVC: UIViewController {
     @IBOutlet weak var LaundryButton: UIButton!
     @IBOutlet weak var InteriorWindowsButton: UIButton!
     
-    var Fulltime: Int = 0
+    var deepCleanTime: Int = 0
+    var insideCabTime: Int = 0
+    var insideFridgeTime: Int = 0
+    var insideOvenTime: Int = 0
+    var laundryTime: Int = 0
+    var interiorWindowTime: Int = 0
     
+    var deepCleanPrice: Int = 0
+    var insideCabPrice: Int = 0
+    var insideFridgePrice: Int = 0
+    var insideOvenPrice: Int = 0
+    var laundryPrice: Int = 0
+    var interiorWindowPrice: Int = 0
+    
+    
+    
+    
+    
+    var Fulltime: Int = 0
+    var FullPrice: Int = 0
     var deepCleanIsOn: Bool = false
     var insideCabIsOn: Bool = false
     var insideFridgeisOn: Bool = false
@@ -48,7 +66,6 @@ class Home_ExtrasVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     // converting INT to Hours and Minutes
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int) {
@@ -64,6 +81,99 @@ class Home_ExtrasVC: UIViewController {
         boolDict.updateValue(self.laundryIsOn, forKey: "Laundry")
         boolDict.updateValue(self.interiorWindowIsOn, forKey: "Interior Windows")
     }
+
+    
+// ================================================================================================
+// ===========================Subtracting and Adding API Function =================================
+// ================================================================================================
+    
+    
+    func subtimeandprice(id: Int) {
+    
+        print("here: \(self.Fulltime):\(self.FullPrice)")
+        
+        AuthServices.instance.gettingExtraData(id: id) { (success) in
+            if(success){
+                print("api successfull")
+                if let time = ExtraModel.singleton.eta, let price = ExtraModel.singleton.money{
+                    print(time)
+                    print(price)
+                    self.Fulltime = self.Fulltime-time
+                    self.FullPrice = self.FullPrice-price
+                    let (h, m) = self.secondsToHoursMinutesSeconds(seconds: self.Fulltime)
+                    print ("\(h) Hours, \(m) Minutes")
+                    self.timeLabel.text = "\(h) Hours, \(m) Minutes"
+                    self.priceLabel.text = "Total: $\(self.FullPrice)"
+                    
+                    print("remaining time: \(self.Fulltime)")
+                    print("remaining price: \(self.FullPrice)")
+                    
+                }
+            }else{
+                print("not successfull")
+            }
+        }
+    
+    }
+    
+    func Addtimeandprice(id: Int) {
+        
+        print("here: \(self.Fulltime):\(self.FullPrice)")
+        
+        AuthServices.instance.gettingExtraData(id: id) { (success) in
+            if(success){
+                print("api successfull")
+                if let time = ExtraModel.singleton.eta, let price = ExtraModel.singleton.money{
+                    
+                    if(id == 1){
+                        self.deepCleanTime = time
+                        self.deepCleanPrice = price
+                    }
+                    if(id == 2){
+                        self.insideCabTime = time
+                        self.insideCabPrice = price
+                    }
+                    if(id == 3){
+                        self.insideFridgeTime = time
+                        self.insideFridgePrice = price
+                    }
+                    if(id == 4){
+                        self.insideOvenTime = time
+                        self.insideOvenPrice = price
+                    }
+                    if(id == 5){
+                        self.laundryTime = time
+                        self.laundryPrice = price
+                    }
+                    if(id == 6){
+                        self.interiorWindowTime = time
+                        self.interiorWindowPrice = price
+                    }
+                    
+                    
+                    self.Fulltime = self.Fulltime+time
+                    self.FullPrice = self.FullPrice+price
+                    let (h, m) = self.secondsToHoursMinutesSeconds(seconds: self.Fulltime)
+                    print ("\(h) Hours, \(m) Minutes")
+                    self.timeLabel.text = "\(h) Hours, \(m) Minutes"
+                    self.priceLabel.text = "Total: $\(self.FullPrice)"
+                    
+                    print("remaining time: \(self.Fulltime)")
+                    print("remaining price: \(self.FullPrice)")
+                    
+                }
+            }else{
+                print("not successfull")
+            }
+        }
+        
+    }
+    
+    
+// ================================================================================================
+// =========================================== END ================================================
+// ================================================================================================
+    
     
     @IBAction func DeepCleanPressed(_ sender: UIButton) {
         
@@ -77,38 +187,23 @@ class Home_ExtrasVC: UIViewController {
             if(insideCabIsOn == true){
                 self.DeepCleanLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 self.deepCleanIsOn = false
-            }else{
+
+                self.subtimeandprice(id: 1) // subtracting api
+                
+            }
+            else{
                 
                 self.DeepCleanLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 self.deepCleanIsOn = false
-
-                ExtraModel.singleton.eta = ExtraModel.singleton.eta!-self.Fulltime
-                print("remaingtime: \(ExtraModel.singleton.eta!)")
-                if let eta = ExtraModel.singleton.eta{
-                    let (h, m) = self.secondsToHoursMinutesSeconds(seconds: eta)
-                    self.Fulltime = eta
-                    print ("\(h) Hours, \(m) Minutes")
-                    self.timeLabel.text = "\(h) Hours, \(m) Minutes"
-                }
+                
+                self.subtimeandprice(id: 1) // subtracting api
                 
             }
         }else{
             self.DeepCleanLabel.textColor = #colorLiteral(red: 0.7709656358, green: 0.8703430295, blue: 0.5776815414, alpha: 1)
             self.deepCleanIsOn = true
             
-            AuthServices.instance.gettingExtraData(id: 1) { (success) in
-                if(success){
-                    print("api successfull")
-                    if let eta = ExtraModel.singleton.eta{
-                        let (h, m) = self.secondsToHoursMinutesSeconds(seconds: eta)
-                        self.Fulltime = eta
-                        print ("\(h) Hours, \(m) Minutes")
-                        self.timeLabel.text = "\(h) Hours, \(m) Minutes"
-                    }
-                }else{
-                    print("not successfull")
-                }
-            }
+            self.Addtimeandprice(id: 1) // adding api
             
         }
         
@@ -121,6 +216,8 @@ class Home_ExtrasVC: UIViewController {
         
         self.appendingValues()
         dump(boolDict)
+        
+
     }
     
     @IBAction func InsideCabinetsPressed(_ sender: UIButton) {
@@ -133,59 +230,35 @@ class Home_ExtrasVC: UIViewController {
                 self.InsideCabinetsLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 self.insideCabIsOn = false
                 
+                print("remaining time: \(self.Fulltime)")
+                print("remaining price: \(self.FullPrice)")
                 
-                ExtraModel.singleton.eta = ExtraModel.singleton.eta!-self.Fulltime
-                print("remaingtime: \(ExtraModel.singleton.eta!)")
-                if let eta = ExtraModel.singleton.eta{
-                    let (h, m) = self.secondsToHoursMinutesSeconds(seconds: eta)
-                    self.Fulltime = eta
-                    print ("\(h) Hours, \(m) Minutes")
-                    self.timeLabel.text = "\(h) Hours, \(m) Minutes"
-                }
-                
+                self.subtimeandprice(id: 2) // subtracting api
+
                 
             }else{
                 self.InsideCabinetsLabel.textColor = #colorLiteral(red: 0.7709656358, green: 0.8703430295, blue: 0.5776815414, alpha: 1)
                 self.insideCabIsOn = true
-                //
-                AuthServices.instance.gettingExtraData(id: 2) { (success) in
-                    if(success){
-                        print("api successfull")
-                        if let eta = ExtraModel.singleton.eta{
-                            let (h, m) = self.secondsToHoursMinutesSeconds(seconds: eta+self.Fulltime)
-                            //                            self.Fulltime = eta
-                            print ("\(h) Hours, \(m) Minutes")
-                            self.timeLabel.text = "\(h) Hours, \(m) Minutes"
-                        }
-                    }else{
-                        print("not successfull")
-                    }
-                }
+                
+                
+                self.Addtimeandprice(id: 2) // adding apis
+                
             }
         }else{
             print("deepclean is off")
             if(insideCabIsOn == true){
                 self.InsideCabinetsLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 self.insideCabIsOn = false
+                
+                self.subtimeandprice(id: 2) // subtracting api
+
+                
             }else{
                 self.InsideCabinetsLabel.textColor = #colorLiteral(red: 0.7709656358, green: 0.8703430295, blue: 0.5776815414, alpha: 1)
                 self.insideCabIsOn = true
                 
-                //
-                AuthServices.instance.gettingExtraData(id: 2) { (success) in
-                    if(success){
-                        print("api successfull")
-                        if let eta = ExtraModel.singleton.eta{
-                            let (h, m) = self.secondsToHoursMinutesSeconds(seconds: eta+self.Fulltime)
-//                            self.Fulltime = eta
-                            print ("\(h) Hours, \(m) Minutes")
-                            self.timeLabel.text = "\(h) Hours, \(m) Minutes"
-                        }
-                    }else{
-                        print("not successfull")
-                    }
-                }
                 
+                self.Addtimeandprice(id: 2) // adding apis
                 
             }
 
@@ -210,18 +283,30 @@ class Home_ExtrasVC: UIViewController {
             if(insideFridgeisOn == true){
                 self.InsideFridgeLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 self.insideFridgeisOn = false
+                
+                self.subtimeandprice(id: 3) // subtracting api
+                
             }else{
                 self.InsideFridgeLabel.textColor = #colorLiteral(red: 0.7709656358, green: 0.8703430295, blue: 0.5776815414, alpha: 1)
                 self.insideFridgeisOn = true
+                
+                self.Addtimeandprice(id: 3) // adding apis
+                
             }
         }else{
             print("deepclean is off")
             if(insideFridgeisOn == true){
                 self.InsideFridgeLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 self.insideFridgeisOn = false
+                
+                self.subtimeandprice(id: 3) // subtracting api
+                
             }else{
                 self.InsideFridgeLabel.textColor = #colorLiteral(red: 0.7709656358, green: 0.8703430295, blue: 0.5776815414, alpha: 1)
                 self.insideFridgeisOn = true
+                
+                self.Addtimeandprice(id: 3) // adding apis
+                
             }
             
         }
@@ -245,18 +330,30 @@ class Home_ExtrasVC: UIViewController {
             if(insideOvenIsOn == true){
                 self.InsideOvenLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 self.insideOvenIsOn = false
+                
+                self.subtimeandprice(id: 4) // subtracting api
+                
             }else{
                 self.InsideOvenLabel.textColor = #colorLiteral(red: 0.7709656358, green: 0.8703430295, blue: 0.5776815414, alpha: 1)
                 self.insideOvenIsOn = true
+                
+                self.Addtimeandprice(id: 4) // adding apis
+                
             }
         }else{
             print("deepclean is off")
             if(insideOvenIsOn == true){
                 self.InsideOvenLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 self.insideOvenIsOn = false
+                
+                self.subtimeandprice(id: 4) // subtracting api
+                
             }else{
                 self.InsideOvenLabel.textColor = #colorLiteral(red: 0.7709656358, green: 0.8703430295, blue: 0.5776815414, alpha: 1)
                 self.insideOvenIsOn = true
+                
+                self.Addtimeandprice(id: 4) // adding apis
+                
             }
             
         }
@@ -279,17 +376,29 @@ class Home_ExtrasVC: UIViewController {
             if(laundryIsOn == true){
                 self.LaundryLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 self.laundryIsOn = false
+                
+                self.subtimeandprice(id: 5) // subtracting api
+                
             }else{
                 self.LaundryLabel.textColor = #colorLiteral(red: 0.7709656358, green: 0.8703430295, blue: 0.5776815414, alpha: 1)
                 self.laundryIsOn = true
+                
+                self.Addtimeandprice(id: 5) // adding apis
+                
             }
         }else{
             if(laundryIsOn == true){
                 self.LaundryLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 self.laundryIsOn = false
+                
+                self.subtimeandprice(id: 5) // subtracting api
+                
             }else{
                 self.LaundryLabel.textColor = #colorLiteral(red: 0.7709656358, green: 0.8703430295, blue: 0.5776815414, alpha: 1)
                 self.laundryIsOn = true
+                
+                self.Addtimeandprice(id: 5) // adding apis
+                
             }
             
         }
@@ -313,17 +422,29 @@ class Home_ExtrasVC: UIViewController {
             if(interiorWindowIsOn == true){
                 self.InteriorWindowsLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 self.interiorWindowIsOn = false
+                
+                self.subtimeandprice(id: 6) // subtracting api
+                
             }else{
                 self.InteriorWindowsLabel.textColor = #colorLiteral(red: 0.7709656358, green: 0.8703430295, blue: 0.5776815414, alpha: 1)
                 self.interiorWindowIsOn = true
+                
+                self.Addtimeandprice(id: 6) // adding apis
+                
             }
         }else{
             if(interiorWindowIsOn == true){
                 self.InteriorWindowsLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
                 self.interiorWindowIsOn = false
+                
+                self.subtimeandprice(id: 6) // subtracting api
+                
             }else{
                 self.InteriorWindowsLabel.textColor = #colorLiteral(red: 0.7709656358, green: 0.8703430295, blue: 0.5776815414, alpha: 1)
                 self.interiorWindowIsOn = true
+                
+                self.Addtimeandprice(id: 6) // adding apis
+                
             }
             
         }
@@ -343,10 +464,49 @@ class Home_ExtrasVC: UIViewController {
     
 
     @IBAction func ConfirmBtnPressed(_ sender: Any) {
+        
 
+//        print("\(self.deepCleanTime),\(self.deepCleanPrice)")
+//        print("\(self.insideCabTime),\(self.insideCabPrice)")
+//        print("\(self.insideOvenTime),\(self.insideOvenPrice)")
+//        print("\(self.insideFridgeTime),\(self.insideFridgePrice)")
+//        print("\(self.laundryTime)","\(self.laundryPrice)")
+        
+        var populateArray = [String:[String]]()
+        
         let key = boolDict.keysForValue(value: true)
         print("this is key: \(key)")
         HowOften_Extra_Model.singleton.Extra = key
+        
+        for (key, value) in boolDict {
+            if(value == true){
+                if(key == "Deep Clean"){
+                    populateArray[key] = ["\(self.deepCleanTime)","\(self.deepCleanPrice)"]
+                }
+                if(key == "Inside Cabinets"){
+                    populateArray[key] = ["\(self.insideCabTime)","\(self.insideCabPrice)"]
+                }
+                if(key == "Inside Oven"){
+                    populateArray[key] = ["\(self.insideOvenTime)","\(self.insideOvenPrice)"]
+                }
+                if(key == "Inside Fridge"){
+                    populateArray[key] = ["\(self.insideFridgeTime)","\(self.insideFridgePrice)"]
+                }
+                if(key == "Laundry"){
+                    populateArray[key] = ["\(self.laundryTime)","\(self.laundryPrice)"]
+                }
+                if(key == "Interior Windows"){
+                    populateArray[key] = ["\(self.interiorWindowTime)","\(self.interiorWindowPrice)"]
+                }
+            }
+        }
+        
+        
+//        for data in key{
+//            populateArray[data] = ["\(self.deepCleanTime)","\(self.deepCleanPrice)"]
+//        }
+        print(populateArray)
+        HowOften_Extra_Model.singleton.completeExtraDataArray = populateArray
         self.delegate?.sendingDataExtra(data: key)
         self.performSegue(withIdentifier: "gotoHomeMain", sender: self)
     }

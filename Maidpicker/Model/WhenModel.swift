@@ -11,6 +11,7 @@ import Foundation
 class WhenModel {
     static let singleton = WhenModel()
     
+    var whenID: Int?
     var calenderType: String?
     var dateTimeArray: [TimeModel] = []
     

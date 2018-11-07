@@ -596,12 +596,8 @@ class AuthServices {
             let json: JSON
             do{
                 json = try JSON(data: data)
-                print("Json data = \(json[0]["error"])")
-                if(self.JsonResult(json: json)){
-                    print("Data not updated")
-                }else{
-                    print("Data updated Successfull")
-                }
+                print("Json data = \(json)")
+                WhenModel.singleton.whenID = json[0]["id"].intValue
                 completion(true)
             }
             catch
@@ -636,12 +632,8 @@ class AuthServices {
             let json: JSON
             do{
                 json = try JSON(data: data)
-                print("Json data = \(json[0]["error"])")
-                if(self.JsonResult(json: json)){
-                    print("Data not updated")
-                }else{
-                    print("Data updated Successfull")
-                }
+                print("Json data = \(json)")
+                TaskSizeModel.singleton.TaskSizeID = json[0]["id"].intValue
                 completion(true)
             }
             catch
