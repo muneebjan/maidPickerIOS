@@ -60,7 +60,7 @@ class Home_When_MainVC: UIViewController {
         
         TimeModel.TimeInstance.startTime = "\(hours):\(mins)"
         TimeModel.TimeInstance.endTime = "\(endHours):\(mins)"
-        
+        TimeModel.TimeInstance.startDate = "\(month)/\(day)"
     }
     
     
@@ -72,6 +72,7 @@ class Home_When_MainVC: UIViewController {
        //delegate.settingLabel(startTime: "String")
         print(TimeModel.TimeInstance.startTime!)
         print(TimeModel.TimeInstance.endTime!)
+        print(TimeModel.TimeInstance.startDate!)
         
 
         if let startT = TimeModel.TimeInstance.startTime, let endT = TimeModel.TimeInstance.endTime{
@@ -79,8 +80,16 @@ class Home_When_MainVC: UIViewController {
             // API CALLING
             AuthServices.instance.HomeWhenDataSending(type: "Now", subtype: "Specific", startTime: startT, endTime: endT) { (success) in
                 if(success){
-                    print("NowButton Calling Api: Successfull")
-                    self.performSegue(withIdentifier: "unwindToHome", sender: self)
+                    print("NowButton When Calling Api: Successfull")
+                    
+                    AuthServices.instance.HomeWhenDATE(whenID: String(WhenModel.singleton.whenID!), day: self.day, month: self.month, completion: { (success) in
+                        if(success){
+                            print("Nowbutton when date calling api successful")
+                            self.performSegue(withIdentifier: "unwindToHome", sender: self)
+                        }else{
+                            print("Not successfully")
+                        }
+                    })
                 }
                 else{
                     print("Not successfully")

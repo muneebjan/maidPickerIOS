@@ -23,6 +23,9 @@ let URL_GetAddress = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\
 // =============== HomeWhen ==================== 
 let URL_Home_When = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/when"
 let URL_Home_TaskSize = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/size"
+// =============== HomeWhen DATE ====================
+let URL_Date = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/date" //?wid=1&day=5&month=8
+
 
 // service provider
 
@@ -32,3 +35,7 @@ let URL_SPupdateProfile = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.
 // getting Extra Data:
 let URL_gettingExtraData = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/GetExtrasData"
 let s3_baseURL = "https://s3.us-east-2.amazonaws.com/maidpickers/"
+// BIDDING API; ?uid=5&aid=10&pid=15&wid=20&sid=25&often=Hi&spid=30&eid=35&pic1=40&pic2=45&pic3=50&deep=55&cabinet=60&fridge=65&oven=70&laundry=75&windows=80
+let URL_StartBidding = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/bids"
+
+

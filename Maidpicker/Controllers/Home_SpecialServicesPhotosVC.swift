@@ -11,6 +11,7 @@ import AWSS3
 
 class Home_Special_ServicesPhotosVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var noteTextView: UITextView!
     @IBOutlet weak var SpecialServicesCollectionView: UICollectionView!
     var collectionImage: [UIImage] = [
         UIImage(named: "camera.png")!,
@@ -33,6 +34,7 @@ class Home_Special_ServicesPhotosVC: UIViewController, UICollectionViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         self.SpecialServicesCollectionView.reloadData()
     }
+    
     
     
     // viewdidload
@@ -135,14 +137,34 @@ class Home_Special_ServicesPhotosVC: UIViewController, UICollectionViewDelegate,
                 return nil;
         }
     }
+    
+    func randomString(length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0...length-1).map{ _ in letters.randomElement()! })
+    }
+    
     @IBAction func confirmButtonPressed(_ sender: Any) {
         print("image to be uploaded: \(self.ImagesTobeUploaded.count)")
-        if(self.ImagesTobeUploaded.count<=0){
-            displayMyAlertMessage(userMessage: "Please Select Atleast 1 Photo")
+        
+        if let data = noteTextView.text{
+            SpecialServiceModel.singleton.description = data
         }else{
-            for (index, element) in ImagesTobeUploaded.enumerated(){
-                self.S3UploadKeyName = "photos\(index)"
+            displayMyAlertMessage(userMessage: "Enter Description")
+        }
+        if(self.ImagesTobeUploaded.count<=0){
+            displayMyAlertMessage(userMessage: "Please Select Atleast One Photo")
+        }else{
+            
+            for element in ImagesTobeUploaded{
+                self.S3UploadKeyName = "\(randomString(length: 10)).png"
+                SpecialServiceModel.singleton.photoArray.append(self.S3UploadKeyName)
+                print("this is random string: \(self.S3UploadKeyName)")
                 self.uploadImage(with: UIImagePNGRepresentation(self.resizeImage(image: element, targetSize: CGSize(width: 400, height: 400)))!)
+            }
+            if(ImagesTobeUploaded.count<3){
+                for i in 0..<3-ImagesTobeUploaded.count{
+                    SpecialServiceModel.singleton.photoArray.append("empty Photo")
+                }
             }
             self.performSegue(withIdentifier: "gotoHomeUnwind", sender: self)
         }
@@ -208,4 +230,9 @@ extension Home_Special_ServicesPhotosVC: UIImagePickerControllerDelegate, UINavi
     }
     
 
+    //  METHOD TO DISABLE KEYBOARD
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 }

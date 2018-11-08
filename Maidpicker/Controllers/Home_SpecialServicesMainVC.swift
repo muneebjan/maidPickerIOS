@@ -79,6 +79,7 @@ class Home_SpecialServicesMainVC: UIViewController {
             
             self.roomLabel.text = item
             self.SelectedRooms = item
+            SpecialServiceModel.singleton.allrooms = Int(item)
             self.dropDown.hide()
         }
         dropDown.textFont = UIFont(name: "Montserrat-Regular", size: 17.0)!
@@ -97,6 +98,7 @@ class Home_SpecialServicesMainVC: UIViewController {
     @IBAction func NextTapped(_ sender: Any) {
         if let textField = self.sqftTextField.text{
             print(textField)
+            SpecialServiceModel.singleton.squarefeets = Int(textField)
         }
         if(SelectedRooms != nil && self.sqftTextField.text != "0" && self.sqftTextField.text != ""){
             print("rooms and sqft are selected")

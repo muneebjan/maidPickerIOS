@@ -29,9 +29,12 @@ class HomeViewController: UIViewController, sendingData {
     // VIEW WILL APPEAR
     
     override func viewWillAppear(_ animated: Bool) {
-        if (Extras.singleton.addressID == nil) {
+        if ((Extras.singleton.addressID == nil) || (WhenModel.singleton.whenID == nil) || (TaskSizeModel.singleton.TaskSizeID == nil) || (HowOften_Extra_Model.singleton.howOften == nil ) || (HowOften_Extra_Model.singleton.completeExtraDataArray.count == 0) || (SpecialServiceModel.singleton.photoArray.count == 0))
+        {
+            
             self.confirmBtn.isEnabled = false
-        }else{
+        }
+        else{
             print("address ID: \(Extras.singleton.addressID)")
             self.confirmBtn.isEnabled = true
         }
@@ -92,11 +95,23 @@ class HomeViewController: UIViewController, sendingData {
     }
     @IBAction func confirmButtonPressed(_ sender: Any) {
         print("confirm button Pressed")
-        let VC = storyboard?.instantiateViewController(withIdentifier: "ServicesPage") as! ServicesVC
-        self.navigationController?.pushViewController(VC, animated: true)
-    }
+        
+        AuthServices.instance.BiddingAPI(userid: User.userInstance.Userid!, addressid: Extras.singleton.addressID!, whenId: WhenModel.singleton.whenID!, tasksizeID: TaskSizeModel.singleton.TaskSizeID!, Often: HowOften_Extra_Model.singleton.howOften!, serviceProviderID: 0, photo1: SpecialServiceModel.singleton.photoArray[0], photo2: SpecialServiceModel.singleton.photoArray[1], photo3: SpecialServiceModel.singleton.photoArray[2], deepclean: ExtraModel.singleton.deepcleanId, insideCabinet: ExtraModel.singleton.insideCabinetId, insideFridge: ExtraModel.singleton.insideFridgeId, insideOven: ExtraModel.singleton.insideOvenId, laundry: ExtraModel.singleton.LaundryId, window: ExtraModel.singleton.interiorWindowId, allrooms: SpecialServiceModel.singleton.allrooms!, area: SpecialServiceModel.singleton.squarefeets!, notes: SpecialServiceModel.singleton.description!, totalPrice: 0) { (success) in
+            if(success){
+                print("BID SUCCESSFULL")
+            }else{
+                print("Bid not successfull")
+            }
+                
+        }
+        
+        
+//        let VC = storyboard?.instantiateViewController(withIdentifier: "ServicesPage") as! ServicesVC
+//        self.navigationController?.pushViewController(VC, animated: true)
     
+    }
 }
+
 
 extension HomeViewController: dataprotocol, HowOftenProtocol, ExtasClassProtocol{
     func sendingDataExtra(data: [String]) {

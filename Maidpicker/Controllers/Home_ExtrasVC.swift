@@ -482,21 +482,27 @@ class Home_ExtrasVC: UIViewController {
             if(value == true){
                 if(key == "Deep Clean"){
                     populateArray[key] = ["\(self.deepCleanTime)","\(self.deepCleanPrice)"]
+                    ExtraModel.singleton.deepcleanId = 1
                 }
                 if(key == "Inside Cabinets"){
                     populateArray[key] = ["\(self.insideCabTime)","\(self.insideCabPrice)"]
+                    ExtraModel.singleton.insideCabinetId = 1
                 }
                 if(key == "Inside Oven"){
                     populateArray[key] = ["\(self.insideOvenTime)","\(self.insideOvenPrice)"]
+                    ExtraModel.singleton.insideOvenId = 1
                 }
                 if(key == "Inside Fridge"){
                     populateArray[key] = ["\(self.insideFridgeTime)","\(self.insideFridgePrice)"]
+                    ExtraModel.singleton.insideFridgeId = 1
                 }
                 if(key == "Laundry"){
                     populateArray[key] = ["\(self.laundryTime)","\(self.laundryPrice)"]
+                    ExtraModel.singleton.LaundryId = 1
                 }
                 if(key == "Interior Windows"){
                     populateArray[key] = ["\(self.interiorWindowTime)","\(self.interiorWindowPrice)"]
+                    ExtraModel.singleton.interiorWindowId = 1
                 }
             }
         }

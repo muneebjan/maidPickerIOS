@@ -16,7 +16,7 @@ class Home_When_Future_VC: UIViewController, JTAppleCalendarViewDelegate, JTAppl
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
     
-    
+    var flexibleIsON: Bool?
     let formatter = DateFormatter()
     
     override func viewDidLoad() {
@@ -119,9 +119,11 @@ class Home_When_Future_VC: UIViewController, JTAppleCalendarViewDelegate, JTAppl
             formatter.dateFormat = "MM/dd"
             //print("printing current Date: \(formatter.string(from: cellState.date))")
             if(CalenderView.allowsMultipleSelection == true){
+                self.flexibleIsON = true
                 TimeModel.TimeInstance.dateArray.append(formatter.string(from: cellState.date))
                 dump(TimeModel.TimeInstance.dateArray)
             }else{
+                self.flexibleIsON = false
                 TimeModel.TimeInstance.startDate = formatter.string(from: cellState.date)
                 print("single Date: \(TimeModel.TimeInstance.startDate)")
             }
@@ -203,8 +205,16 @@ class Home_When_Future_VC: UIViewController, JTAppleCalendarViewDelegate, JTAppl
     }
     
     var delegate: SliderPopupDelegate?
+    var date: String = ""
     @IBAction func confirmButton(_ sender: Any) {
         
+        if let modeldate = TimeModel.TimeInstance.startDate{
+            self.date = modeldate
+        }
+        let DateParsing = date.split(separator: "/")
+        let Month = Int(DateParsing[0])
+        let Day = Int(DateParsing[1])
+
         
         if (startSlider >= endSlider) {
             self.displayMyAlertMessage(userMessage: "Start Time must be Smaller than End Time")
@@ -216,16 +226,53 @@ class Home_When_Future_VC: UIViewController, JTAppleCalendarViewDelegate, JTAppl
                 print("confirm button pressed")
                 print(startTime.text)
                 print(endTime.text)
-                delegate?.confirmButtonTapped(startime: startT, endTime: endT)
-                //self.performSegue(withIdentifier: "gotoHomeMain", sender: self)
-                // API CALLING
-                AuthServices.instance.HomeWhenDataSending(type: "Future", subtype: "Specific", startTime: startT, endTime: endT) { (success) in
-                    if(success){
-                        print("Future Calling Api: Successfull")
+                
+                if(self.flexibleIsON == true){
+                    print("flexible is on")
+                    dump(TimeModel.TimeInstance.dateArray)
+                    AuthServices.instance.HomeWhenDataSending(type: "Future", subtype: "Flexible", startTime: startT, endTime: endT) { (success) in
+                        if(success){
+                            
+                            for dates in TimeModel.TimeInstance.dateArray{
+                                let dateParse = dates.split(separator: "/")
+                                var Month = Int(dateParse[0])
+                                var Day = Int(dateParse[1])
+                                
+                                AuthServices.instance.HomeWhenDATE(whenID: String(WhenModel.singleton.whenID!), day: String(Day!), month: String(Month!), completion: { (success) in
+                                    if(success){
+                                        print("Future(Specific) when date calling api successful")
+                                    }else{
+                                        print("Not successfully")
+                                    }
+                                })
+                                
+                            } // ending for loop
+                            self.delegate?.confirmButtonTapped(startime: self.startT, endTime: self.endT)
+                        }else{
+                            print("not successfull flexible api")
+                        }
                     }
-                    else{
-                        print("Not successfully")
+                    
+                }else{
+                    // API CALLING
+                    AuthServices.instance.HomeWhenDataSending(type: "Future", subtype: "Specific", startTime: startT, endTime: endT) { (success) in
+                        if(success){
+                            print("Future(Specific) Calling Api: Successfull")
+                            AuthServices.instance.HomeWhenDATE(whenID: String(WhenModel.singleton.whenID!), day: String(Day!), month: String(Month!), completion: { (success) in
+                                if(success){
+                                    print("Future(Specific) when date calling api successful")
+                                    //self.performSegue(withIdentifier: "unwindToHome", sender: self)
+                                    self.delegate?.confirmButtonTapped(startime: self.startT, endTime: self.endT)
+                                }else{
+                                    print("Not successfully")
+                                }
+                            })
+                        }
+                        else{
+                            print("Not successfully")
+                        }
                     }
+
                 }
             }
         }

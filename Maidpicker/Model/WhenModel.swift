@@ -12,6 +12,7 @@ class WhenModel {
     static let singleton = WhenModel()
     
     var whenID: Int?
+    var whenDateID: Int?
     var calenderType: String?
     var dateTimeArray: [TimeModel] = []
     

@@ -67,7 +67,7 @@
 		189F7D63214FADDE0076D12B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F7D62214FADDE0076D12B /* HomeViewController.swift */; };
 		18A413A4216E286700A2EA8D /* WhenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A413A3216E286700A2EA8D /* WhenModel.swift */; };
 		18A8211F21635F69003501C6 /* CustomPicturesCollectioncell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8211E21635F69003501C6 /* CustomPicturesCollectioncell.swift */; };
-		18A8212121635FC5003501C6 /* Home_Pictures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8212021635FC5003501C6 /* Home_Pictures.swift */; };
+		18AE8335219424130099CBDC /* SpecialServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE8334219424130099CBDC /* SpecialServiceModel.swift */; };
 		18AED2D32177707D00D1E616 /* Home_SpecialServicesMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AED2D22177707D00D1E616 /* Home_SpecialServicesMainVC.swift */; };
 		18AED2D52177729300D1E616 /* SpecialServicesCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AED2D42177729300D1E616 /* SpecialServicesCVCell.swift */; };
 		18AED71F217F149000F98B2C /* ServiceProviderSignup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AED71E217F149000F98B2C /* ServiceProviderSignup.swift */; };
@@ -144,7 +144,7 @@
 		189F7D62214FADDE0076D12B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18A413A3216E286700A2EA8D /* WhenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenModel.swift; sourceTree = "<group>"; };
 		18A8211E21635F69003501C6 /* CustomPicturesCollectioncell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicturesCollectioncell.swift; sourceTree = "<group>"; };
-		18A8212021635FC5003501C6 /* Home_Pictures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Pictures.swift; sourceTree = "<group>"; };
+		18AE8334219424130099CBDC /* SpecialServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialServiceModel.swift; sourceTree = "<group>"; };
 		18AED2D22177707D00D1E616 /* Home_SpecialServicesMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_SpecialServicesMainVC.swift; sourceTree = "<group>"; };
 		18AED2D42177729300D1E616 /* SpecialServicesCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialServicesCVCell.swift; sourceTree = "<group>"; };
 		18AED71E217F149000F98B2C /* ServiceProviderSignup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderSignup.swift; sourceTree = "<group>"; };
@@ -256,7 +256,6 @@
 				18AED2D22177707D00D1E616 /* Home_SpecialServicesMainVC.swift */,
 				1894F30A21902E040050842D /* Home_SpecialServicesPhotosVC.swift */,
 				180426482175E6E000154B0B /* Home_ExtrasVC.swift */,
-				18A8212021635FC5003501C6 /* Home_Pictures.swift */,
 				1826E57621885616005B5CBA /* ServicesVC.swift */,
 				1866341321873806008F8770 /* ChooseProvider.swift */,
 			);
@@ -299,6 +298,7 @@
 				18AED2D42177729300D1E616 /* SpecialServicesCVCell.swift */,
 				186634112187364B008F8770 /* ChooseProviderTVC.swift */,
 				180A2C4A21919AEA00FDDB44 /* ExtraModel.swift */,
+				18AE8334219424130099CBDC /* SpecialServiceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -566,7 +566,6 @@
 				180C015521512564009DA3C1 /* tabBarViewController.swift in Sources */,
 				189731A4216B7BEB0034963F /* TaskSizeTVC.swift in Sources */,
 				187009DF216C9F1A0008680D /* Home_When_MainVC.swift in Sources */,
-				18A8212121635FC5003501C6 /* Home_Pictures.swift in Sources */,
 				187009E5216D04B20008680D /* CustomPopupSliderView copy.swift in Sources */,
 				18F20385216210EB00A4E1C9 /* Home_TaskSizeVC.swift in Sources */,
 				186686922142841D00194B4D /* User.swift in Sources */,
@@ -587,6 +586,7 @@
 				1866341421873806008F8770 /* ChooseProvider.swift in Sources */,
 				1804264C2175FD1100154B0B /* HowOftenModel.swift in Sources */,
 				18331F40215238C3005A265B /* PasswordSettingVC.swift in Sources */,
+				18AE8335219424130099CBDC /* SpecialServiceModel.swift in Sources */,
 				1898B2272170BB5E00CDA70E /* RoomDetails.swift in Sources */,
 				189F7D63214FADDE0076D12B /* HomeViewController.swift in Sources */,
 				187009E1216CA31E0008680D /* TimeModel.swift in Sources */,

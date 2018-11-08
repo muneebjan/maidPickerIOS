@@ -23,6 +23,11 @@ class CustomPopupSliderView: UIViewController {
     @IBOutlet weak var okButton: UIButton!
     
     
+    var month: String = ""
+    var day: String = ""
+    var hours: String = ""
+    var mins: String = ""
+    
     var startSlider: Int = 0
     var endSlider: Int = 0
     
@@ -68,6 +73,21 @@ class CustomPopupSliderView: UIViewController {
         })
     }
     
+    func currentSplitDateandTime() {
+        
+        let currentTime =  Extras.singleton.getCurrentTime()
+        let splitingtime = currentTime.split(separator: ":")
+        month = String(splitingtime[0])
+        day = String(splitingtime[1])
+        hours = String(splitingtime[2])
+        mins = String(splitingtime[3])
+        var endHours = Int(hours)!+2
+        print(currentTime)
+        print("\(month) : \(day) : \(hours) : \(mins)")
+        //return (month!, day!, hours!, mins!)
+        TimeModel.TimeInstance.startDate = "\(month)/\(day)"
+    }
+    
     @IBAction func onTapCancelButton(_ sender: Any) {
         delegate?.cancelButtonTapped()
         self.dismiss(animated: true, completion: nil)
@@ -75,6 +95,9 @@ class CustomPopupSliderView: UIViewController {
     
     @IBAction func onTapOkButton(_ sender: Any) {
 //        delegate?.okButtonTapped(roomTextField: room, bathroomTextField: bathrooms, AreaTextfield: area)
+        
+        self.currentSplitDateandTime()
+        
         if (startSlider >= endSlider) {
             self.displayMyAlertMessage(userMessage: "Start Time must be Smaller than End Time")
         }else{
@@ -85,6 +108,15 @@ class CustomPopupSliderView: UIViewController {
             AuthServices.instance.HomeWhenDataSending(type: "Today", subtype: "Specific", startTime: "\(startSlider):00", endTime: "\(endSlider):00") { (success) in
                 if(success){
                     print("Today Calling Api: Successfull")
+                    AuthServices.instance.HomeWhenDATE(whenID: String(WhenModel.singleton.whenID!), day: self.day, month: self.month, completion: { (success) in
+                        if(success){
+                            print("Nowbutton when date calling api successful")
+                            //self.performSegue(withIdentifier: "unwindToHome", sender: self)
+                        }else{
+                            print("Not successfully")
+                        }
+                    })
+                    
                 }
                 else{
                     print("Not successfully")

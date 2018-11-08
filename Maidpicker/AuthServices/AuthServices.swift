@@ -615,6 +615,44 @@ class AuthServices {
         
     }
     
+    // HOME WHEN DATE API CALLING
+     //?wid=1&day=5&month=8
+    func HomeWhenDATE(whenID: String, day: String, month: String, completion: @escaping CompletionHanlder){
+        
+        let parameters: Parameters = [
+            "wid": whenID,
+            "day":day,
+            "month": month
+        ]
+        
+        Alamofire.request(URL_Date, method: .post, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                json = try JSON(data: data)
+                print("Json data = \(json)")
+                WhenModel.singleton.whenDateID = json[0]["id"].intValue
+                completion(true)
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    
     // HomeTaskSize dataStoring API // ===== ?bedrooms=5&bathrooms=8&otherrooms=7&area=142525sqft
     
     func HomeTaskSizeDataSending(bed: String, bath: String, otherrooms: String, area: String, completion: @escaping CompletionHanlder){
@@ -689,5 +727,62 @@ class AuthServices {
         }
         
     }
+
+//    BIDDING API; ?uid=5&aid=10&pid=15&wid=20&sid=25&often=Hi&spid=30&eid=35&pic1=40&pic2=45&pic3=50&deep=55&cabinet=60&fridge=65&oven=70&laundry=75&windows=80
+    
+    
+    
+// =======================================================================================================================================================
+//================================================================= BIDDING API ==========================================================================
+// =======================================================================================================================================================
+    func BiddingAPI(userid: String, addressid: Int, whenId: Int, tasksizeID: Int, Often: String, serviceProviderID: Int, photo1: String, photo2: String, photo3: String, deepclean: Int, insideCabinet: Int, insideFridge: Int, insideOven: Int, laundry: Int, window: Int, allrooms: Int, area: Int, notes: String, totalPrice: Int,completion: @escaping CompletionHanlder){
+        
+        let parameters: Parameters = [
+            "uid": userid,
+            "aid": addressid,
+            "wid": whenId,
+            "sid": tasksizeID,
+            "often": Often,
+            "spid": serviceProviderID,
+            "pic1": photo1,
+            "pic2": photo2,
+            "pic3": photo3,
+            "deep": deepclean,
+            "cabinet": insideCabinet,
+            "fridge": insideFridge,
+            "oven": insideOven,
+            "laundry": laundry,
+            "windows": window,
+            "rooms": allrooms,
+            "area": area,
+            "notes": notes,
+            "price": totalPrice
+        ]
+        
+        Alamofire.request(URL_StartBidding, method: .post, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                json = try JSON(data: data)
+                print("Json data = \(json)")
+//                TaskSizeModel.singleton.TaskSizeID = json[0]["id"].intValue
+                completion(true)
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+            
+        }
+        
+    }
+    
     
 }
