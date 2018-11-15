@@ -35,7 +35,15 @@ let URL_SPupdateProfile = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.
 // getting Extra Data:
 let URL_gettingExtraData = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/GetExtrasData"
 let s3_baseURL = "https://s3.us-east-2.amazonaws.com/maidpickers/"
-// BIDDING API; ?uid=5&aid=10&pid=15&wid=20&sid=25&often=Hi&spid=30&eid=35&pic1=40&pic2=45&pic3=50&deep=55&cabinet=60&fridge=65&oven=70&laundry=75&windows=80
+// BIDDING API;
 let URL_StartBidding = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/bids"
-
-
+// BIDDING OFFER API:
+let URL_BiddingOffer = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/counter"
+// getting Offer Data:
+let URL_GetOfferRequest = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/getOffersRequest"
+// cancel request:
+let URL_cancelRequest = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/StatusCancelled"
+// Insert Default Rating ==========  ?spid=4&cid=4&jobs=ahtasham&rating=5start
+let URL_ServiceProviderInsertRating = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/orders/rating/insert"
+// gettingProviders data
+let URL_getServiceProviderData = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/orders/serviceprovider/get"

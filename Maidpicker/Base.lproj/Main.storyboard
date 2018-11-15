@@ -792,54 +792,6 @@
             </objects>
             <point key="canvasLocation" x="1606" y="359"/>
         </scene>
-        <!--History-->
-        <scene sceneID="E0g-xh-xBQ">
-            <objects>
-                <viewController id="W0t-kF-aff" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LiQ-f0-K1D">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="wDN-74-ZwH"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="History" image="HistoryTab-Small" id="e1M-1q-kPe"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dle-f4-jiS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2033" y="1164"/>
-        </scene>
-        <!--Ongoing-->
-        <scene sceneID="vOT-g0-lwb">
-            <objects>
-                <viewController id="FS7-dy-RQp" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PG3-Ic-qYp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.6588235294" green="0.83921568629999999" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
-                        <viewLayoutGuide key="safeArea" id="C1o-Qy-m40"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Ongoing" image="OngoingTab-Small" id="Zl2-lE-53n"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wm0-Oc-MIp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1359" y="1164"/>
-        </scene>
-        <!--Message-->
-        <scene sceneID="OsS-af-ci5">
-            <objects>
-                <viewController id="hM6-m3-aDv" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9l6-PG-9ko">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.58823529409999997" green="0.73725490199999999" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
-                        <viewLayoutGuide key="safeArea" id="TmF-St-akP"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Message" image="messagesTab-Small" id="bYA-JC-2UT"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="me3-9v-xcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2948" y="1164"/>
-        </scene>
         <!--Home-->
         <scene sceneID="Wih-FM-JLy">
             <objects>
@@ -848,7 +800,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCJ-Y9-T6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2493" y="847"/>
+            <point key="canvasLocation" x="2493" y="846"/>
+        </scene>
+        <!--Messages-->
+        <scene sceneID="wvI-8q-JPy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Messages" id="gEB-RG-FMN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="0Cy-Qn-N06"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5FG-Id-Uzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2708" y="846"/>
         </scene>
         <!--profiles-->
         <scene sceneID="PQi-j5-ePA">
@@ -858,7 +820,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GJ-jk-vGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3398" y="848"/>
+            <point key="canvasLocation" x="2916" y="846"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="KOk-XG-K0h">
@@ -875,11 +837,11 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="FS7-dy-RQp" kind="relationship" relationship="viewControllers" id="c6o-LA-aJ2"/>
-                        <segue destination="W0t-kF-aff" kind="relationship" relationship="viewControllers" id="Ko9-uR-AgM"/>
-                        <segue destination="mOP-GB-b47" kind="relationship" relationship="viewControllers" id="EFV-es-m2C"/>
-                        <segue destination="hM6-m3-aDv" kind="relationship" relationship="viewControllers" id="UZF-RY-Bub"/>
-                        <segue destination="oki-nu-Umi" kind="relationship" relationship="viewControllers" id="IG8-LN-LIW"/>
+                        <segue destination="Scv-fk-EX5" kind="relationship" relationship="viewControllers" id="KQD-aI-zQP"/>
+                        <segue destination="OFd-6U-ZDE" kind="relationship" relationship="viewControllers" id="eeS-d3-t5b"/>
+                        <segue destination="mOP-GB-b47" kind="relationship" relationship="viewControllers" id="52N-OC-uid"/>
+                        <segue destination="gEB-RG-FMN" kind="relationship" relationship="viewControllers" id="Wil-5T-dkK"/>
+                        <segue destination="oki-nu-Umi" kind="relationship" relationship="viewControllers" id="fvb-6j-4JG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="caL-G2-Ygj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1641,16 +1603,33 @@
             </objects>
             <point key="canvasLocation" x="3337" y="-98"/>
         </scene>
+        <!--Ongoing-->
+        <scene sceneID="TlF-8d-TfT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Ongoing" id="Scv-fk-EX5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="FG7-00-Op2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jbd-EA-7Lw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2087" y="846"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="kQw-My-4Ok">
+            <objects>
+                <viewControllerPlaceholder storyboardName="History" id="OFd-6U-ZDE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="EzJ-h7-nek"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VGC-g8-Egh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2292" y="846"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="HistoryTab-Small" width="29" height="29"/>
-        <image name="OngoingTab-Small" width="29" height="29"/>
         <image name="backimg" width="947" height="1600"/>
         <image name="cancel" width="261" height="64"/>
         <image name="clientbtnB" width="211" height="62"/>
         <image name="line" width="609" height="2"/>
         <image name="logo" width="778" height="204"/>
-        <image name="messagesTab-Small" width="29" height="29"/>
         <image name="pass" width="59" height="60"/>
         <image name="pic" width="869" height="474"/>
         <image name="service-btnB" width="210" height="62"/>

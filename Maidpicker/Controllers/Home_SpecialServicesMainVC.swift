@@ -39,7 +39,9 @@ class Home_SpecialServicesMainVC: UIViewController {
     func Search_and_Populate() {
         if (Extras.singleton.addressID == nil) {
             self.displayMyAlertMessage(userMessage: "Please Select Location")
+            self.sqftTextField.isEnabled = false
         }else{
+            self.sqftTextField.isEnabled = true
             for i in 0..<AddressArray.singleton.roomDetailsArray.count{
                 if(AddressArray.singleton.addressArray[i].addressID == Extras.singleton.addressID){
                     print("i found it")

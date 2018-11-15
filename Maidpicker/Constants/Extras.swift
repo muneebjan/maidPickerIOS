@@ -31,4 +31,14 @@ class Extras {
     }
     
     
+    // removing all ID's and data
+    func removingID() {
+        Extras.singleton.addressID = nil
+        WhenModel.singleton.whenID = nil
+        TaskSizeModel.singleton.TaskSizeID = nil
+        HowOften_Extra_Model.singleton.howOften = nil
+        HowOften_Extra_Model.singleton.completeExtraDataArray.removeAll()
+        SpecialServiceModel.singleton.photoArray.removeAll()
+    }
+    
 }

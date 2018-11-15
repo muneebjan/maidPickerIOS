@@ -9,25 +9,51 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import Firebase
+import FirebaseMessaging
+import UserNotifications
+import FirebaseInstanceID
 //import RealmSwift
 //
 //var realmfile = try! Realm()
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        UITabBar.appearance().tintColor = #colorLiteral(red: 0.8387052417, green: 0.3671816587, blue: 0.3520277441, alpha: 1)
-        UITabBar.appearance().backgroundColor = UIColor.white
         
-        // Override point for customization after application launch.
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
         
         GMSServices.provideAPIKey("AIzaSyBub0VudxANj6mQET4ai5H_ZVKX9G34qrw")
         GMSPlacesClient.provideAPIKey("AIzaSyDMb7su23CaRcyJBhnjdcriS3qRBvSVHfI")
+        
+        UITabBar.appearance().tintColor = #colorLiteral(red: 0.8387052417, green: 0.3671816587, blue: 0.3520277441, alpha: 1)
+        UITabBar.appearance().backgroundColor = UIColor.white
+        
+        
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
+        
+        
+        
         return true
     }
 
@@ -53,6 +79,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        print("Message ID: \(userInfo["gcm_message_id"])")
+        
+        print("this is user INFORMATION: \(userInfo)")
+        
+        
+//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let apptVC = storyboard.instantiateViewController(withIdentifier: "gotoAnteupVC") as! AnteUpVC
+//        let gameID = userInfo["gameid"] as! String
+//        let preferences = UserDefaults.standard
+//        preferences.set(true, forKey: "notificationClickcheck")
+//        preferences.set(gameID, forKey: "SP_gameid")
+//        preferences.synchronize()
+//        print("Call from app delegate: \(gameID)")
+//        apptVC.userinGroupID = gameID
+//
+//        self.window?.rootViewController = apptVC
+//        self.window?.makeKeyAndVisible()
+        
+    }
+    
 }
 
+extension AppDelegate : MessagingDelegate {
+    // [START refresh_token]
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+        UserDefaults.standard.set(fcmToken, forKey: "fcmToken")
+        UserDefaults.standard.synchronize()
+        
+        
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
+    // [END refresh_token]
+    // [START ios_10_data_message]
+    // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
+    // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
+    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        print("Received data message: \(remoteMessage.appData)")
+        
+    }
+    // [END ios_10_data_message]
+}

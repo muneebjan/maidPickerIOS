@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol BidSelectionProtocol{
+    func bidSelection(index: Int, SPid: Int, Price: Int)
+}
+
 class ChooseProviderTVC: UITableViewCell {
 
     @IBOutlet weak var profileImage: UIImageView!
@@ -16,18 +20,22 @@ class ChooseProviderTVC: UITableViewCell {
     @IBOutlet weak var AverageRating: UILabel!
     @IBOutlet weak var Reviews: UILabel!
     @IBOutlet weak var SelectPrice: UILabel!
-    @IBOutlet weak var Selectionbutton: UIButton!
-    @IBOutlet var starImageCollection: [UIImageView]!
+    @IBOutlet weak var starView: SwiftyStarRatingView!
     
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-
+    @IBOutlet weak var SelectButton: UIButton!
+    
+    var cellDelegate: BidSelectionProtocol?
+    var indexpath: IndexPath?
+    var serviceProviderID: Int?
+    var price: Int?
+    var check: Bool = true
+    
+    
+    @IBAction func bidSelectionBtnPressed(_ sender: Any) {
+        cellDelegate?.bidSelection(index: (indexpath?.row)!, SPid: serviceProviderID!, Price: price!)
+        if(check){
+            self.SelectButton.isEnabled = false
+        }
+    }
+    
 }

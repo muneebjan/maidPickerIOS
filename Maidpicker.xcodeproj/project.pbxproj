@@ -39,6 +39,7 @@
 		1833E5CA214153B9006FACAC /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1833E5C4214153B8006FACAC /* Montserrat-Medium.ttf */; };
 		1835234F215F79B2001FB353 /* CustomCalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835234E215F79B2001FB353 /* CustomCalenderCell.swift */; };
 		18352351215F7C27001FB353 /* Home_When_Future_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18352350215F7C27001FB353 /* Home_When_Future_VC.swift */; };
+		183B1F89219C34F600D72AF0 /* ChooseProviderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183B1F88219C34F600D72AF0 /* ChooseProviderModel.swift */; };
 		185CC13321660C140034E287 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CC13221660C140034E287 /* CustomAlertView.swift */; };
 		185CC13521660CAB0034E287 /* CustomAlertViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CC13421660CAB0034E287 /* CustomAlertViewDelegate.swift */; };
 		185CC13721660DA00034E287 /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CC13621660DA00034E287 /* UIButton+Border.swift */; };
@@ -58,6 +59,9 @@
 		1874B1A2215E0F210020D96B /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1874B1A1215E0F210020D96B /* Home.storyboard */; };
 		187EE8922181E0F0006FFAB6 /* SP_profile_updateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187EE8912181E0F0006FFAB6 /* SP_profile_updateVC.swift */; };
 		1885EECD2174905F008A6DEA /* Home_HowOftenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885EECC2174905F008A6DEA /* Home_HowOftenVC.swift */; };
+		1890035C219AA7BB00D23FC8 /* OngoingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890035B219AA7BB00D23FC8 /* OngoingVC.swift */; };
+		1890035E219AAB2E00D23FC8 /* ongoingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890035D219AAB2E00D23FC8 /* ongoingTVC.swift */; };
+		18900360219AE33F00D23FC8 /* BiddingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890035F219AE33F00D23FC8 /* BiddingDataModel.swift */; };
 		1894F30B21902E040050842D /* Home_SpecialServicesPhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894F30A21902E040050842D /* Home_SpecialServicesPhotosVC.swift */; };
 		189731A0216B77060034963F /* Address_RoomsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1897319F216B77060034963F /* Address_RoomsDetail.swift */; };
 		189731A2216B775F0034963F /* AddressArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189731A1216B775F0034963F /* AddressArray.swift */; };
@@ -65,7 +69,13 @@
 		189731A6216B7C550034963F /* Home_TaskAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189731A5216B7C550034963F /* Home_TaskAddressVC.swift */; };
 		1898B2272170BB5E00CDA70E /* RoomDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898B2262170BB5E00CDA70E /* RoomDetails.swift */; };
 		189F7D63214FADDE0076D12B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F7D62214FADDE0076D12B /* HomeViewController.swift */; };
+		18A3F89F219565890050B6B6 /* SetPriceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3F89E219565890050B6B6 /* SetPriceVC.swift */; };
+		18A3F8A121959F7B0050B6B6 /* Ongoing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A3F8A021959F7B0050B6B6 /* Ongoing.storyboard */; };
+		18A3F8A32195A2030050B6B6 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A3F8A22195A2030050B6B6 /* History.storyboard */; };
+		18A3F8A52195A2160050B6B6 /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A3F8A42195A2160050B6B6 /* Messages.storyboard */; };
 		18A413A4216E286700A2EA8D /* WhenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A413A3216E286700A2EA8D /* WhenModel.swift */; };
+		18A58459219D598600DC088F /* SwiftyStarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A58458219D598600DC088F /* SwiftyStarRatingView.swift */; };
+		18A5845C219D8A8600DC088F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A5845B219D8A8600DC088F /* GoogleService-Info.plist */; };
 		18A8211F21635F69003501C6 /* CustomPicturesCollectioncell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8211E21635F69003501C6 /* CustomPicturesCollectioncell.swift */; };
 		18AE8335219424130099CBDC /* SpecialServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE8334219424130099CBDC /* SpecialServiceModel.swift */; };
 		18AED2D32177707D00D1E616 /* Home_SpecialServicesMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AED2D22177707D00D1E616 /* Home_SpecialServicesMainVC.swift */; };
@@ -116,6 +126,7 @@
 		1833E5C4214153B8006FACAC /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		1835234E215F79B2001FB353 /* CustomCalenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalenderCell.swift; sourceTree = "<group>"; };
 		18352350215F7C27001FB353 /* Home_When_Future_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_When_Future_VC.swift; sourceTree = "<group>"; };
+		183B1F88219C34F600D72AF0 /* ChooseProviderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProviderModel.swift; sourceTree = "<group>"; };
 		185CC13221660C140034E287 /* CustomAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		185CC13421660CAB0034E287 /* CustomAlertViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertViewDelegate.swift; sourceTree = "<group>"; };
 		185CC13621660DA00034E287 /* UIButton+Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Border.swift"; sourceTree = "<group>"; };
@@ -135,6 +146,9 @@
 		1874B1A1215E0F210020D96B /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		187EE8912181E0F0006FFAB6 /* SP_profile_updateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SP_profile_updateVC.swift; sourceTree = "<group>"; };
 		1885EECC2174905F008A6DEA /* Home_HowOftenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_HowOftenVC.swift; sourceTree = "<group>"; };
+		1890035B219AA7BB00D23FC8 /* OngoingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingVC.swift; sourceTree = "<group>"; };
+		1890035D219AAB2E00D23FC8 /* ongoingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ongoingTVC.swift; sourceTree = "<group>"; };
+		1890035F219AE33F00D23FC8 /* BiddingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingDataModel.swift; sourceTree = "<group>"; };
 		1894F30A21902E040050842D /* Home_SpecialServicesPhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home_Special\U0010ServicesPhotosVC.swift"; sourceTree = "<group>"; };
 		1897319F216B77060034963F /* Address_RoomsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address_RoomsDetail.swift; sourceTree = "<group>"; };
 		189731A1216B775F0034963F /* AddressArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressArray.swift; sourceTree = "<group>"; };
@@ -142,7 +156,14 @@
 		189731A5216B7C550034963F /* Home_TaskAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_TaskAddressVC.swift; sourceTree = "<group>"; };
 		1898B2262170BB5E00CDA70E /* RoomDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetails.swift; sourceTree = "<group>"; };
 		189F7D62214FADDE0076D12B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		18A3F89E219565890050B6B6 /* SetPriceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPriceVC.swift; sourceTree = "<group>"; };
+		18A3F8A021959F7B0050B6B6 /* Ongoing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ongoing.storyboard; sourceTree = "<group>"; };
+		18A3F8A22195A2030050B6B6 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		18A3F8A42195A2160050B6B6 /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		18A413A3216E286700A2EA8D /* WhenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenModel.swift; sourceTree = "<group>"; };
+		18A58458219D598600DC088F /* SwiftyStarRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyStarRatingView.swift; sourceTree = "<group>"; };
+		18A5845A219D89BB00DC088F /* Maidpicker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Maidpicker.entitlements; sourceTree = "<group>"; };
+		18A5845B219D8A8600DC088F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18A8211E21635F69003501C6 /* CustomPicturesCollectioncell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicturesCollectioncell.swift; sourceTree = "<group>"; };
 		18AE8334219424130099CBDC /* SpecialServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialServiceModel.swift; sourceTree = "<group>"; };
 		18AED2D22177707D00D1E616 /* Home_SpecialServicesMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_SpecialServicesMainVC.swift; sourceTree = "<group>"; };
@@ -179,8 +200,11 @@
 		180C0156215135E3009DA3C1 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				180C0157215135FD009DA3C1 /* profiles.storyboard */,
+				18A3F8A021959F7B0050B6B6 /* Ongoing.storyboard */,
+				18A3F8A22195A2030050B6B6 /* History.storyboard */,
 				1874B1A1215E0F210020D96B /* Home.storyboard */,
+				18A3F8A42195A2160050B6B6 /* Messages.storyboard */,
+				180C0157215135FD009DA3C1 /* profiles.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -257,7 +281,9 @@
 				1894F30A21902E040050842D /* Home_SpecialServicesPhotosVC.swift */,
 				180426482175E6E000154B0B /* Home_ExtrasVC.swift */,
 				1826E57621885616005B5CBA /* ServicesVC.swift */,
+				18A3F89E219565890050B6B6 /* SetPriceVC.swift */,
 				1866341321873806008F8770 /* ChooseProvider.swift */,
+				1890035B219AA7BB00D23FC8 /* OngoingVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -299,6 +325,9 @@
 				186634112187364B008F8770 /* ChooseProviderTVC.swift */,
 				180A2C4A21919AEA00FDDB44 /* ExtraModel.swift */,
 				18AE8334219424130099CBDC /* SpecialServiceModel.swift */,
+				1890035D219AAB2E00D23FC8 /* ongoingTVC.swift */,
+				1890035F219AE33F00D23FC8 /* BiddingDataModel.swift */,
+				183B1F88219C34F600D72AF0 /* ChooseProviderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,6 +351,14 @@
 			path = CustomPopupsController;
 			sourceTree = "<group>";
 		};
+		18A58457219D597000DC088F /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				18A58458219D598600DC088F /* SwiftyStarRatingView.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
 		18CB3B5B213FEE070008D6F0 = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +380,8 @@
 		18CB3B66213FEE070008D6F0 /* Maidpicker */ = {
 			isa = PBXGroup;
 			children = (
+				18A5845A219D89BB00DC088F /* Maidpicker.entitlements */,
+				18A58457219D597000DC088F /* Source */,
 				1866868A21426E3800194B4D /* AuthServices */,
 				1866868B21426E4300194B4D /* Constants */,
 				1815693421737C7C00E1A108 /* RealmFiles */,
@@ -357,6 +396,7 @@
 				18CB3B6E213FEE090008D6F0 /* Assets.xcassets */,
 				18CB3B70213FEE090008D6F0 /* LaunchScreen.storyboard */,
 				18CB3B73213FEE090008D6F0 /* Info.plist */,
+				18A5845B219D8A8600DC088F /* GoogleService-Info.plist */,
 				18CB3B67213FEE070008D6F0 /* AppDelegate.swift */,
 				1833E5B921415285006FACAC /* Fonts */,
 			);
@@ -415,6 +455,14 @@
 				TargetAttributes = {
 					18CB3B63213FEE070008D6F0 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -444,11 +492,13 @@
 				1833E5C9214153B9006FACAC /* Montserrat-Thin.ttf in Resources */,
 				181F23FD2178A875001F31CF /* SPMessages.storyboard in Resources */,
 				1833E5C6214153B9006FACAC /* Montserrat-Light.ttf in Resources */,
+				18A3F8A32195A2030050B6B6 /* History.storyboard in Resources */,
 				181F23F72178A836001F31CF /* SPOngoing.storyboard in Resources */,
 				1874B1A2215E0F210020D96B /* Home.storyboard in Resources */,
 				180C0158215135FD009DA3C1 /* profiles.storyboard in Resources */,
 				18CB3B72213FEE090008D6F0 /* LaunchScreen.storyboard in Resources */,
 				1833E5BD214152E4006FACAC /* montserrat.regular.ttf in Resources */,
+				18A5845C219D8A8600DC088F /* GoogleService-Info.plist in Resources */,
 				181F23FB2178A85B001F31CF /* SPHome.storyboard in Resources */,
 				18CB3B6F213FEE090008D6F0 /* Assets.xcassets in Resources */,
 				1833E5C8214153B9006FACAC /* Montserrat-ExtraLight.ttf in Resources */,
@@ -457,6 +507,8 @@
 				1833E5C7214153B9006FACAC /* Montserrat-SemiBold.ttf in Resources */,
 				1833E5CA214153B9006FACAC /* Montserrat-Medium.ttf in Resources */,
 				1833E5C5214153B9006FACAC /* Montserrat-Black.ttf in Resources */,
+				18A3F8A121959F7B0050B6B6 /* Ongoing.storyboard in Resources */,
+				18A3F8A52195A2160050B6B6 /* Messages.storyboard in Resources */,
 				181F23FF2178A8B6001F31CF /* SPSetting.storyboard in Resources */,
 				181F23F92178A84D001F31CF /* SPHistory.storyboard in Resources */,
 			);
@@ -559,6 +611,7 @@
 				180A2C4B21919AEA00FDDB44 /* ExtraModel.swift in Sources */,
 				180426492175E6E000154B0B /* Home_ExtrasVC.swift in Sources */,
 				18AED723217F16ED00F98B2C /* ServiceProvderUser.swift in Sources */,
+				18900360219AE33F00D23FC8 /* BiddingDataModel.swift in Sources */,
 				1866868D2142824100194B4D /* Constants.swift in Sources */,
 				18CB3B6A213FEE070008D6F0 /* ViewController.swift in Sources */,
 				18CB3B68213FEE070008D6F0 /* AppDelegate.swift in Sources */,
@@ -574,11 +627,13 @@
 				185CC13521660CAB0034E287 /* CustomAlertViewDelegate.swift in Sources */,
 				18AED71F217F149000F98B2C /* ServiceProviderSignup.swift in Sources */,
 				1885EECD2174905F008A6DEA /* Home_HowOftenVC.swift in Sources */,
+				18A58459219D598600DC088F /* SwiftyStarRatingView.swift in Sources */,
 				186634122187364B008F8770 /* ChooseProviderTVC.swift in Sources */,
 				18BD1395219309DD0078AF15 /* TaskSizeModel.swift in Sources */,
 				189731A2216B775F0034963F /* AddressArray.swift in Sources */,
 				187EE8922181E0F0006FFAB6 /* SP_profile_updateVC.swift in Sources */,
 				1835234F215F79B2001FB353 /* CustomCalenderCell.swift in Sources */,
+				1890035E219AAB2E00D23FC8 /* ongoingTVC.swift in Sources */,
 				189731A6216B7C550034963F /* Home_TaskAddressVC.swift in Sources */,
 				180C015A21513F74009DA3C1 /* ProfileMainViewController.swift in Sources */,
 				18A8211F21635F69003501C6 /* CustomPicturesCollectioncell.swift in Sources */,
@@ -592,6 +647,7 @@
 				187009E1216CA31E0008680D /* TimeModel.swift in Sources */,
 				18A413A4216E286700A2EA8D /* WhenModel.swift in Sources */,
 				1832C5DD2153901700315A53 /* MapsViewController.swift in Sources */,
+				1890035C219AA7BB00D23FC8 /* OngoingVC.swift in Sources */,
 				1866868721426A7900194B4D /* LoginSignUpPageVC.swift in Sources */,
 				185CC13721660DA00034E287 /* UIButton+Border.swift in Sources */,
 				1866868921426AFD00194B4D /* RegistrationVC.swift in Sources */,
@@ -599,6 +655,8 @@
 				18331F4221523979005A265B /* AddressOfServiceVC.swift in Sources */,
 				18352351215F7C27001FB353 /* Home_When_Future_VC.swift in Sources */,
 				18AED2D52177729300D1E616 /* SpecialServicesCVCell.swift in Sources */,
+				183B1F89219C34F600D72AF0 /* ChooseProviderModel.swift in Sources */,
+				18A3F89F219565890050B6B6 /* SetPriceVC.swift in Sources */,
 				1869A5D121833BF10064D7DA /* ServiceProviderSettingVC.swift in Sources */,
 				187472B6214BCA4700F3F6AE /* DesignableTextFields.swift in Sources */,
 				18331F44215242EF005A265B /* Extras.swift in Sources */,
@@ -747,6 +805,7 @@
 			baseConfigurationReference = B71F5400F41A99EBB6D159F0 /* Pods-Maidpicker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Maidpicker/Maidpicker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GXW7DDW8B6;
 				INFOPLIST_FILE = Maidpicker/Info.plist;
@@ -766,6 +825,7 @@
 			baseConfigurationReference = 2E3043A7FCD70FC4EFEA6D50 /* Pods-Maidpicker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Maidpicker/Maidpicker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GXW7DDW8B6;
 				INFOPLIST_FILE = Maidpicker/Info.plist;

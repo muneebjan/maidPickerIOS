@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         // model initializer FROM SHAREDPREFERENCES
         
         let preferences = UserDefaults.standard
-        print(preferences.string(forKey: "id"))
+        //print(preferences.string(forKey: "id"))
         
         if(preferences.string(forKey: "id") != nil)
         {
@@ -34,11 +34,11 @@ class ViewController: UIViewController {
             User.userInstance.fcmToken = preferences.string(forKey: "fcm_token")
             User.userInstance.imageURL = preferences.string(forKey: "imageURL")
             User.userInstance.zipcode = preferences.string(forKey: "zipcode")
-            print(User.userInstance.imageURL)
+            //print(User.userInstance.imageURL)
             
 
             
-            print("this is TOKEN: \(User.userInstance.fcmToken)")
+            //print("this is TOKEN: \(User.userInstance.fcmToken)")
             
             
             let url = URL(string: User.userInstance.imageURL!)
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
             ServiceProviderUser.instance.image = preferences.string(forKey: "image")
             ServiceProviderUser.instance.imageURL = preferences.string(forKey: "imageURL")
             
-            print("this is imageURL: \(ServiceProviderUser.instance.imageURL)")
+            //print("this is imageURL: \(ServiceProviderUser.instance.imageURL)")
             
             if let imageurl = ServiceProviderUser.instance.imageURL{
                 let url = URL(string: imageurl)
