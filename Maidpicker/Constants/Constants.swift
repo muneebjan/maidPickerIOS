@@ -25,7 +25,8 @@ let URL_Home_When = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(
 let URL_Home_TaskSize = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/size"
 // =============== HomeWhen DATE ====================
 let URL_Date = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/date" //?wid=1&day=5&month=8
-
+// fcm_token saving api
+let URL_saveFcm_Token = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/notification/update"
 
 // service provider
 
@@ -47,3 +48,4 @@ let URL_cancelRequest = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.co
 let URL_ServiceProviderInsertRating = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/orders/rating/insert"
 // gettingProviders data
 let URL_getServiceProviderData = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/orders/serviceprovider/get"
+

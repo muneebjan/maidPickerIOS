@@ -32,10 +32,25 @@ class LoginSignUpPageVC: UIViewController {
                     if (success){
                         if(AuthServices.instance.loginstatus == "successsful"){
                             
-                            let homevc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarViewController") as! tabBarViewController
-                            DispatchQueue.main.async {
-                                self.present(homevc, animated: true, completion: nil)
+                            if let fcmtoken = UserDefaults.standard.string(forKey: "fcmToken"){
+                                User.userInstance.fcmToken = fcmtoken
+                                AuthServices.instance.RegisterDeviceForNotification(userid: User.userInstance.Userid!, token: fcmtoken, completion: { (success) in
+                                    if(success){
+                                        print("Device Registered For FCM-TOKEN")
+                                        let homevc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarViewController") as! tabBarViewController
+                                        DispatchQueue.main.async {
+                                            self.present(homevc, animated: true, completion: nil)
+                                        }
+                                    }else{
+                                        print("fcmToken not registered")
+                                    }
+                                })
                             }
+
+//                            let homevc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarViewController") as! tabBarViewController
+//                            DispatchQueue.main.async {
+//                                self.present(homevc, animated: true, completion: nil)
+//                            }
                             
                         }else{
                             self.displayMyAlertMessage(userMessage: "Incorrect Email or Password")

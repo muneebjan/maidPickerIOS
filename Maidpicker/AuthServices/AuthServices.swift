@@ -68,9 +68,9 @@ class AuthServices {
                     preferences.set(User.userInstance.mobilephone, forKey: "mobilephone")
                     
                     
-                    
-                    User.userInstance.fcmToken = json[0]["fcm_token"].stringValue
-                    preferences.set(User.userInstance.fcmToken, forKey: "fcm_token")
+//                    
+//                    User.userInstance.fcmToken = json[0]["fcm_token"].stringValue
+//                    preferences.set(User.userInstance.fcmToken, forKey: "fcm_token")
                     
                     
                     // username.png to complete ImageURL
@@ -141,6 +141,31 @@ class AuthServices {
             print("User Defaults Saved")
         }
     }
+    
+    // saving FCM-TOKEN
+    
+    
+    func RegisterDeviceForNotification(userid: String, token: String, completion: @escaping CompletionHanlder) {
+        
+        let parameters: Parameters = [
+            "id": userid,
+            "token":token
+        ]
+        
+        Alamofire.request(URL_saveFcm_Token, method: .post, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseString {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            if response.result.error == nil{
+                completion(true)
+            }
+            else{
+                completion(false)
+                debugPrint(response.result.error as Any)
+            }
+        }
+    }
+    
+    
+    
     
     func registerUser(name: String, email: String, password: String, mobilephone: String, zipcode: String, completion: @escaping CompletionHanlder) {
         

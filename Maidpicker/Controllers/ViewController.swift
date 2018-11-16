@@ -31,14 +31,14 @@ class ViewController: UIViewController {
             User.userInstance.email = preferences.string(forKey: "email")
             User.userInstance.password = preferences.string(forKey: "password")
             User.userInstance.mobilephone = preferences.string(forKey: "mobilephone")
-            User.userInstance.fcmToken = preferences.string(forKey: "fcm_token")
+            User.userInstance.fcmToken = preferences.string(forKey: "fcmToken")
             User.userInstance.imageURL = preferences.string(forKey: "imageURL")
             User.userInstance.zipcode = preferences.string(forKey: "zipcode")
             //print(User.userInstance.imageURL)
             
 
             
-            //print("this is TOKEN: \(User.userInstance.fcmToken)")
+            print("this is TOKEN: \(User.userInstance.fcmToken)")
             
             
             let url = URL(string: User.userInstance.imageURL!)

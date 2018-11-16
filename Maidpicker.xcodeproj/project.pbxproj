@@ -288,6 +288,17 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		1840EF8C219EE31C0058C50E /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				182E648A215CCCB400A729D1 /* LocationAddTVC.swift */,
+				189731A3216B7BEB0034963F /* TaskSizeTVC.swift */,
+				186634112187364B008F8770 /* ChooseProviderTVC.swift */,
+				1890035D219AAB2E00D23FC8 /* ongoingTVC.swift */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
 		1866868A21426E3800194B4D /* AuthServices */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,21 +322,17 @@
 				186686912142841D00194B4D /* User.swift */,
 				18AED722217F16ED00F98B2C /* ServiceProvderUser.swift */,
 				187009E0216CA31E0008680D /* TimeModel.swift */,
-				182E648A215CCCB400A729D1 /* LocationAddTVC.swift */,
 				1835234E215F79B2001FB353 /* CustomCalenderCell.swift */,
 				18A8211E21635F69003501C6 /* CustomPicturesCollectioncell.swift */,
 				1898B2262170BB5E00CDA70E /* RoomDetails.swift */,
 				1897319F216B77060034963F /* Address_RoomsDetail.swift */,
 				189731A1216B775F0034963F /* AddressArray.swift */,
-				189731A3216B7BEB0034963F /* TaskSizeTVC.swift */,
 				18A413A3216E286700A2EA8D /* WhenModel.swift */,
 				18BD1394219309DD0078AF15 /* TaskSizeModel.swift */,
 				1804264B2175FD1100154B0B /* HowOftenModel.swift */,
 				18AED2D42177729300D1E616 /* SpecialServicesCVCell.swift */,
-				186634112187364B008F8770 /* ChooseProviderTVC.swift */,
 				180A2C4A21919AEA00FDDB44 /* ExtraModel.swift */,
 				18AE8334219424130099CBDC /* SpecialServiceModel.swift */,
-				1890035D219AAB2E00D23FC8 /* ongoingTVC.swift */,
 				1890035F219AE33F00D23FC8 /* BiddingDataModel.swift */,
 				183B1F88219C34F600D72AF0 /* ChooseProviderModel.swift */,
 			);
@@ -385,6 +392,7 @@
 				1866868A21426E3800194B4D /* AuthServices */,
 				1866868B21426E4300194B4D /* Constants */,
 				1815693421737C7C00E1A108 /* RealmFiles */,
+				1840EF8C219EE31C0058C50E /* CustomCells */,
 				18668690214283F500194B4D /* Model */,
 				187472B4214BCA0F00F3F6AE /* View */,
 				18A413A2216DE4E000A2EA8D /* CustomPopupsController */,
