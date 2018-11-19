@@ -12,9 +12,6 @@ class ChooseProvider: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var chooseProviderTableView: UITableView!
     //var providerObject: [providers] = []
-    var starImageArray1: [UIImage] = [#imageLiteral(resourceName: "star2"),#imageLiteral(resourceName: "star2"),#imageLiteral(resourceName: "star"),#imageLiteral(resourceName: "star"),#imageLiteral(resourceName: "star")]
-    var starImageArray2: [UIImage] = [#imageLiteral(resourceName: "star2"),#imageLiteral(resourceName: "star2"),#imageLiteral(resourceName: "star2"),#imageLiteral(resourceName: "star2"),#imageLiteral(resourceName: "star")]
-
     
     @IBOutlet weak var ViewforStarRating: UIView!
     
@@ -101,7 +98,13 @@ extension ChooseProvider: BidSelectionProtocol{
         
         AuthServices.instance.BiddingAPI(userid: User.userInstance.Userid!, addressid: Extras.singleton.addressID!, whenId: WhenModel.singleton.whenID!, tasksizeID: TaskSizeModel.singleton.TaskSizeID!, Often: HowOften_Extra_Model.singleton.howOften!, serviceProviderID: SPid, photo1: SpecialServiceModel.singleton.photoArray[0], photo2: SpecialServiceModel.singleton.photoArray[1], photo3: SpecialServiceModel.singleton.photoArray[2], deepclean: ExtraModel.singleton.deepcleanId, insideCabinet: ExtraModel.singleton.insideCabinetId, insideFridge: ExtraModel.singleton.insideFridgeId, insideOven: ExtraModel.singleton.insideOvenId, laundry: ExtraModel.singleton.LaundryId, window: ExtraModel.singleton.interiorWindowId, allrooms: SpecialServiceModel.singleton.allrooms!, area: SpecialServiceModel.singleton.squarefeets!, notes: SpecialServiceModel.singleton.description!, totalPrice: Price, status: "booked") { (success) in
             if(success){
-                print("BID SUCCESSFULL")
+                print("BOOKED BID SUCCESSFULL")
+                AuthServices.instance.insertNotificationInBidding(serviceProviderID: SPid, cliendId: Int(User.userInstance.Userid!)!, biddID: Extras.singleton.tempBidID!, receiver: "provider", notification: "notification123", type: "type123", completion: { (success) in
+                    if(success){
+                        print("insert api implemented")
+                    }
+                })
+                
                 Extras.singleton.removingID()
                 
             }else{

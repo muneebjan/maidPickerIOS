@@ -12,6 +12,7 @@ class Extras {
     static let singleton = Extras()
     
     var addressID: Int?
+    var tempBidID: Int?
     
     func getCurrentTime() -> String {
         

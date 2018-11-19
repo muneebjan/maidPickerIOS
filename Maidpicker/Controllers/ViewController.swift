@@ -36,6 +36,9 @@ class ViewController: UIViewController {
             User.userInstance.zipcode = preferences.string(forKey: "zipcode")
             //print(User.userInstance.imageURL)
             
+            print(User.userInstance.email)
+            print(User.userInstance.password)
+            
 
             
             print("this is TOKEN: \(User.userInstance.fcmToken)")

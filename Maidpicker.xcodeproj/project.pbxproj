@@ -20,6 +20,7 @@
 		181F23FD2178A875001F31CF /* SPMessages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181F23FC2178A875001F31CF /* SPMessages.storyboard */; };
 		181F23FF2178A8B6001F31CF /* SPSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181F23FE2178A8B6001F31CF /* SPSetting.storyboard */; };
 		181F24022178ABC5001F31CF /* ServiceProvidertabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181F24012178ABC5001F31CF /* ServiceProvidertabBarVC.swift */; };
+		1822E83021A2CE9500E3B617 /* notificationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1822E82F21A2CE9500E3B617 /* notificationTVC.swift */; };
 		1826E57721885616005B5CBA /* ServicesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1826E57621885616005B5CBA /* ServicesVC.swift */; };
 		182C4662215E60B30041F123 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C4661215E60B30041F123 /* CustomView.swift */; };
 		182E648B215CCCB400A729D1 /* LocationAddTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E648A215CCCB400A729D1 /* LocationAddTVC.swift */; };
@@ -68,6 +69,7 @@
 		189731A4216B7BEB0034963F /* TaskSizeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189731A3216B7BEB0034963F /* TaskSizeTVC.swift */; };
 		189731A6216B7C550034963F /* Home_TaskAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189731A5216B7C550034963F /* Home_TaskAddressVC.swift */; };
 		1898B2272170BB5E00CDA70E /* RoomDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898B2262170BB5E00CDA70E /* RoomDetails.swift */; };
+		1899AF5321A2CBB300DA5704 /* Notification_MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899AF5221A2CBB300DA5704 /* Notification_MessagesVC.swift */; };
 		189F7D63214FADDE0076D12B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F7D62214FADDE0076D12B /* HomeViewController.swift */; };
 		18A3F89F219565890050B6B6 /* SetPriceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3F89E219565890050B6B6 /* SetPriceVC.swift */; };
 		18A3F8A121959F7B0050B6B6 /* Ongoing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A3F8A021959F7B0050B6B6 /* Ongoing.storyboard */; };
@@ -107,6 +109,7 @@
 		181F23FC2178A875001F31CF /* SPMessages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SPMessages.storyboard; sourceTree = "<group>"; };
 		181F23FE2178A8B6001F31CF /* SPSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SPSetting.storyboard; sourceTree = "<group>"; };
 		181F24012178ABC5001F31CF /* ServiceProvidertabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvidertabBarVC.swift; sourceTree = "<group>"; };
+		1822E82F21A2CE9500E3B617 /* notificationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationTVC.swift; sourceTree = "<group>"; };
 		1826E57621885616005B5CBA /* ServicesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesVC.swift; sourceTree = "<group>"; };
 		182C4661215E60B30041F123 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		182E648A215CCCB400A729D1 /* LocationAddTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAddTVC.swift; sourceTree = "<group>"; };
@@ -155,6 +158,7 @@
 		189731A3216B7BEB0034963F /* TaskSizeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSizeTVC.swift; sourceTree = "<group>"; };
 		189731A5216B7C550034963F /* Home_TaskAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_TaskAddressVC.swift; sourceTree = "<group>"; };
 		1898B2262170BB5E00CDA70E /* RoomDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetails.swift; sourceTree = "<group>"; };
+		1899AF5221A2CBB300DA5704 /* Notification_MessagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification_MessagesVC.swift; sourceTree = "<group>"; };
 		189F7D62214FADDE0076D12B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18A3F89E219565890050B6B6 /* SetPriceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPriceVC.swift; sourceTree = "<group>"; };
 		18A3F8A021959F7B0050B6B6 /* Ongoing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ongoing.storyboard; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 				18A3F89E219565890050B6B6 /* SetPriceVC.swift */,
 				1866341321873806008F8770 /* ChooseProvider.swift */,
 				1890035B219AA7BB00D23FC8 /* OngoingVC.swift */,
+				1899AF5221A2CBB300DA5704 /* Notification_MessagesVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				189731A3216B7BEB0034963F /* TaskSizeTVC.swift */,
 				186634112187364B008F8770 /* ChooseProviderTVC.swift */,
 				1890035D219AAB2E00D23FC8 /* ongoingTVC.swift */,
+				1822E82F21A2CE9500E3B617 /* notificationTVC.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -645,6 +651,7 @@
 				189731A6216B7C550034963F /* Home_TaskAddressVC.swift in Sources */,
 				180C015A21513F74009DA3C1 /* ProfileMainViewController.swift in Sources */,
 				18A8211F21635F69003501C6 /* CustomPicturesCollectioncell.swift in Sources */,
+				1899AF5321A2CBB300DA5704 /* Notification_MessagesVC.swift in Sources */,
 				182E648B215CCCB400A729D1 /* LocationAddTVC.swift in Sources */,
 				1866341421873806008F8770 /* ChooseProvider.swift in Sources */,
 				1804264C2175FD1100154B0B /* HowOftenModel.swift in Sources */,
@@ -653,6 +660,7 @@
 				1898B2272170BB5E00CDA70E /* RoomDetails.swift in Sources */,
 				189F7D63214FADDE0076D12B /* HomeViewController.swift in Sources */,
 				187009E1216CA31E0008680D /* TimeModel.swift in Sources */,
+				1822E83021A2CE9500E3B617 /* notificationTVC.swift in Sources */,
 				18A413A4216E286700A2EA8D /* WhenModel.swift in Sources */,
 				1832C5DD2153901700315A53 /* MapsViewController.swift in Sources */,
 				1890035C219AA7BB00D23FC8 /* OngoingVC.swift in Sources */,

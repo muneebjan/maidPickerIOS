@@ -611,6 +611,7 @@ class AuthServices {
                 json = try JSON(data: data)
                 print("Json Bidding Data = \(json)")
                 let bidID = json[0]["id"].intValue
+                Extras.singleton.tempBidID = bidID // storing temporary BID ID
                 self.sendingOfferBid(id: bidID, completion: { (success) in
                     if(success){
                         print("\(bidID) :sendding offer bidding is successful")
@@ -796,6 +797,48 @@ class AuthServices {
         }
         
     }
+    
+    
+    // sid=4&cid=5&bid=6&receiver=Ahtasham&notification=525&type=string
+    func insertNotificationInBidding(serviceProviderID: Int, cliendId: Int, biddID: Int, receiver: String, notification: String, type: String, completion: @escaping CompletionHanlder) {
+        let parameters: Parameters = [
+            "sid": serviceProviderID,
+            "cid": cliendId,
+            "bid": biddID,
+            "receiver": receiver,
+            "notification": notification,
+            "type": type
+        ]
+        Alamofire.request(URL_insert_Notification, method: .post, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                
+                json = try JSON(data: data)
+                print("Json Insert Notification Data = \(json)")
+                completion(true)
+                
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    
 //  =================================================================
 //  ==================  SERVICE PROVIDER APIS =======================
 //  =================================================================

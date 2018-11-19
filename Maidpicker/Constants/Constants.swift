@@ -27,6 +27,11 @@ let URL_Home_TaskSize = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.co
 let URL_Date = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/date" //?wid=1&day=5&month=8
 // fcm_token saving api
 let URL_saveFcm_Token = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/notification/update"
+// notification sending
+let URL_insert_Notification = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/notification/insert"
+
+
+
 
 // service provider
 
