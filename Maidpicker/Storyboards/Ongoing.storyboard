@@ -277,10 +277,10 @@
             </objects>
             <point key="canvasLocation" x="-42.399999999999999" y="673.31334332833592"/>
         </scene>
-        <!--Choose Provider-->
+        <!--Ongoing Request OffersVC-->
         <scene sceneID="vCM-rb-D7Z">
             <objects>
-                <viewController storyboardIdentifier="chooseproviderVC" id="uct-YR-98A" customClass="ChooseProvider" customModule="Maidpicker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ongoing_request_offers" id="uct-YR-98A" customClass="Ongoing_Request_OffersVC" customModule="Maidpicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uaG-sF-HcA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -296,11 +296,11 @@
                                         </constraints>
                                         <state key="normal" image="previous"/>
                                         <connections>
-                                            <segue destination="7bD-yn-D9x" kind="unwind" unwindAction="unwindToServiceVCWithUnwind:" id="f3K-D5-Xi9"/>
+                                            <segue destination="7bD-yn-D9x" kind="unwind" unwindAction="unwindToOngoingWithUnwind:" id="fXh-Az-I7Q"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Provider" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bG2-kj-yoP">
-                                        <rect key="frame" x="108" y="33" width="159" height="23.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bG2-kj-yoP">
+                                        <rect key="frame" x="157.5" y="33" width="60" height="23.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
                                         <color key="textColor" red="0.74117647060000003" green="0.87450980389999999" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <nil key="highlightedColor"/>
@@ -328,7 +328,7 @@
                                 <rect key="frame" x="10" y="66.5" width="355" height="600.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="175" id="9hO-xO-Jgq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ongoing_request_offersCell" rowHeight="175" id="9hO-xO-Jgq" customClass="ongoing_request_offersCell" customModule="Maidpicker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="355" height="175"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9hO-xO-Jgq" id="3QH-gC-8Jw">
@@ -370,6 +370,12 @@
                                                     <rect key="frame" x="80" y="66.5" width="74" height="16"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rla-0e-706">
+                                                    <rect key="frame" x="308" y="10" width="37" height="17.5"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                                    <color key="textColor" red="0.79607843140000001" green="0.86666666670000003" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOu-tt-A2o">
@@ -434,12 +440,6 @@
                                                         <constraint firstItem="yVW-NR-V8a" firstAttribute="leading" secondItem="SeE-CU-sfM" secondAttribute="leading" id="mb9-tn-20N"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rla-0e-706">
-                                                    <rect key="frame" x="308" y="10" width="37" height="17.5"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
-                                                    <color key="textColor" red="0.79607843140000001" green="0.86666666670000003" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="rla-0e-706" secondAttribute="trailing" constant="10" id="6Pw-H2-KHa"/>
@@ -465,6 +465,16 @@
                                                 <constraint firstItem="SeE-CU-sfM" firstAttribute="leading" secondItem="3QH-gC-8Jw" secondAttribute="leading" id="tKz-pW-65L"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="AverageRating" destination="TZt-lB-uB5" id="RoB-GW-QKD"/>
+                                            <outlet property="ClientName" destination="eG5-eO-oPa" id="QEI-Un-RJW"/>
+                                            <outlet property="HireButton" destination="yVW-NR-V8a" id="WWB-Nn-V8O"/>
+                                            <outlet property="OfferPrice" destination="rla-0e-706" id="61t-4H-g0h"/>
+                                            <outlet property="Reviews" destination="hXl-nz-O0b" id="HTm-kL-G3L"/>
+                                            <outlet property="jobPerformed" destination="kz3-eA-zU4" id="HlP-wp-6L3"/>
+                                            <outlet property="profileImage" destination="TCI-ag-YDu" id="K94-Up-aBl"/>
+                                            <outlet property="starView" destination="dzq-xH-jIl" id="G06-U3-yHe"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -482,16 +492,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1x6-TS-xmM"/>
                     </view>
+                    <connections>
+                        <outlet property="OffersTableView" destination="7x7-bf-fJa" id="HST-zQ-gtC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YEW-vg-ziE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7bD-yn-D9x" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="674"/>
+            <point key="canvasLocation" x="706" y="673"/>
         </scene>
-        <!--OngoingVC-->
+        <!--View Controller-->
         <scene sceneID="rBq-nu-cQz">
             <objects>
-                <viewController id="BXO-rU-NhU" customClass="OngoingVC" customModule="Maidpicker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BXO-rU-NhU" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TMt-pH-GAF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -729,7 +742,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NEJ-98-ZUu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="673" y="674"/>
+            <point key="canvasLocation" x="1495" y="232"/>
         </scene>
     </scenes>
     <resources>

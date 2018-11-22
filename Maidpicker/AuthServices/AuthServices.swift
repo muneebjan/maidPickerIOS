@@ -702,27 +702,27 @@ class AuthServices {
                     obj.laundry = json[i]["laundry"].intValue
                     obj.InteriorWindow = json[i]["windows"].intValue
                     
-                    if(obj.deepclean == 1){
+                    if(obj.deepclean! >= 1){
                         stringObj.append("Deep")
                         //BiddingDataModel.instance.OfferDetails.append("Deep")
                     }
-                    if(obj.insidecabinet == 1){
+                    if(obj.insidecabinet! >= 1){
                         stringObj.append("Inside Cabinet")
                         //BiddingDataModel.instance.OfferDetails.append("Inside Cabinet")
                     }
-                    if(obj.insidefridge == 1){
+                    if(obj.insidefridge! >= 1){
                         stringObj.append("Inside Fridge")
                         //BiddingDataModel.instance.OfferDetails.append("Inside Fridge")
                     }
-                    if(obj.insideoven == 1){
+                    if(obj.insideoven! >= 1){
                         stringObj.append("Inside Oven")
                         //BiddingDataModel.instance.OfferDetails.append("Inside Oven")
                     }
-                    if(obj.laundry == 1){
+                    if(obj.laundry! >= 1){
                         stringObj.append("Laundry")
                         //BiddingDataModel.instance.OfferDetails.append("Laundry")
                     }
-                    if(obj.InteriorWindow == 1){
+                    if(obj.InteriorWindow! >= 1){
                         stringObj.append("Interior Windows")
                         //BiddingDataModel.instance.OfferDetails.append("Interior Windows")
                     }
@@ -836,6 +836,61 @@ class AuthServices {
         
     }
     
+    
+    // getting OFFERS data (client side)
+    
+    func gettingAllOffersDataUnderRequests(bidID: Int, completion: @escaping CompletionHanlder){
+        
+        let parameters: Parameters = [
+            
+            "id":bidID
+            
+        ]
+        
+        Alamofire.request(URL_getOffersData_Requests, method: .get, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                
+                json = try JSON(data: data)
+                print("Json GETTING TOTAL OFFERS DATA = \(json)")
+                
+                // ================ for looop ==================
+                
+                for i in 0..<json.count{
+                    
+                    let obj = offersDataModel()
+                    obj.offerid = json[i]["id"].intValue
+                    obj.name = json[i]["name"].stringValue
+                    obj.image = json[i]["image"].stringValue
+                    obj.hourlyrate = json[i]["hourlyrate"].intValue
+                    obj.jobs = json[i]["jobs"].intValue
+                    obj.rating = json[i]["rating"].intValue
+                    obj.review = json[i]["reviews"].intValue
+                    obj.bidID = json[i]["bidid"].intValue
+                    obj.SPID = json[i]["spid"].intValue
+                    obj.price = json[i]["price"].intValue
+                    
+                    offersDataModel.instance.totaloffersData.append(obj)
+                    
+                }
+                
+                
+                completion(true)
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+        }
+    }
     
     
     

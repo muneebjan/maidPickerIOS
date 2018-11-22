@@ -99,6 +99,7 @@ class OngoingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 
             case 2:
 //                cell.offerDetailLabel.text = offerobject.offerDetails
+                print("data: \(BiddingDataModel.instance.DetailArray[indexPath.row])")
                 cell.offerDetailLabel.text = BiddingDataModel.instance.DetailArray[indexPath.row].joined(separator: ", ")
                 cell.datetimeLabel.text = "\(bidArray.month) \(bidArray.day), 2018"
                 cell.priceLabel.text = "$\(bidArray.price)"
@@ -122,6 +123,23 @@ class OngoingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return ongoingTVC()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let bidArray = BiddingDataModel.instance.biddingArray[indexPath.row]
+        print("this is idnexpath and bidID :\(indexPath.row) & \(bidArray.bidID)")
+        
+        let VC = storyboard?.instantiateViewController(withIdentifier: "ongoing_request_offers") as! Ongoing_Request_OffersVC
+        VC.BIDid = bidArray.bidID
+        self.navigationController?.pushViewController(VC, animated: true)
+        
+        
+    }
+    
+    // unwind to Ongoing Request Page
+    @IBAction func unwindToOngoing(unwind: UIStoryboardSegue){
+        
+    }
+    
 }
 
 extension OngoingVC: tableviewbutton{

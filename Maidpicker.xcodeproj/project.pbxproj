@@ -86,6 +86,9 @@
 		18AED721217F14A200F98B2C /* ServiceProviderLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AED720217F14A200F98B2C /* ServiceProviderLogin.swift */; };
 		18AED723217F16ED00F98B2C /* ServiceProvderUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AED722217F16ED00F98B2C /* ServiceProvderUser.swift */; };
 		18BD1395219309DD0078AF15 /* TaskSizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD1394219309DD0078AF15 /* TaskSizeModel.swift */; };
+		18C2641721A68C0E0006B902 /* Ongoing_Request_OffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2641621A68C0E0006B902 /* Ongoing_Request_OffersVC.swift */; };
+		18C2641921A68D710006B902 /* ongoing_request_offersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2641821A68D710006B902 /* ongoing_request_offersCell.swift */; };
+		18C2641B21A695210006B902 /* offersDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2641A21A695210006B902 /* offersDataModel.swift */; };
 		18CB3B68213FEE070008D6F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB3B67213FEE070008D6F0 /* AppDelegate.swift */; };
 		18CB3B6A213FEE070008D6F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB3B69213FEE070008D6F0 /* ViewController.swift */; };
 		18CB3B6D213FEE070008D6F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18CB3B6B213FEE070008D6F0 /* Main.storyboard */; };
@@ -176,6 +179,9 @@
 		18AED720217F14A200F98B2C /* ServiceProviderLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderLogin.swift; sourceTree = "<group>"; };
 		18AED722217F16ED00F98B2C /* ServiceProvderUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvderUser.swift; sourceTree = "<group>"; };
 		18BD1394219309DD0078AF15 /* TaskSizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSizeModel.swift; sourceTree = "<group>"; };
+		18C2641621A68C0E0006B902 /* Ongoing_Request_OffersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ongoing_Request_OffersVC.swift; sourceTree = "<group>"; };
+		18C2641821A68D710006B902 /* ongoing_request_offersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ongoing_request_offersCell.swift; sourceTree = "<group>"; };
+		18C2641A21A695210006B902 /* offersDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = offersDataModel.swift; sourceTree = "<group>"; };
 		18CB3B64213FEE070008D6F0 /* Maidpicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maidpicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CB3B67213FEE070008D6F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18CB3B69213FEE070008D6F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -288,6 +294,7 @@
 				18A3F89E219565890050B6B6 /* SetPriceVC.swift */,
 				1866341321873806008F8770 /* ChooseProvider.swift */,
 				1890035B219AA7BB00D23FC8 /* OngoingVC.swift */,
+				18C2641621A68C0E0006B902 /* Ongoing_Request_OffersVC.swift */,
 				1899AF5221A2CBB300DA5704 /* Notification_MessagesVC.swift */,
 			);
 			path = Controllers;
@@ -301,6 +308,7 @@
 				186634112187364B008F8770 /* ChooseProviderTVC.swift */,
 				1890035D219AAB2E00D23FC8 /* ongoingTVC.swift */,
 				1822E82F21A2CE9500E3B617 /* notificationTVC.swift */,
+				18C2641821A68D710006B902 /* ongoing_request_offersCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -341,6 +349,7 @@
 				18AE8334219424130099CBDC /* SpecialServiceModel.swift */,
 				1890035F219AE33F00D23FC8 /* BiddingDataModel.swift */,
 				183B1F88219C34F600D72AF0 /* ChooseProviderModel.swift */,
+				18C2641A21A695210006B902 /* offersDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -640,6 +649,7 @@
 				182C4662215E60B30041F123 /* CustomView.swift in Sources */,
 				185CC13521660CAB0034E287 /* CustomAlertViewDelegate.swift in Sources */,
 				18AED71F217F149000F98B2C /* ServiceProviderSignup.swift in Sources */,
+				18C2641B21A695210006B902 /* offersDataModel.swift in Sources */,
 				1885EECD2174905F008A6DEA /* Home_HowOftenVC.swift in Sources */,
 				18A58459219D598600DC088F /* SwiftyStarRatingView.swift in Sources */,
 				186634122187364B008F8770 /* ChooseProviderTVC.swift in Sources */,
@@ -661,6 +671,8 @@
 				189F7D63214FADDE0076D12B /* HomeViewController.swift in Sources */,
 				187009E1216CA31E0008680D /* TimeModel.swift in Sources */,
 				1822E83021A2CE9500E3B617 /* notificationTVC.swift in Sources */,
+				18C2641721A68C0E0006B902 /* Ongoing_Request_OffersVC.swift in Sources */,
+				18C2641921A68D710006B902 /* ongoing_request_offersCell.swift in Sources */,
 				18A413A4216E286700A2EA8D /* WhenModel.swift in Sources */,
 				1832C5DD2153901700315A53 /* MapsViewController.swift in Sources */,
 				1890035C219AA7BB00D23FC8 /* OngoingVC.swift in Sources */,

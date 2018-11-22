@@ -102,6 +102,7 @@ extension ChooseProvider: BidSelectionProtocol{
                 AuthServices.instance.insertNotificationInBidding(serviceProviderID: SPid, cliendId: Int(User.userInstance.Userid!)!, biddID: Extras.singleton.tempBidID!, receiver: "provider", notification: "notification123", type: "type123", completion: { (success) in
                     if(success){
                         print("insert api implemented")
+                        self.performSegue(withIdentifier: "backtoHome", sender: self)
                     }
                 })
                 

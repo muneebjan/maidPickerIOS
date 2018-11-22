@@ -29,7 +29,8 @@ let URL_Date = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)
 let URL_saveFcm_Token = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/notification/update"
 // notification sending
 let URL_insert_Notification = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/notification/insert"
-
+// get offers data
+let URL_getOffersData_Requests = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/offer/provider"
 
 
 
