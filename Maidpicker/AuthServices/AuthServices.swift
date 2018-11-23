@@ -1184,4 +1184,68 @@ class AuthServices {
         }
     }
     
+    
+    // getting Bid Data Service Provider
+    
+    
+    // getting service provider data
+    
+    func getServiceProvider_Bid_Data(completion: @escaping CompletionHanlder){
+        
+        Alamofire.request(URL_SPgetBidData, method: .get, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                
+                json = try JSON(data: data)
+                print("Json GETTING SERVICE PROVIDER BID DATA = \(json)")
+                
+                // ================ for looop ==================
+                
+                for i in 0..<json.count{
+                    
+                    let obj = ServiceProviderHomeBidModel()
+                    
+                    obj.Bidid = json[i]["bidid"].intValue
+                    obj.cabinet = json[i]["cabinets"].intValue
+                    obj.deep = json[i]["deep"].intValue
+                    obj.laundry = json[i]["laundry"].intValue
+                    obj.fridge = json[i]["fridge"].intValue
+                    obj.windows = json[i]["windows"].intValue
+                    obj.price = json[i]["price"].intValue
+                    
+                    obj.oven = json[i]["oven"].intValue
+                    obj.day = json[i]["day"].intValue
+                    obj.month = json[i]["month"].intValue
+                    obj.bedrooms = json[i]["bedrooms"].intValue
+                    obj.bathrooms = json[i]["bathrooms"].intValue
+                    obj.otherrooms = json[i]["otherrooms"].intValue
+                    
+                    obj.area = json[i]["area"].intValue
+                    obj.id = json[i]["id"].intValue
+                    obj.clientid = json[i]["clientid"].intValue
+                    obj.name = json[i]["name"].stringValue
+                    
+                    ServiceProviderHomeBidModel.instance.totalBidData.append(obj)
+                    
+                }
+                
+                
+                completion(true)
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+        }
+    }
+    
+    
 }

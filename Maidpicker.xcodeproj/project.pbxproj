@@ -94,6 +94,11 @@
 		18CB3B6D213FEE070008D6F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18CB3B6B213FEE070008D6F0 /* Main.storyboard */; };
 		18CB3B6F213FEE090008D6F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CB3B6E213FEE090008D6F0 /* Assets.xcassets */; };
 		18CB3B72213FEE090008D6F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18CB3B70213FEE090008D6F0 /* LaunchScreen.storyboard */; };
+		18F0126721A7E6E0001D12D5 /* ServiceProviderHomeMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0126621A7E6E0001D12D5 /* ServiceProviderHomeMain.swift */; };
+		18F0126921A8017A001D12D5 /* ServiceProviderHome_Bid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0126821A8017A001D12D5 /* ServiceProviderHome_Bid.swift */; };
+		18F0126B21A803CC001D12D5 /* SPbids_cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0126A21A803CC001D12D5 /* SPbids_cell.swift */; };
+		18F0126D21A81302001D12D5 /* ServiceProviderHomeBidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0126C21A81302001D12D5 /* ServiceProviderHomeBidModel.swift */; };
+		18F0126F21A81D70001D12D5 /* ServiceProvider_BidDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0126E21A81D70001D12D5 /* ServiceProvider_BidDetail.swift */; };
 		18F20385216210EB00A4E1C9 /* Home_TaskSizeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F20384216210EB00A4E1C9 /* Home_TaskSizeVC.swift */; };
 		2CBDAD9A1F15C7840CF3CB8B /* Pods_Maidpicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB9676F5EF3F5EE9F632FFF /* Pods_Maidpicker.framework */; };
 /* End PBXBuildFile section */
@@ -189,6 +194,11 @@
 		18CB3B6E213FEE090008D6F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18CB3B71213FEE090008D6F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18CB3B73213FEE090008D6F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18F0126621A7E6E0001D12D5 /* ServiceProviderHomeMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderHomeMain.swift; sourceTree = "<group>"; };
+		18F0126821A8017A001D12D5 /* ServiceProviderHome_Bid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderHome_Bid.swift; sourceTree = "<group>"; };
+		18F0126A21A803CC001D12D5 /* SPbids_cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPbids_cell.swift; sourceTree = "<group>"; };
+		18F0126C21A81302001D12D5 /* ServiceProviderHomeBidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderHomeBidModel.swift; sourceTree = "<group>"; };
+		18F0126E21A81D70001D12D5 /* ServiceProvider_BidDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider_BidDetail.swift; sourceTree = "<group>"; };
 		18F20384216210EB00A4E1C9 /* Home_TaskSizeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_TaskSizeVC.swift; sourceTree = "<group>"; };
 		2E3043A7FCD70FC4EFEA6D50 /* Pods-Maidpicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maidpicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Maidpicker/Pods-Maidpicker.release.xcconfig"; sourceTree = "<group>"; };
 		B71F5400F41A99EBB6D159F0 /* Pods-Maidpicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maidpicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Maidpicker/Pods-Maidpicker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -248,6 +258,9 @@
 				1869A5D021833BF10064D7DA /* ServiceProviderSettingVC.swift */,
 				1866340F218707CA008F8770 /* ServiceProviderProfileMain.swift */,
 				187EE8912181E0F0006FFAB6 /* SP_profile_updateVC.swift */,
+				18F0126621A7E6E0001D12D5 /* ServiceProviderHomeMain.swift */,
+				18F0126821A8017A001D12D5 /* ServiceProviderHome_Bid.swift */,
+				18F0126E21A81D70001D12D5 /* ServiceProvider_BidDetail.swift */,
 			);
 			path = ControllersServiceProvider;
 			sourceTree = "<group>";
@@ -309,6 +322,7 @@
 				1890035D219AAB2E00D23FC8 /* ongoingTVC.swift */,
 				1822E82F21A2CE9500E3B617 /* notificationTVC.swift */,
 				18C2641821A68D710006B902 /* ongoing_request_offersCell.swift */,
+				18F0126A21A803CC001D12D5 /* SPbids_cell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -350,6 +364,7 @@
 				1890035F219AE33F00D23FC8 /* BiddingDataModel.swift */,
 				183B1F88219C34F600D72AF0 /* ChooseProviderModel.swift */,
 				18C2641A21A695210006B902 /* offersDataModel.swift */,
+				18F0126C21A81302001D12D5 /* ServiceProviderHomeBidModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -624,16 +639,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				1815693621737C9800E1A108 /* RealmObject.swift in Sources */,
+				18F0126721A7E6E0001D12D5 /* ServiceProviderHomeMain.swift in Sources */,
 				18AED721217F14A200F98B2C /* ServiceProviderLogin.swift in Sources */,
 				18AED2D32177707D00D1E616 /* Home_SpecialServicesMainVC.swift in Sources */,
 				185CC13321660C140034E287 /* CustomAlertView.swift in Sources */,
 				181F24022178ABC5001F31CF /* ServiceProvidertabBarVC.swift in Sources */,
 				1894F30B21902E040050842D /* Home_SpecialServicesPhotosVC.swift in Sources */,
+				18F0126D21A81302001D12D5 /* ServiceProviderHomeBidModel.swift in Sources */,
 				18663410218707CA008F8770 /* ServiceProviderProfileMain.swift in Sources */,
 				189731A0216B77060034963F /* Address_RoomsDetail.swift in Sources */,
 				180A2C4B21919AEA00FDDB44 /* ExtraModel.swift in Sources */,
 				180426492175E6E000154B0B /* Home_ExtrasVC.swift in Sources */,
 				18AED723217F16ED00F98B2C /* ServiceProvderUser.swift in Sources */,
+				18F0126F21A81D70001D12D5 /* ServiceProvider_BidDetail.swift in Sources */,
 				18900360219AE33F00D23FC8 /* BiddingDataModel.swift in Sources */,
 				1866868D2142824100194B4D /* Constants.swift in Sources */,
 				18CB3B6A213FEE070008D6F0 /* ViewController.swift in Sources */,
@@ -669,6 +687,7 @@
 				18AE8335219424130099CBDC /* SpecialServiceModel.swift in Sources */,
 				1898B2272170BB5E00CDA70E /* RoomDetails.swift in Sources */,
 				189F7D63214FADDE0076D12B /* HomeViewController.swift in Sources */,
+				18F0126921A8017A001D12D5 /* ServiceProviderHome_Bid.swift in Sources */,
 				187009E1216CA31E0008680D /* TimeModel.swift in Sources */,
 				1822E83021A2CE9500E3B617 /* notificationTVC.swift in Sources */,
 				18C2641721A68C0E0006B902 /* Ongoing_Request_OffersVC.swift in Sources */,
@@ -679,6 +698,7 @@
 				1866868721426A7900194B4D /* LoginSignUpPageVC.swift in Sources */,
 				185CC13721660DA00034E287 /* UIButton+Border.swift in Sources */,
 				1866868921426AFD00194B4D /* RegistrationVC.swift in Sources */,
+				18F0126B21A803CC001D12D5 /* SPbids_cell.swift in Sources */,
 				1826E57721885616005B5CBA /* ServicesVC.swift in Sources */,
 				18331F4221523979005A265B /* AddressOfServiceVC.swift in Sources */,
 				18352351215F7C27001FB353 /* Home_When_Future_VC.swift in Sources */,
