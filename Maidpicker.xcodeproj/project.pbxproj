@@ -71,11 +71,14 @@
 		1898B2272170BB5E00CDA70E /* RoomDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898B2262170BB5E00CDA70E /* RoomDetails.swift */; };
 		1899AF5321A2CBB300DA5704 /* Notification_MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899AF5221A2CBB300DA5704 /* Notification_MessagesVC.swift */; };
 		189F7D63214FADDE0076D12B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F7D62214FADDE0076D12B /* HomeViewController.swift */; };
+		18A24F0821AC06B2005AB3F9 /* SPquickJobs_cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A24F0721AC06B2005AB3F9 /* SPquickJobs_cell.swift */; };
+		18A24F0A21AC0D20005AB3F9 /* ServiceProviderBidDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A24F0921AC0D20005AB3F9 /* ServiceProviderBidDetailModel.swift */; };
 		18A3F89F219565890050B6B6 /* SetPriceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3F89E219565890050B6B6 /* SetPriceVC.swift */; };
 		18A3F8A121959F7B0050B6B6 /* Ongoing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A3F8A021959F7B0050B6B6 /* Ongoing.storyboard */; };
 		18A3F8A32195A2030050B6B6 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A3F8A22195A2030050B6B6 /* History.storyboard */; };
 		18A3F8A52195A2160050B6B6 /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A3F8A42195A2160050B6B6 /* Messages.storyboard */; };
 		18A413A4216E286700A2EA8D /* WhenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A413A3216E286700A2EA8D /* WhenModel.swift */; };
+		18A564BC21ABEC960023E06D /* ServiceProviderHome_QuickJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A564BB21ABEC960023E06D /* ServiceProviderHome_QuickJob.swift */; };
 		18A58459219D598600DC088F /* SwiftyStarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A58458219D598600DC088F /* SwiftyStarRatingView.swift */; };
 		18A5845C219D8A8600DC088F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A5845B219D8A8600DC088F /* GoogleService-Info.plist */; };
 		18A8211F21635F69003501C6 /* CustomPicturesCollectioncell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8211E21635F69003501C6 /* CustomPicturesCollectioncell.swift */; };
@@ -168,11 +171,14 @@
 		1898B2262170BB5E00CDA70E /* RoomDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetails.swift; sourceTree = "<group>"; };
 		1899AF5221A2CBB300DA5704 /* Notification_MessagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification_MessagesVC.swift; sourceTree = "<group>"; };
 		189F7D62214FADDE0076D12B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		18A24F0721AC06B2005AB3F9 /* SPquickJobs_cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPquickJobs_cell.swift; sourceTree = "<group>"; };
+		18A24F0921AC0D20005AB3F9 /* ServiceProviderBidDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderBidDetailModel.swift; sourceTree = "<group>"; };
 		18A3F89E219565890050B6B6 /* SetPriceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPriceVC.swift; sourceTree = "<group>"; };
 		18A3F8A021959F7B0050B6B6 /* Ongoing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ongoing.storyboard; sourceTree = "<group>"; };
 		18A3F8A22195A2030050B6B6 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		18A3F8A42195A2160050B6B6 /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		18A413A3216E286700A2EA8D /* WhenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenModel.swift; sourceTree = "<group>"; };
+		18A564BB21ABEC960023E06D /* ServiceProviderHome_QuickJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderHome_QuickJob.swift; sourceTree = "<group>"; };
 		18A58458219D598600DC088F /* SwiftyStarRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyStarRatingView.swift; sourceTree = "<group>"; };
 		18A5845A219D89BB00DC088F /* Maidpicker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Maidpicker.entitlements; sourceTree = "<group>"; };
 		18A5845B219D8A8600DC088F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -260,6 +266,7 @@
 				187EE8912181E0F0006FFAB6 /* SP_profile_updateVC.swift */,
 				18F0126621A7E6E0001D12D5 /* ServiceProviderHomeMain.swift */,
 				18F0126821A8017A001D12D5 /* ServiceProviderHome_Bid.swift */,
+				18A564BB21ABEC960023E06D /* ServiceProviderHome_QuickJob.swift */,
 				18F0126E21A81D70001D12D5 /* ServiceProvider_BidDetail.swift */,
 			);
 			path = ControllersServiceProvider;
@@ -323,6 +330,7 @@
 				1822E82F21A2CE9500E3B617 /* notificationTVC.swift */,
 				18C2641821A68D710006B902 /* ongoing_request_offersCell.swift */,
 				18F0126A21A803CC001D12D5 /* SPbids_cell.swift */,
+				18A24F0721AC06B2005AB3F9 /* SPquickJobs_cell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -365,6 +373,7 @@
 				183B1F88219C34F600D72AF0 /* ChooseProviderModel.swift */,
 				18C2641A21A695210006B902 /* offersDataModel.swift */,
 				18F0126C21A81302001D12D5 /* ServiceProviderHomeBidModel.swift */,
+				18A24F0921AC0D20005AB3F9 /* ServiceProviderBidDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -658,6 +667,7 @@
 				18CB3B68213FEE070008D6F0 /* AppDelegate.swift in Sources */,
 				1866868F2142837F00194B4D /* AuthServices.swift in Sources */,
 				180C015521512564009DA3C1 /* tabBarViewController.swift in Sources */,
+				18A24F0821AC06B2005AB3F9 /* SPquickJobs_cell.swift in Sources */,
 				189731A4216B7BEB0034963F /* TaskSizeTVC.swift in Sources */,
 				187009DF216C9F1A0008680D /* Home_When_MainVC.swift in Sources */,
 				187009E5216D04B20008680D /* CustomPopupSliderView copy.swift in Sources */,
@@ -690,7 +700,9 @@
 				18F0126921A8017A001D12D5 /* ServiceProviderHome_Bid.swift in Sources */,
 				187009E1216CA31E0008680D /* TimeModel.swift in Sources */,
 				1822E83021A2CE9500E3B617 /* notificationTVC.swift in Sources */,
+				18A24F0A21AC0D20005AB3F9 /* ServiceProviderBidDetailModel.swift in Sources */,
 				18C2641721A68C0E0006B902 /* Ongoing_Request_OffersVC.swift in Sources */,
+				18A564BC21ABEC960023E06D /* ServiceProviderHome_QuickJob.swift in Sources */,
 				18C2641921A68D710006B902 /* ongoing_request_offersCell.swift in Sources */,
 				18A413A4216E286700A2EA8D /* WhenModel.swift in Sources */,
 				1832C5DD2153901700315A53 /* MapsViewController.swift in Sources */,

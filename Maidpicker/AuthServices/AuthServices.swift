@@ -1247,5 +1247,132 @@ class AuthServices {
         }
     }
     
+    func getServiceProvider_QuickJob_Data(completion: @escaping CompletionHanlder){
+        
+        Alamofire.request(URL_SPgetQuickJobData, method: .get, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                
+                json = try JSON(data: data)
+                print("Json GETTING SERVICE PROVIDER BID DATA = \(json)")
+                
+                // ================ for looop ==================
+                
+                for i in 0..<json.count{
+                    
+                    let obj = ServiceProviderHomeBidModel()
+                    
+                    obj.Bidid = json[i]["bidid"].intValue
+                    obj.cabinet = json[i]["cabinets"].intValue
+                    obj.deep = json[i]["deep"].intValue
+                    obj.laundry = json[i]["laundry"].intValue
+                    obj.fridge = json[i]["fridge"].intValue
+                    obj.windows = json[i]["windows"].intValue
+                    obj.price = json[i]["price"].intValue
+                    
+                    obj.oven = json[i]["oven"].intValue
+                    obj.day = json[i]["day"].intValue
+                    obj.month = json[i]["month"].intValue
+                    obj.bedrooms = json[i]["bedrooms"].intValue
+                    obj.bathrooms = json[i]["bathrooms"].intValue
+                    obj.otherrooms = json[i]["otherrooms"].intValue
+                    
+                    obj.area = json[i]["area"].intValue
+                    obj.id = json[i]["id"].intValue
+                    obj.clientid = json[i]["clientid"].intValue
+                    obj.name = json[i]["name"].stringValue
+                    
+                    ServiceProviderHomeBidModel.instance.totalBidData.append(obj)
+                    
+                }
+                
+                
+                completion(true)
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+        }
+    }
+    
+    // getting BID DETAIL DATA
+    
+    func getServiceProvider_Bid_Detail(bidId: Int, completion: @escaping CompletionHanlder){
+        
+        let parameters: Parameters = [
+            
+            "id": bidId
+        ]
+        
+        Alamofire.request(URL_SPget_BidDetails, method: .get, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                
+                json = try JSON(data: data)
+                print("Json GETTING SERVICE PROVIDER BID DATA = \(json)")
+
+                
+                ServiceProviderBidDetailModel.instance.Bidid = json[0]["bidid"].intValue
+                ServiceProviderBidDetailModel.instance.uid = json[0]["uid"].intValue
+                ServiceProviderBidDetailModel.instance.aid = json[0]["aid"].intValue
+                ServiceProviderBidDetailModel.instance.wid = json[0]["wid"].intValue
+                ServiceProviderBidDetailModel.instance.often = json[0]["often"].stringValue
+                ServiceProviderBidDetailModel.instance.pic1 = json[0]["pic1"].stringValue
+                ServiceProviderBidDetailModel.instance.pic2 = json[0]["pic2"].stringValue
+                ServiceProviderBidDetailModel.instance.pic3 = json[0]["pic3"].stringValue
+                
+                ServiceProviderBidDetailModel.instance.deep = json[0]["deep"].intValue
+                ServiceProviderBidDetailModel.instance.cabinet = json[0]["cabinets"].intValue
+                ServiceProviderBidDetailModel.instance.fridge = json[0]["fridge"].intValue
+                ServiceProviderBidDetailModel.instance.oven = json[0]["oven"].intValue
+                ServiceProviderBidDetailModel.instance.laundry = json[0]["laundry"].intValue
+                ServiceProviderBidDetailModel.instance.windows = json[0]["windows"].intValue
+                
+                ServiceProviderBidDetailModel.instance.carpetarea = json[0]["carpetarea"].intValue
+                ServiceProviderBidDetailModel.instance.carpets = json[0]["carpets"].intValue
+                ServiceProviderBidDetailModel.instance.notes = json[0]["notes"].stringValue
+                ServiceProviderBidDetailModel.instance.name = json[0]["name"].stringValue
+                ServiceProviderBidDetailModel.instance.bedrooms = json[0]["bedrooms"].intValue
+                ServiceProviderBidDetailModel.instance.bathrooms = json[0]["bathrooms"].intValue
+                ServiceProviderBidDetailModel.instance.otherrooms = json[0]["otherrooms"].intValue
+                
+                ServiceProviderBidDetailModel.instance.area = json[0]["area"].intValue
+                ServiceProviderBidDetailModel.instance.sid = json[0]["sid"].intValue
+                
+                ServiceProviderBidDetailModel.instance.address1 = json[0]["address1"].stringValue
+                ServiceProviderBidDetailModel.instance.address2 = json[0]["address2"].stringValue
+                ServiceProviderBidDetailModel.instance.Addressid = json[0]["addressid"].intValue
+
+  
+                
+                completion(true)
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+        }
+    }
+    
+    
+    
+    
     
 }

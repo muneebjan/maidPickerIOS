@@ -21,6 +21,8 @@ class ServiceProviderHomeMain: UIViewController {
     }
     
     @IBAction func QuickJobsPressed(_ sender: Any) {
-        
+        let VC = storyboard?.instantiateViewController(withIdentifier: "SP_Home_QuickJobs") as! ServiceProviderHome_QuickJob
+        //VC.delegate = self
+        self.navigationController?.pushViewController(VC, animated: true)
     }
 }
