@@ -327,10 +327,10 @@
 				189731A3216B7BEB0034963F /* TaskSizeTVC.swift */,
 				186634112187364B008F8770 /* ChooseProviderTVC.swift */,
 				1890035D219AAB2E00D23FC8 /* ongoingTVC.swift */,
-				1822E82F21A2CE9500E3B617 /* notificationTVC.swift */,
 				18C2641821A68D710006B902 /* ongoing_request_offersCell.swift */,
 				18F0126A21A803CC001D12D5 /* SPbids_cell.swift */,
 				18A24F0721AC06B2005AB3F9 /* SPquickJobs_cell.swift */,
+				1822E82F21A2CE9500E3B617 /* notificationTVC.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
