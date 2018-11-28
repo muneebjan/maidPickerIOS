@@ -50,14 +50,14 @@ class HomeViewController: UIViewController, sendingData {
         }
         
         
-        if ((Extras.singleton.addressID == nil) || (WhenModel.singleton.whenID == nil) || (TaskSizeModel.singleton.TaskSizeID == nil) || (HowOften_Extra_Model.singleton.howOften == nil ) || (HowOften_Extra_Model.singleton.completeExtraDataArray.count == 0) || (SpecialServiceModel.singleton.photoArray.count == 0))
-        {
-            self.confirmBtn.isEnabled = false
-        }
-        else{
-            print("address ID: \(Extras.singleton.addressID)")
-            self.confirmBtn.isEnabled = true
-        }
+//        if ((Extras.singleton.addressID == nil) || (WhenModel.singleton.whenID == nil) || (TaskSizeModel.singleton.TaskSizeID == nil) || (HowOften_Extra_Model.singleton.howOften == nil ) || (HowOften_Extra_Model.singleton.completeExtraDataArray.count == 0) || (SpecialServiceModel.singleton.photoArray.count == 0))
+//        {
+//            self.confirmBtn.isEnabled = false
+//        }
+//        else{
+//            print("address ID: \(Extras.singleton.addressID)")
+//            self.confirmBtn.isEnabled = true
+//        }
     }
     
     override func viewDidLoad() {

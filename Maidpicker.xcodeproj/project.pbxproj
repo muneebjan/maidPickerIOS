@@ -30,6 +30,7 @@
 		18331F40215238C3005A265B /* PasswordSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18331F3F215238C3005A265B /* PasswordSettingVC.swift */; };
 		18331F4221523979005A265B /* AddressOfServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18331F4121523979005A265B /* AddressOfServiceVC.swift */; };
 		18331F44215242EF005A265B /* Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18331F43215242EF005A265B /* Extras.swift */; };
+		1833AE6921AE9D4F00515BBB /* ChooseProviderChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1833AE6821AE9D4F00515BBB /* ChooseProviderChat.swift */; };
 		1833E5BD214152E4006FACAC /* montserrat.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1833E5BB214152E3006FACAC /* montserrat.regular.ttf */; };
 		1833E5BE214152E4006FACAC /* montserrat.bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1833E5BC214152E3006FACAC /* montserrat.bold.ttf */; };
 		1833E5C5214153B9006FACAC /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1833E5BF214153B6006FACAC /* Montserrat-Black.ttf */; };
@@ -130,6 +131,7 @@
 		18331F3F215238C3005A265B /* PasswordSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSettingVC.swift; sourceTree = "<group>"; };
 		18331F4121523979005A265B /* AddressOfServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressOfServiceVC.swift; sourceTree = "<group>"; };
 		18331F43215242EF005A265B /* Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extras.swift; sourceTree = "<group>"; };
+		1833AE6821AE9D4F00515BBB /* ChooseProviderChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProviderChat.swift; sourceTree = "<group>"; };
 		1833E5BB214152E3006FACAC /* montserrat.regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = montserrat.regular.ttf; sourceTree = "<group>"; };
 		1833E5BC214152E3006FACAC /* montserrat.bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = montserrat.bold.ttf; sourceTree = "<group>"; };
 		1833E5BF214153B6006FACAC /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				1826E57621885616005B5CBA /* ServicesVC.swift */,
 				18A3F89E219565890050B6B6 /* SetPriceVC.swift */,
 				1866341321873806008F8770 /* ChooseProvider.swift */,
+				1833AE6821AE9D4F00515BBB /* ChooseProviderChat.swift */,
 				1890035B219AA7BB00D23FC8 /* OngoingVC.swift */,
 				18C2641621A68C0E0006B902 /* Ongoing_Request_OffersVC.swift */,
 				1899AF5221A2CBB300DA5704 /* Notification_MessagesVC.swift */,
@@ -601,6 +604,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/ValidationComponents/ValidationComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/ValidationToolkit/ValidationToolkit.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -615,6 +619,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ValidationComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ValidationToolkit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,6 +710,7 @@
 				18A564BC21ABEC960023E06D /* ServiceProviderHome_QuickJob.swift in Sources */,
 				18C2641921A68D710006B902 /* ongoing_request_offersCell.swift in Sources */,
 				18A413A4216E286700A2EA8D /* WhenModel.swift in Sources */,
+				1833AE6921AE9D4F00515BBB /* ChooseProviderChat.swift in Sources */,
 				1832C5DD2153901700315A53 /* MapsViewController.swift in Sources */,
 				1890035C219AA7BB00D23FC8 /* OngoingVC.swift in Sources */,
 				1866868721426A7900194B4D /* LoginSignUpPageVC.swift in Sources */,

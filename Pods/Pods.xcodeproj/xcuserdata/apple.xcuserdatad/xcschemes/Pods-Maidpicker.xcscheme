@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F01081473815050336D9BDFDCC6503A7"
+               BlueprintIdentifier = "B68369093054E86EA41D27FD32BBB987"
                BuildableName = "Pods_Maidpicker.framework"
                BlueprintName = "Pods-Maidpicker"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F01081473815050336D9BDFDCC6503A7"
+            BlueprintIdentifier = "B68369093054E86EA41D27FD32BBB987"
             BuildableName = "Pods_Maidpicker.framework"
             BlueprintName = "Pods-Maidpicker"
             ReferencedContainer = "container:Pods.xcodeproj">

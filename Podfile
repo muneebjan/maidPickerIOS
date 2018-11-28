@@ -9,6 +9,7 @@ target 'Maidpicker' do
 
 pod 'Firebase/Core'
 pod 'Firebase/Messaging'
+pod 'Firebase/Database'
 pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'AWSS3'

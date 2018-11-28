@@ -87,6 +87,17 @@ class ChooseProvider: UIViewController, UITableViewDataSource, UITableViewDelega
             return ChooseProviderTVC()
         }
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let providerobject = ChooseProviderModel.instance.chooseProviderArray[indexPath.row]
+        let VC = storyboard?.instantiateViewController(withIdentifier: "chooseproviderchat") as! ChooseProviderChat
+        VC.dataObject = providerobject
+        self.present(VC, animated: true, completion: nil)
+        //self.navigationController?.pushViewController(VC, animated: true)
+    }
+    
 
 }
 
