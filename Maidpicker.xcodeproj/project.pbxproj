@@ -98,6 +98,7 @@
 		18CB3B6D213FEE070008D6F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18CB3B6B213FEE070008D6F0 /* Main.storyboard */; };
 		18CB3B6F213FEE090008D6F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CB3B6E213FEE090008D6F0 /* Assets.xcassets */; };
 		18CB3B72213FEE090008D6F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18CB3B70213FEE090008D6F0 /* LaunchScreen.storyboard */; };
+		18D9FCFE21AFC87400B96F80 /* clientChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9FCFD21AFC87400B96F80 /* clientChatModel.swift */; };
 		18F0126721A7E6E0001D12D5 /* ServiceProviderHomeMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0126621A7E6E0001D12D5 /* ServiceProviderHomeMain.swift */; };
 		18F0126921A8017A001D12D5 /* ServiceProviderHome_Bid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0126821A8017A001D12D5 /* ServiceProviderHome_Bid.swift */; };
 		18F0126B21A803CC001D12D5 /* SPbids_cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0126A21A803CC001D12D5 /* SPbids_cell.swift */; };
@@ -202,6 +203,7 @@
 		18CB3B6E213FEE090008D6F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18CB3B71213FEE090008D6F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18CB3B73213FEE090008D6F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18D9FCFD21AFC87400B96F80 /* clientChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clientChatModel.swift; sourceTree = "<group>"; };
 		18F0126621A7E6E0001D12D5 /* ServiceProviderHomeMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderHomeMain.swift; sourceTree = "<group>"; };
 		18F0126821A8017A001D12D5 /* ServiceProviderHome_Bid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderHome_Bid.swift; sourceTree = "<group>"; };
 		18F0126A21A803CC001D12D5 /* SPbids_cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPbids_cell.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				18C2641A21A695210006B902 /* offersDataModel.swift */,
 				18F0126C21A81302001D12D5 /* ServiceProviderHomeBidModel.swift */,
 				18A24F0921AC0D20005AB3F9 /* ServiceProviderBidDetailModel.swift */,
+				18D9FCFD21AFC87400B96F80 /* clientChatModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				18CB3B68213FEE070008D6F0 /* AppDelegate.swift in Sources */,
 				1866868F2142837F00194B4D /* AuthServices.swift in Sources */,
 				180C015521512564009DA3C1 /* tabBarViewController.swift in Sources */,
+				18D9FCFE21AFC87400B96F80 /* clientChatModel.swift in Sources */,
 				18A24F0821AC06B2005AB3F9 /* SPquickJobs_cell.swift in Sources */,
 				189731A4216B7BEB0034963F /* TaskSizeTVC.swift in Sources */,
 				187009DF216C9F1A0008680D /* Home_When_MainVC.swift in Sources */,

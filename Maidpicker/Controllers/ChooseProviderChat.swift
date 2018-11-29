@@ -28,10 +28,13 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
     }()
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.observeMessages()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.fetchChatMessages()
         
         chooseProviderChat.delegate = self
         chooseProviderChat.dataSource = self
@@ -46,14 +49,16 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
     // UITABLEVIEW FUNCTIONS  storyboad id: chooseProviderChat ... identifier : chooseProviderChatCell
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+//        return messages.count
+        return clientChatModel.instance.chatArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let messagesArray = clientChatModel.instance.chatArray[indexPath.row]
         let cell = self.chooseProviderChat.dequeueReusableCell(withIdentifier: "chooseProviderChatCell") as! UITableViewCell
         
-        cell.textLabel?.text = self.messages[indexPath.row]
+//        cell.textLabel?.text = self.messages[indexPath.row]
+        cell.textLabel?.text = messagesArray.message!
         
         return cell
     }
@@ -117,6 +122,7 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
         let ref = Database.database().reference()
         let senderRef = ref.child("messages").child("c_\(User.userInstance.Userid!)").child("s_\(self.dataObject.spID)").childByAutoId()
         let autoID = senderRef.key
+        let type = "text"
         print(autoID)
         let RecieverRef = ref.child("messages").child("s_\(self.dataObject.spID)").child("c_\(User.userInstance.Userid!)").child("\(autoID)")
         
@@ -124,12 +130,14 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
             "message": messageTextField.text!,
             "seen": false,
             "time": ServerValue.timestamp(),
-            "type": "text"
+            "type": type
         ]
         
         senderRef.updateChildValues(values)
         RecieverRef.updateChildValues(values)
         print(messageTextField.text)
+        
+        self.observeMessages()
         
     }
     
@@ -143,17 +151,48 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
     
     // fetching Chat Messages
     
-    func fetchChatMessages() {
+    func observeMessages() {
+        
+        clientChatModel.instance.chatArray.removeAll()
+        
         let dbRef = Database.database().reference().child("messages")
         let findClientMessagesRef = dbRef.child("c_\(User.userInstance.Userid!)").child("s_\(self.dataObject.spID)")
-        findClientMessagesRef.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+        
+        findClientMessagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            print(snapshot)
-            
+            if let dictionary = snapshot.value as? [String: Any]{
+//                let message = clientChatModel()
+                print(dictionary.values)
+                for data in dictionary.values{
+                    if let obj = data as? [String: Any]{
+                        
+                        let message = clientChatModel()
+
+                        message.from = obj["from"] as? String
+                        message.message = obj["message"] as? String
+                        message.seen = obj["seen"] as? Int
+                        message.time = obj["time"] as? Double
+                        message.type = obj["type"] as? String
+
+                        clientChatModel.instance.chatArray.append(message)
+                        
+                        //message.setValuesForKeys(obj)
+                        print(message.message)
+                        
+                        
+                    }
+                }
+                dump(clientChatModel.instance.chatArray)
+                DispatchQueue.main.async {
+                    self.chooseProviderChat.reloadData()
+                }
+
+            }
+            //print(snapshot.value)
+
         }, withCancel: nil)
         
     }
-    
     
     
 }
