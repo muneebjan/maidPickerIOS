@@ -4446,15 +4446,15 @@ T25lIBBDbGVhbiBQZXIgTW9udGg
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="geU-Xs-LPU"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="83H-bM-E1c">
-                                <rect key="frame" x="0.0" y="66.5" width="375" height="600.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="83H-bM-E1c">
+                                <rect key="frame" x="0.0" y="66.5" width="375" height="550.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chooseProviderChatCell" id="Y7o-JB-eNP">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y7o-JB-eNP" id="Pvi-SE-csH">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -4466,7 +4466,7 @@ T25lIBBDbGVhbiBQZXIgTW9udGg
                             <constraint firstItem="83H-bM-E1c" firstAttribute="top" secondItem="fMm-04-S2P" secondAttribute="bottom" id="9BE-Ps-pKS"/>
                             <constraint firstItem="fMm-04-S2P" firstAttribute="top" secondItem="UrL-6S-Gz7" secondAttribute="top" id="H5n-9A-JED"/>
                             <constraint firstAttribute="trailing" secondItem="fMm-04-S2P" secondAttribute="trailing" id="UtT-IQ-af1"/>
-                            <constraint firstAttribute="bottom" secondItem="83H-bM-E1c" secondAttribute="bottom" id="awc-aH-Pfr"/>
+                            <constraint firstAttribute="bottom" secondItem="83H-bM-E1c" secondAttribute="bottom" constant="50" id="awc-aH-Pfr"/>
                             <constraint firstItem="fMm-04-S2P" firstAttribute="leading" secondItem="UrL-6S-Gz7" secondAttribute="leading" id="d5W-rU-HrT"/>
                             <constraint firstItem="fMm-04-S2P" firstAttribute="height" secondItem="UrL-6S-Gz7" secondAttribute="height" multiplier="0.1" id="sFc-5h-guA"/>
                             <constraint firstAttribute="trailing" secondItem="83H-bM-E1c" secondAttribute="trailing" id="uir-ev-JEa"/>
@@ -4475,12 +4475,14 @@ T25lIBBDbGVhbiBQZXIgTW9udGg
                         <viewLayoutGuide key="safeArea" id="3nO-ao-7xB"/>
                     </view>
                     <connections>
+                        <outlet property="chatTableBottom" destination="awc-aH-Pfr" id="tJb-BI-W0l"/>
                         <outlet property="chooseProviderChat" destination="83H-bM-E1c" id="a1d-h7-fet"/>
+                        <outlet property="mainView" destination="UrL-6S-Gz7" id="x7p-rO-g98"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cC1-M5-AnV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6145" y="1019"/>
+            <point key="canvasLocation" x="6144.8000000000002" y="1018.7406296851575"/>
         </scene>
     </scenes>
     <resources>

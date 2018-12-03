@@ -8,7 +8,7 @@
 
 import Foundation
 
-class clientChatModel {
+class clientChatModel: NSObject {
     
     static let instance = clientChatModel()
 
