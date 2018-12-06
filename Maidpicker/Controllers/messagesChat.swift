@@ -1,8 +1,8 @@
 //
-//  ChooseProviderChat.swift
+//  messagesChat.swift
 //  Maidpicker
 //
-//  Created by Apple on 28/11/2018.
+//  Created by Apple on 06/12/2018.
 //  Copyright © 2018 devstop. All rights reserved.
 //
 
@@ -11,19 +11,17 @@ import Firebase
 import FirebaseDatabase
 
 
-class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class messagesChat: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
-    @IBOutlet weak var chooseProviderChat: UITableView!
-    @IBOutlet weak var chatTableBottom: NSLayoutConstraint!
-    @IBOutlet var mainView: UIView!
+    @IBOutlet weak var messagesChatTableView: UITableView!
+    @IBOutlet weak var bottomAnchorTableView: NSLayoutConstraint!
     
-// ========================= VARIABLES =============================
+    // ========================= VARIABLES =============================
     
     private let cellId = "cellId"
-    
     let containerView = UIView()
     var messages: [String] = []
-    var dataObject = ChooseProviderModel()
+    var dataObject = chatInboxModel()
     var heightconstraints: CGFloat = 0.0
     
     lazy var messageTextField: UITextField = {
@@ -36,41 +34,40 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
         
     }()
     
- // ========================= VIEW DID APPEAR =============================
+    // ========================= VIEW DID APPEAR =============================
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        clientChatModel.instance.chatArray.removeAll()
         self.observeMessages()
     }
     
-    
- // ========================= VIEW DID LOAD =============================
+    // ========================= VIEW DID LOAD =============================
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        chooseProviderChat.delegate = self
-        chooseProviderChat.dataSource = self
+        messagesChatTableView.delegate = self
+        messagesChatTableView.dataSource = self
         
         setupInputComponents()
         
         // adding tap gesture to tableviewcell
         let tapGesture: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tableCellTapped))
-        self.chooseProviderChat.addGestureRecognizer(tapGesture)
+        self.messagesChatTableView.addGestureRecognizer(tapGesture)
         
-
-        chooseProviderChat.register(baseCell.self, forCellReuseIdentifier: cellId)
-
-        self.chooseProviderChat.backgroundColor = UIColor.white
-
+        
+        messagesChatTableView.register(ChatbaseCell.self, forCellReuseIdentifier: cellId)
+        
+        self.messagesChatTableView.backgroundColor = UIColor.white
+        
+        print(dataObject.key!)
+        
     }
-
-
-
-// ========================= CONTAINER VIEW FUNCTIONS =============================
+    
+    // ========================= CONTAINER VIEW FUNCTIONS =============================
     
     func setupInputComponents() {
-//        let containerView = UIView()
+        //        let containerView = UIView()
         containerView.backgroundColor = UIColor.clear
         containerView.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(white: 0.85, alpha: 1)
@@ -121,7 +118,7 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-// ========================= OBJECTIVE C FUNCTIONS =============================
+    // ========================= OBJECTIVE C FUNCTIONS =============================
     
     
     @objc func tableCellTapped(){
@@ -131,11 +128,11 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
     @objc func sendButtonTapped() {
         
         let ref = Database.database().reference()
-        let senderRef = ref.child("messages").child("c_\(User.userInstance.Userid!)").child("s_\(self.dataObject.spID)").childByAutoId()
+        let senderRef = ref.child("messages").child("c_\(User.userInstance.Userid!)").child(self.dataObject.key!).childByAutoId()
         let autoID = senderRef.key
         let type = "text"
         print(autoID)
-        let RecieverRef = ref.child("messages").child("s_\(self.dataObject.spID)").child("c_\(User.userInstance.Userid!)").child("\(autoID)")
+        let RecieverRef = ref.child("messages").child(self.dataObject.key!).child("c_\(User.userInstance.Userid!)").child("\(autoID)")
         
         // Message dataBase
         let values: [String : Any] = ["from": "c_\(User.userInstance.Userid!)",
@@ -152,28 +149,28 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
         // ==================== USER DATABASE ====================
         let UserRefClient = ref.child("Users").child("c_\(User.userInstance.Userid!)")
         let UserValuesClient: [String: Any] = [
-        
+            
             "image": User.userInstance.imageURL!,
             "name": User.userInstance.name!,
             "token": User.userInstance.fcmToken!
             
         ]
-        let UserRefSP = ref.child("Users").child("s_\(self.dataObject.spID)")
+        let UserRefSP = ref.child("Users").child(self.dataObject.key!)
         let UserValuesSP: [String: Any] = [
-        
+            
             "image": self.dataObject.image,
             "name": self.dataObject.name,
-            "token": "0"
-        
+            "token": self.dataObject.token
+            
         ]
         
         UserRefClient.updateChildValues(UserValuesClient)
         UserRefSP.updateChildValues(UserValuesSP)
         
         // =============== CHAT DATABASE ==================
-
-        let senderRefChat = ref.child("Chat").child("c_\(User.userInstance.Userid!)").child("s_\(self.dataObject.spID)")
-        let RecieverRefChat = ref.child("Chat").child("s_\(self.dataObject.spID)").child("c_\(User.userInstance.Userid!)")
+        
+        let senderRefChat = ref.child("Chat").child("c_\(User.userInstance.Userid!)").child(self.dataObject.key!)
+        let RecieverRefChat = ref.child("Chat").child(self.dataObject.key!).child("c_\(User.userInstance.Userid!)")
         
         // Message dataBase
         let Chatvalues: [String : Any] = [
@@ -196,13 +193,13 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
             let frame = userInfo[UIKeyboardFrameEndUserInfoKey]
             let keyboardRect = frame?.cgRectValue
             let keyBoardHeight = keyboardRect?.height
-//            if let height = keyBoardHeight{
-//                self.heightconstraints = height
-//            }
+            //            if let height = keyBoardHeight{
+            //                self.heightconstraints = height
+            //            }
             self.containerView.translatesAutoresizingMaskIntoConstraints = false
             //            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: self.heightconstraints).isActive = true
             self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -keyBoardHeight!).isActive = true
-            self.chatTableBottom.constant = keyBoardHeight!+50
+            self.bottomAnchorTableView.constant = keyBoardHeight!+50
             
         }
         
@@ -211,14 +208,15 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
     @objc func keyboardWillDisappear(notification: Notification){
         
         self.containerView.translatesAutoresizingMaskIntoConstraints = false
-        self.containerView.topAnchor.constraint(equalTo: self.chooseProviderChat.bottomAnchor, constant: 0).isActive = true
-//        self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -keyBoardHeight!).isActive = true
-        self.chatTableBottom.constant = 50
+        self.containerView.topAnchor.constraint(equalTo: self.messagesChatTableView.bottomAnchor, constant: 0).isActive = true
+        //        self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -keyBoardHeight!).isActive = true
+        self.bottomAnchorTableView.constant = 50
         
     }
+   
     
-// ========================= TEXTFIELD EDIT AND ENDEDIT FUNCTIONS =============================
-
+    // ========================= TEXTFIELD EDIT AND ENDEDIT FUNCTIONS =============================
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         sendButtonTapped()
         return true
@@ -227,17 +225,17 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-//        self.view.layoutIfNeeded()
+        //        self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5, animations: {
             
             NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillAppear(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
             
-//            self.containerView.translatesAutoresizingMaskIntoConstraints = false
-//            self.containerView.backgroundColor = .green
-////            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: self.heightconstraints).isActive = true
-//            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -350).isActive = true
-//            self.chatTableBottom.constant = 400
+            //            self.containerView.translatesAutoresizingMaskIntoConstraints = false
+            //            self.containerView.backgroundColor = .green
+            ////            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: self.heightconstraints).isActive = true
+            //            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -350).isActive = true
+            //            self.chatTableBottom.constant = 400
             
             
         }, completion: nil)
@@ -246,32 +244,30 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-//        self.view.layoutIfNeeded()
+        //        self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5, animations: {
             
-//            self.containerView.translatesAutoresizingMaskIntoConstraints = false
-//            self.containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-//            self.view.layoutIfNeeded()
+            //            self.containerView.translatesAutoresizingMaskIntoConstraints = false
+            //            self.containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            //            self.view.layoutIfNeeded()
             
         }, completion: nil)
         
     }
     
+    // ========================= FETCHING CHAT MESSAGES =============================
     
-
-// ========================= FETCHING CHAT MESSAGES =============================
-
     func observeMessages() {
         
         clientChatModel.instance.chatArray.removeAll()
         
         let dbRef = Database.database().reference().child("messages")
-        let findClientMessagesRef = dbRef.child("c_\(User.userInstance.Userid!)").child("s_\(self.dataObject.spID)")
+        let findClientMessagesRef = dbRef.child("c_\(User.userInstance.Userid!)").child(self.dataObject.key!)
         
         findClientMessagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             print("snapshot is = \(snapshot)")
             
-
+            
             let children = snapshot.children
             var yourArray = [[String: Any]]()
             while let rest = children.nextObject() as? DataSnapshot, let value = rest.value {
@@ -294,28 +290,27 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
             
             dump(clientChatModel.instance.chatArray)
             DispatchQueue.main.async {
-                self.chooseProviderChat.reloadData()
+                self.messagesChatTableView.reloadData()
             }
-
+            
         }, withCancel: nil)
         
     }
     
-    
-// ========================= UITABLEVIEW FUNCTIONS =============================
+    // ========================= UITABLEVIEW FUNCTIONS =============================
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clientChatModel.instance.chatArray.count
-//        return messages.count
+        //        return messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let messagesArray = clientChatModel.instance.chatArray[indexPath.row]
-//        let messagesArray = messages[indexPath.row]
+        //        let messagesArray = messages[indexPath.row]
         
-        let cell = self.chooseProviderChat.dequeueReusableCell(withIdentifier: cellId) as! baseCell
+        let cell = self.messagesChatTableView.dequeueReusableCell(withIdentifier: cellId) as! ChatbaseCell
         cell.messageLabel.text = messagesArray.message
-//        cell.messageLabel.text = messagesArray
+        //        cell.messageLabel.text = messagesArray
         cell.backgroundColor = UIColor.clear
         cell.messageLabel.numberOfLines = 0
         
@@ -323,18 +318,18 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-// ========================= OUTLET FUNCTIONS =============================
-    @IBAction func backbutton(_ sender: Any) {
+    @IBAction func CancelPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
 }
 
+
 // ========================= CUSTOM TABLEVIEW CELL ==========================
 
 
-class baseCell: UITableViewCell {
-
+class ChatbaseCell: UITableViewCell {
+    
     let messageLabel = UILabel()
     let bubbleBackgroundView = UIView()
     
@@ -347,7 +342,7 @@ class baseCell: UITableViewCell {
         
         addSubview(bubbleBackgroundView)
         addSubview(messageLabel)
-//        messageLabel.backgroundColor = .red
+        //        messageLabel.backgroundColor = .red
         
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -364,7 +359,7 @@ class baseCell: UITableViewCell {
         bubbleBackgroundView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 16).isActive = true
         bubbleBackgroundView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 16).isActive = true
         
-//        messageLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        //        messageLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -372,24 +367,3 @@ class baseCell: UITableViewCell {
     }
     
 }
-
-
-
-
-
-//extension UIView {
-//    
-//    func addConstraintsWithFormat(format: String, views: UIView...) {
-//        
-//        var viewsDictionary = [String: UIView]()
-//        for (index, view) in views.enumerated() {
-//            let key = "v\(index)"
-//            viewsDictionary[key] = view
-//            view.translatesAutoresizingMaskIntoConstraints = false
-//        }
-//        
-//        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
-//    }
-//    
-//}
-

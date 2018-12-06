@@ -42,6 +42,8 @@
 		1835234F215F79B2001FB353 /* CustomCalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835234E215F79B2001FB353 /* CustomCalenderCell.swift */; };
 		18352351215F7C27001FB353 /* Home_When_Future_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18352350215F7C27001FB353 /* Home_When_Future_VC.swift */; };
 		183B1F89219C34F600D72AF0 /* ChooseProviderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183B1F88219C34F600D72AF0 /* ChooseProviderModel.swift */; };
+		1852AEE621B90F6D00927385 /* chatInboxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852AEE521B90F6D00927385 /* chatInboxModel.swift */; };
+		1852AEE821B9302E00927385 /* messagesChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852AEE721B9302E00927385 /* messagesChat.swift */; };
 		185CC13321660C140034E287 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CC13221660C140034E287 /* CustomAlertView.swift */; };
 		185CC13521660CAB0034E287 /* CustomAlertViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CC13421660CAB0034E287 /* CustomAlertViewDelegate.swift */; };
 		185CC13721660DA00034E287 /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CC13621660DA00034E287 /* UIButton+Border.swift */; };
@@ -144,6 +146,8 @@
 		1835234E215F79B2001FB353 /* CustomCalenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalenderCell.swift; sourceTree = "<group>"; };
 		18352350215F7C27001FB353 /* Home_When_Future_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_When_Future_VC.swift; sourceTree = "<group>"; };
 		183B1F88219C34F600D72AF0 /* ChooseProviderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseProviderModel.swift; sourceTree = "<group>"; };
+		1852AEE521B90F6D00927385 /* chatInboxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatInboxModel.swift; sourceTree = "<group>"; };
+		1852AEE721B9302E00927385 /* messagesChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messagesChat.swift; sourceTree = "<group>"; };
 		185CC13221660C140034E287 /* CustomAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		185CC13421660CAB0034E287 /* CustomAlertViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertViewDelegate.swift; sourceTree = "<group>"; };
 		185CC13621660DA00034E287 /* UIButton+Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Border.swift"; sourceTree = "<group>"; };
@@ -321,6 +325,7 @@
 				1890035B219AA7BB00D23FC8 /* OngoingVC.swift */,
 				18C2641621A68C0E0006B902 /* Ongoing_Request_OffersVC.swift */,
 				1899AF5221A2CBB300DA5704 /* Notification_MessagesVC.swift */,
+				1852AEE721B9302E00927385 /* messagesChat.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				18F0126C21A81302001D12D5 /* ServiceProviderHomeBidModel.swift */,
 				18A24F0921AC0D20005AB3F9 /* ServiceProviderBidDetailModel.swift */,
 				18D9FCFD21AFC87400B96F80 /* clientChatModel.swift */,
+				1852AEE521B90F6D00927385 /* chatInboxModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -670,6 +676,7 @@
 				18AED723217F16ED00F98B2C /* ServiceProvderUser.swift in Sources */,
 				18F0126F21A81D70001D12D5 /* ServiceProvider_BidDetail.swift in Sources */,
 				18900360219AE33F00D23FC8 /* BiddingDataModel.swift in Sources */,
+				1852AEE621B90F6D00927385 /* chatInboxModel.swift in Sources */,
 				1866868D2142824100194B4D /* Constants.swift in Sources */,
 				18CB3B6A213FEE070008D6F0 /* ViewController.swift in Sources */,
 				18CB3B68213FEE070008D6F0 /* AppDelegate.swift in Sources */,
@@ -709,6 +716,7 @@
 				18F0126921A8017A001D12D5 /* ServiceProviderHome_Bid.swift in Sources */,
 				187009E1216CA31E0008680D /* TimeModel.swift in Sources */,
 				1822E83021A2CE9500E3B617 /* notificationTVC.swift in Sources */,
+				1852AEE821B9302E00927385 /* messagesChat.swift in Sources */,
 				18A24F0A21AC0D20005AB3F9 /* ServiceProviderBidDetailModel.swift in Sources */,
 				18C2641721A68C0E0006B902 /* Ongoing_Request_OffersVC.swift in Sources */,
 				18A564BC21ABEC960023E06D /* ServiceProviderHome_QuickJob.swift in Sources */,

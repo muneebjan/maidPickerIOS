@@ -12,34 +12,34 @@ import FirebaseDatabase
 
 class Notification_MessagesVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
+    
     //  outlets
     @IBOutlet weak var notification_messageTableView: UITableView!
     @IBOutlet weak var segmentC: UISegmentedControl!
     
     var messages: [String] = []
-    
-    lazy var messageTextField: UITextField = {
-        
-        let textField = UITextField()
-        textField.placeholder = "Enter Message Here ... "
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.delegate = self
-        return textField
-        
-    }()
-    
+    var messages1: [String] = []
+    let cellId = "inboxCellID"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         notification_messageTableView.delegate = self
         notification_messageTableView.dataSource = self
+        notification_messageTableView.register(InboxCell.self, forCellReuseIdentifier: cellId)
         
         messages.append("hellow")
-        messages.append("helllow1")
-        messages.append("helloww2")
+        messages.append("hellloww")
+        messages.append("hellowwww")
+
+        messages1.append("hellow123")
+        messages1.append("helllow1123")
+        messages1.append("helloww2123")
+        messages1.append("helloww212322")
         
-        setupInputComponents()
+
+        self.observeMessages()
+        print("inbox model array count: \(chatInboxModel.instance.inboxUsersArray.count)")
     }
     
     @IBAction func segmentController(_ sender: Any) {
@@ -48,9 +48,11 @@ class Notification_MessagesVC: UIViewController, UITableViewDataSource, UITableV
         {
         case 0:
             print("Messages pressed")
+            self.notification_messageTableView.reloadData()
             break
         case 1:
             print("Notification pressed")
+            self.notification_messageTableView.reloadData()
             break
         default:
             break
@@ -59,98 +61,118 @@ class Notification_MessagesVC: UIViewController, UITableViewDataSource, UITableV
     }
     
     // UITABLEVIEW FUNCTIONS
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        
+        var returnValue = 0
+        
+        switch segmentC.selectedSegmentIndex {
+        case 0:
+            //returnValue = messages.count
+            returnValue = chatInboxModel.instance.inboxUsersArray.count
+            print(returnValue)
+            break
+        case 1:
+            // NOTIFICATION LOGIC HERE
+            returnValue = 0
+            break
+        default:
+            break
+        }
+        return returnValue
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = self.notification_messageTableView.dequeueReusableCell(withIdentifier: "messageCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellId) as! InboxCell
         
-        cell.textLabel?.text = self.messages[indexPath.row]
+//        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellId, for: indexPath) as! InboxCell
+        switch(segmentC.selectedSegmentIndex)
+        {
+        case 0:
+            cell.textLabel?.text = chatInboxModel.instance.inboxUsersArray[indexPath.row].name
+            cell.detailTextLabel?.text = chatInboxModel.instance.inboxUsersArray[indexPath.row].token
+            //cell?.imageView?.image = UIImage(named: "image.png")
+            if let profileimageURL = chatInboxModel.instance.inboxUsersArray[indexPath.row].image{
+                let url = URL(string: profileimageURL)
+                if let data = try? Data(contentsOf: url!)
+                {
+                    DispatchQueue.main.async {
+                        cell.profileImageView.image = UIImage(data: data)
+                    }
+                }
+            }
+    
+            
+            return cell
+            break
+        case 1:
+            // NOTIFICATION LOGIC HERE
+            return cell
+            break
+        default:
+            return cell
+            break
+        }
         
         return cell
+
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 66
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let chatobject = chatInboxModel.instance.inboxUsersArray[indexPath.row]
+        let VC = self.storyboard?.instantiateViewController(withIdentifier: "messageChat") as! messagesChat
+        VC.dataObject = chatobject
+        self.present(VC, animated: true, completion: nil)
     }
 
-    
     // CUSTOM FUNCTIONS
 
-    func setupInputComponents() {
-        let containerView = UIView()
-        containerView.backgroundColor = UIColor.white
-        containerView.translatesAutoresizingMaskIntoConstraints = false
+    // ========================= FETCHING CHAT MESSAGES =============================
+    
+    func observeMessages() {
+        
+        let UsersdbRef = Database.database().reference().child("Chat").child("c_\(User.userInstance.Userid!)")
+        let GetRef_UserInfo = Database.database().reference().child("Users")
+        
+        UsersdbRef.observeSingleEvent(of: .value) { (snapshot) in
+            
+            let client = snapshot.key
+            for child in snapshot.children {
+                
+                let child = child as? DataSnapshot
+                if let key = child?.key {
+                    print("keys are: \(key)")
+                    GetRef_UserInfo.child(key).observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        let dict = snapshot.value as! [String: AnyObject]
+                        let object = chatInboxModel()
+                        
+                        object.key = key
+                        object.image = dict["image"] as? String
+                        object.name = dict["name"] as? String
+                        object.token = dict["token"] as? String
 
-        view.addSubview(containerView)
-
-        containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-
-        // adding Send button
-
-        let sendButton = UIButton(type: .system)
-        sendButton.setTitle("Send", for: .normal)
-        sendButton.setTitleColor(#colorLiteral(red: 0.6849098206, green: 0.8780232072, blue: 0.9137650728, alpha: 1), for: .normal)
-//        sendButton.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
-        sendButton.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addSubview(sendButton)
-
-        // x,y, width , height
-        sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        sendButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        sendButton.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        sendButton.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.25).isActive = true
-
-
-        // adding TextField button
-
-        containerView.addSubview(messageTextField)
-
-        // x , y , width , height // , constant: 10
-        messageTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 8).isActive = true
-        messageTextField.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        messageTextField.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        messageTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor, constant: -5).isActive = true
-
-        let separatorLine = UIView()
-        separatorLine.backgroundColor = #colorLiteral(red: 0.6849098206, green: 0.8780232072, blue: 0.9137650728, alpha: 1)
-        separatorLine.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(separatorLine)
-
-        separatorLine.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        separatorLine.bottomAnchor.constraint(equalTo: messageTextField.topAnchor).isActive = true
-        separatorLine.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        separatorLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
-
-
+                        chatInboxModel.instance.inboxUsersArray.append(object)
+                        
+                        DispatchQueue.main.async {
+                            self.notification_messageTableView.reloadData()
+                        }
+                        
+                    })
+                }
+                
+            }
+        }
     }
 
-    @objc func sendButtonTapped() {
-        
-        let ref = Database.database().reference()
-        let senderRef = ref.child("messages").child("c_\(User.userInstance.Userid!)").child("s_25").childByAutoId()
-        let autoID = senderRef.key
-        print(autoID)
-        let RecieverRef = ref.child("messages").child("s_25").child("c_\(User.userInstance.Userid!)").child("\(autoID)")
-        
-        let values: [String : Any] = ["from": "c_\(User.userInstance.Userid!)",
-            "message": messageTextField.text!,
-            "seen": false,
-            "time": ServerValue.timestamp(),
-            "type": "text"
-            ]
-        
-        senderRef.updateChildValues(values)
-        RecieverRef.updateChildValues(values)
-        print(messageTextField.text)
-        
-    }
+    // UI-TEXTFIELD METHODS
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        sendButtonTapped()
         return true
     }
     
@@ -163,3 +185,44 @@ class Notification_MessagesVC: UIViewController, UITableViewDataSource, UITableV
     
     
 }
+
+// ========================= CUSTOM TABLEVIEW CELL ==========================
+
+
+class InboxCell: UITableViewCell {
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        textLabel?.frame = CGRect(x: 66, y: (textLabel?.frame.origin.y)!, width: (textLabel?.frame.width)!, height: (textLabel?.frame.height)!)
+        detailTextLabel?.frame = CGRect(x: 66, y: (detailTextLabel?.frame.origin.y)!, width: (detailTextLabel?.frame.width)!, height: (detailTextLabel?.frame.height)!)
+        
+    }
+    
+    let profileImageView: UIImageView = {
+        let imageview = UIImageView()
+        imageview.layer.cornerRadius = 25
+        imageview.layer.masksToBounds = true
+        imageview.translatesAutoresizingMaskIntoConstraints = false
+        return imageview
+    }()
+
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        
+        addSubview(profileImageView)
+        
+        profileImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
+        profileImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
