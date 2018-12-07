@@ -44,6 +44,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
+  - IQKeyboardManagerSwift (6.0.3)
   - JTAppleCalendar (7.1.5)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
@@ -66,6 +67,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - GoogleMaps
   - GooglePlaces
+  - IQKeyboardManagerSwift
   - JTAppleCalendar
   - SwiftyJSON
   - ValidationComponents
@@ -85,6 +87,7 @@ SPEC REPOS:
     - GoogleMaps
     - GooglePlaces
     - GoogleToolboxForMac
+    - IQKeyboardManagerSwift
     - JTAppleCalendar
     - leveldb-library
     - nanopb
@@ -107,6 +110,7 @@ SPEC CHECKSUMS:
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
   JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -115,6 +119,6 @@ SPEC CHECKSUMS:
   ValidationComponents: fad1f9e9d7fbf3e10c893c880ef9d27627e90382
   ValidationToolkit: ce8e9c1a5d49eddc3266a009d46df5ea22042dbc
 
-PODFILE CHECKSUM: 2d8b1f47f0309c5c928a920307eca340ca307d0b
+PODFILE CHECKSUM: 7f1d43c2cfda87c65eeb0e133971e7130a77d2dd
 
 COCOAPODS: 1.5.3

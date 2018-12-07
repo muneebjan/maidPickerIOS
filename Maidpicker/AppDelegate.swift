@@ -13,6 +13,7 @@ import Firebase
 import FirebaseMessaging
 import UserNotifications
 import FirebaseInstanceID
+//import IQKeyboardManagerSwift
 //import RealmSwift
 //
 //var realmfile = try! Realm()
@@ -25,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+//        IQKeyboardManager.shared.enable = true
         
         FirebaseApp.configure()
         Messaging.messaging().delegate = self

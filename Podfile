@@ -18,5 +18,6 @@ pod 'GooglePlaces'
 pod 'ValidationComponents'
 pod 'JTAppleCalendar'
 pod 'DropDown'
+pod 'IQKeyboardManagerSwift'
 
 end

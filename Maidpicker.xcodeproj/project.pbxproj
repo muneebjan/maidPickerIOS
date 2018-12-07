@@ -66,6 +66,9 @@
 		1890035C219AA7BB00D23FC8 /* OngoingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890035B219AA7BB00D23FC8 /* OngoingVC.swift */; };
 		1890035E219AAB2E00D23FC8 /* ongoingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890035D219AAB2E00D23FC8 /* ongoingTVC.swift */; };
 		18900360219AE33F00D23FC8 /* BiddingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890035F219AE33F00D23FC8 /* BiddingDataModel.swift */; };
+		1891831A21BA554E00FABBE9 /* ServiceProviderMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1891831921BA554E00FABBE9 /* ServiceProviderMessage.swift */; };
+		1891831C21BA5D5100FABBE9 /* ServiceProviderMessagesChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1891831B21BA5D5100FABBE9 /* ServiceProviderMessagesChat.swift */; };
+		1891831E21BA5FD200FABBE9 /* ServiceProviderChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1891831D21BA5FD200FABBE9 /* ServiceProviderChatModel.swift */; };
 		1894F30B21902E040050842D /* Home_SpecialServicesPhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894F30A21902E040050842D /* Home_SpecialServicesPhotosVC.swift */; };
 		189731A0216B77060034963F /* Address_RoomsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1897319F216B77060034963F /* Address_RoomsDetail.swift */; };
 		189731A2216B775F0034963F /* AddressArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189731A1216B775F0034963F /* AddressArray.swift */; };
@@ -170,6 +173,9 @@
 		1890035B219AA7BB00D23FC8 /* OngoingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingVC.swift; sourceTree = "<group>"; };
 		1890035D219AAB2E00D23FC8 /* ongoingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ongoingTVC.swift; sourceTree = "<group>"; };
 		1890035F219AE33F00D23FC8 /* BiddingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingDataModel.swift; sourceTree = "<group>"; };
+		1891831921BA554E00FABBE9 /* ServiceProviderMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderMessage.swift; sourceTree = "<group>"; };
+		1891831B21BA5D5100FABBE9 /* ServiceProviderMessagesChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderMessagesChat.swift; sourceTree = "<group>"; };
+		1891831D21BA5FD200FABBE9 /* ServiceProviderChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviderChatModel.swift; sourceTree = "<group>"; };
 		1894F30A21902E040050842D /* Home_SpecialServicesPhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home_Special\U0010ServicesPhotosVC.swift"; sourceTree = "<group>"; };
 		1897319F216B77060034963F /* Address_RoomsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address_RoomsDetail.swift; sourceTree = "<group>"; };
 		189731A1216B775F0034963F /* AddressArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressArray.swift; sourceTree = "<group>"; };
@@ -276,6 +282,8 @@
 				18F0126821A8017A001D12D5 /* ServiceProviderHome_Bid.swift */,
 				18A564BB21ABEC960023E06D /* ServiceProviderHome_QuickJob.swift */,
 				18F0126E21A81D70001D12D5 /* ServiceProvider_BidDetail.swift */,
+				1891831921BA554E00FABBE9 /* ServiceProviderMessage.swift */,
+				1891831B21BA5D5100FABBE9 /* ServiceProviderMessagesChat.swift */,
 			);
 			path = ControllersServiceProvider;
 			sourceTree = "<group>";
@@ -386,6 +394,7 @@
 				18A24F0921AC0D20005AB3F9 /* ServiceProviderBidDetailModel.swift */,
 				18D9FCFD21AFC87400B96F80 /* clientChatModel.swift */,
 				1852AEE521B90F6D00927385 /* chatInboxModel.swift */,
+				1891831D21BA5FD200FABBE9 /* ServiceProviderChatModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -608,6 +617,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -623,6 +633,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -671,6 +682,7 @@
 				18F0126D21A81302001D12D5 /* ServiceProviderHomeBidModel.swift in Sources */,
 				18663410218707CA008F8770 /* ServiceProviderProfileMain.swift in Sources */,
 				189731A0216B77060034963F /* Address_RoomsDetail.swift in Sources */,
+				1891831A21BA554E00FABBE9 /* ServiceProviderMessage.swift in Sources */,
 				180A2C4B21919AEA00FDDB44 /* ExtraModel.swift in Sources */,
 				180426492175E6E000154B0B /* Home_ExtrasVC.swift in Sources */,
 				18AED723217F16ED00F98B2C /* ServiceProvderUser.swift in Sources */,
@@ -686,6 +698,7 @@
 				18A24F0821AC06B2005AB3F9 /* SPquickJobs_cell.swift in Sources */,
 				189731A4216B7BEB0034963F /* TaskSizeTVC.swift in Sources */,
 				187009DF216C9F1A0008680D /* Home_When_MainVC.swift in Sources */,
+				1891831E21BA5FD200FABBE9 /* ServiceProviderChatModel.swift in Sources */,
 				187009E5216D04B20008680D /* CustomPopupSliderView copy.swift in Sources */,
 				18F20385216210EB00A4E1C9 /* Home_TaskSizeVC.swift in Sources */,
 				186686922142841D00194B4D /* User.swift in Sources */,
@@ -724,6 +737,7 @@
 				18A413A4216E286700A2EA8D /* WhenModel.swift in Sources */,
 				1833AE6921AE9D4F00515BBB /* ChooseProviderChat.swift in Sources */,
 				1832C5DD2153901700315A53 /* MapsViewController.swift in Sources */,
+				1891831C21BA5D5100FABBE9 /* ServiceProviderMessagesChat.swift in Sources */,
 				1890035C219AA7BB00D23FC8 /* OngoingVC.swift in Sources */,
 				1866868721426A7900194B4D /* LoginSignUpPageVC.swift in Sources */,
 				185CC13721660DA00034E287 /* UIButton+Border.swift in Sources */,
