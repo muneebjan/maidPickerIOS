@@ -58,6 +58,8 @@ class ServiceProviderHome_QuickJob: UIViewController, UITableViewDelegate, UITab
             
             cell.date.text = "\(bidobject.month) \(bidobject.day), 2018"
             cell.priceTextfield.text = "\(bidobject.price)$"
+            cell.cellDelegate = self
+            cell.indexpath = indexPath
             
             return cell
             
@@ -79,4 +81,12 @@ class ServiceProviderHome_QuickJob: UIViewController, UITableViewDelegate, UITab
         self.navigationController?.pushViewController(VC, animated: true)
     }
 
+}
+
+extension ServiceProviderHome_QuickJob: tableviewQuickJobbutton{
+    
+    func bidButtonAction(index: Int) {
+        print("this is index: \(index)")
+    }
+    
 }

@@ -8,6 +8,12 @@
 
 import UIKit
 
+
+protocol tableviewBidbutton{
+    //func bidButtonAction(index: Int, bid: Int)
+    func bidButtonAction(index: Int)
+}
+
 class SPbids_cell: UITableViewCell {
     
     @IBOutlet weak var name: UILabel!
@@ -15,8 +21,15 @@ class SPbids_cell: UITableViewCell {
     @IBOutlet weak var priceTextfield: UITextField!
     @IBOutlet weak var bedrooms_bathrooms: UILabel!
     
+    
+    @IBOutlet weak var bidButton: UIButton!
+    
+    var cellDelegate: tableviewBidbutton?
+    var indexpath: IndexPath?
+    var bidID: Int?
+    
     @IBAction func bidButtonPressed(_ sender: Any) {
-        
+        cellDelegate?.bidButtonAction(index: (indexpath?.row)!)
     }
     
 }

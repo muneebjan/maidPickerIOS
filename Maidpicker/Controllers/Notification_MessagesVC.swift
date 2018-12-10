@@ -16,10 +16,13 @@ class Notification_MessagesVC: UIViewController, UITableViewDataSource, UITableV
     //  outlets
     @IBOutlet weak var notification_messageTableView: UITableView!
     @IBOutlet weak var segmentC: UISegmentedControl!
-    
-    var messages: [String] = []
-    var messages1: [String] = []
+
     let cellId = "inboxCellID"
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController!.navigationBar.isHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +30,6 @@ class Notification_MessagesVC: UIViewController, UITableViewDataSource, UITableV
         notification_messageTableView.delegate = self
         notification_messageTableView.dataSource = self
         notification_messageTableView.register(InboxCell.self, forCellReuseIdentifier: cellId)
-        
-        messages.append("hellow")
-        messages.append("hellloww")
-        messages.append("hellowwww")
-
-        messages1.append("hellow123")
-        messages1.append("helllow1123")
-        messages1.append("helloww2123")
-        messages1.append("helloww212322")
-        
 
         self.observeMessages()
         print("inbox model array count: \(chatInboxModel.instance.inboxUsersArray.count)")
@@ -127,7 +120,8 @@ class Notification_MessagesVC: UIViewController, UITableViewDataSource, UITableV
         let chatobject = chatInboxModel.instance.inboxUsersArray[indexPath.row]
         let VC = self.storyboard?.instantiateViewController(withIdentifier: "messageChat") as! messagesChat
         VC.dataObject = chatobject
-        self.present(VC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(VC, animated: true)
+//        self.present(VC, animated: true, completion: nil)
     }
 
     // CUSTOM FUNCTIONS

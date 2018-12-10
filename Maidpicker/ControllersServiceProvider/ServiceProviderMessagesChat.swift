@@ -40,7 +40,12 @@ class ServiceProviderMessagesChat: UIViewController, UITableViewDelegate, UITabl
         ServiceProviderChatModel.instance.chatArray.removeAll()
         self.observeMessages()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationItem.title = "Chat"
+        self.navigationController!.navigationBar.isHidden = false
+    }
     
     // ========================= VIEW DID LOAD =============================
     
@@ -70,9 +75,8 @@ class ServiceProviderMessagesChat: UIViewController, UITableViewDelegate, UITabl
     
     func setupInputComponents() {
         //        let containerView = UIView()
-        containerView.backgroundColor = UIColor.clear
+        containerView.backgroundColor = UIColor.white
         containerView.translatesAutoresizingMaskIntoConstraints = false
-//        view.backgroundColor = UIColor(white: 0.85, alpha: 1)
         view.backgroundColor = UIColor(white: 0.85, alpha: 1)
         view.addSubview(containerView)
         
@@ -85,8 +89,8 @@ class ServiceProviderMessagesChat: UIViewController, UITableViewDelegate, UITabl
         
         let sendButton = UIButton(type: .system)
         sendButton.setTitle("Send", for: .normal)
-        sendButton.setTitleColor(#colorLiteral(red: 0.6849098206, green: 0.8780232072, blue: 0.9137650728, alpha: 1), for: .normal)
-        //        sendButton.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        sendButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+        sendButton.backgroundColor = #colorLiteral(red: 0.6849097013, green: 0.8780232072, blue: 0.9137651324, alpha: 1)
         sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(sendButton)
@@ -186,7 +190,9 @@ class ServiceProviderMessagesChat: UIViewController, UITableViewDelegate, UITabl
         
         // ================================================
         self.observeMessages()
-        self.messageTextField.endEditing(true)
+        self.messageTextField.text = nil
+        self.messageTextField.sendActions(for: .valueChanged)
+        //self.messageTextField.endEditing(true)
         
         
     }
@@ -211,7 +217,6 @@ class ServiceProviderMessagesChat: UIViewController, UITableViewDelegate, UITabl
     
     @objc func keyboardWillDisappear(notification: Notification){
     
-        self.view.backgroundColor = .red
         self.view.frame.origin.y = 0
         
         print("keyboard will Disappear")
@@ -287,6 +292,7 @@ class ServiceProviderMessagesChat: UIViewController, UITableViewDelegate, UITabl
             dump(ServiceProviderChatModel.instance.chatArray)
             DispatchQueue.main.async {
                 self.messagesChatTableView.reloadData()
+                self.messagesChatTableView.scrollToRow(at: NSIndexPath(row: ServiceProviderChatModel.instance.chatArray.count-1, section: 0) as IndexPath, at: .bottom, animated: true)
             }
             
         }, withCancel: nil)
@@ -310,6 +316,9 @@ class ServiceProviderMessagesChat: UIViewController, UITableViewDelegate, UITabl
         cell.bubbleBackgroundView.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
         cell.bubbleBackgroundView.layer.cornerRadius = 10
         cell.bubbleBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        
+        cell.bubbleBackgroundView.removeFromSuperview()
+        cell.messageLabel.removeFromSuperview()
         
         cell.addSubview(cell.bubbleBackgroundView)
         cell.addSubview(cell.messageLabel)
@@ -338,6 +347,7 @@ class ServiceProviderMessagesChat: UIViewController, UITableViewDelegate, UITabl
         
         return cell
     }
+    
     
     
     @IBAction func CancelPressed(_ sender: Any) {

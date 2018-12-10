@@ -20,6 +20,11 @@ class ServiceProviderMessage: UIViewController, UITableViewDataSource, UITableVi
     var messages1: [String] = []
     let cellId = "inboxCellID"
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController!.navigationBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,7 +136,7 @@ class ServiceProviderMessage: UIViewController, UITableViewDataSource, UITableVi
 //        let navigationController = UINavigationController(rootViewController: VC)
         VC.dataObject = chatobject
         self.navigationController?.pushViewController(VC, animated: true)
-        //self.present(VC, animated: true, completion: nil)
+//        self.present(VC, animated: true, completion: nil)
     }
     
     // CUSTOM FUNCTIONS

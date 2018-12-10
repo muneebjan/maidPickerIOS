@@ -239,8 +239,8 @@
                                         </constraints>
                                         <state key="normal" image="previous"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEO-fG-66F">
-                                        <rect key="frame" x="125" y="33" width="125.5" height="23.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bids" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEO-fG-66F">
+                                        <rect key="frame" x="167" y="32.5" width="41.5" height="24"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
                                         <color key="textColor" red="0.74117654560000001" green="0.87450981139999995" blue="0.90980386729999996" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <nil key="highlightedColor"/>
@@ -382,6 +382,7 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="bedrooms_bathrooms" destination="C9X-PB-r9B" id="G1q-uF-dcT"/>
+                                                    <outlet property="bidButton" destination="ZIP-lq-Wh2" id="l5n-2W-vtg"/>
                                                     <outlet property="date" destination="mx1-nS-jKI" id="aLy-AO-50x"/>
                                                     <outlet property="name" destination="yeg-qA-2F0" id="H3L-Jz-zGz"/>
                                                     <outlet property="priceTextfield" destination="r1M-dU-fMI" id="u6Z-M7-LCo"/>
@@ -439,8 +440,8 @@
                                         </constraints>
                                         <state key="normal" image="previous"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yE7-5M-Kjf">
-                                        <rect key="frame" x="125" y="33" width="125.5" height="23.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Jobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yE7-5M-Kjf">
+                                        <rect key="frame" x="134.5" y="32.5" width="106" height="24"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="19"/>
                                         <color key="textColor" red="0.74117654560000001" green="0.87450981139999995" blue="0.90980386729999996" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <nil key="highlightedColor"/>

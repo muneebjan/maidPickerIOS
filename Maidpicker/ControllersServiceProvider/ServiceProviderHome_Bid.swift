@@ -58,6 +58,8 @@ class ServiceProviderHome_Bid: UIViewController, UITableViewDelegate, UITableVie
             
             cell.date.text = "\(bidobject.month) \(bidobject.day), 2018"
             cell.priceTextfield.placeholder = "\(bidobject.price)"
+            cell.cellDelegate = self
+            cell.indexpath = indexPath
             
             return cell
             
@@ -81,5 +83,13 @@ class ServiceProviderHome_Bid: UIViewController, UITableViewDelegate, UITableVie
         self.view.endEditing(true)
     }
     
+    
+}
+
+extension ServiceProviderHome_Bid: tableviewBidbutton{
+    
+    func bidButtonAction(index: Int) {
+        print("this is index: \(index)")
+    }
     
 }

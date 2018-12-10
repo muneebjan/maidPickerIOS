@@ -55,7 +55,7 @@ let URL_ServiceProviderInsertRating = "http://ec2-18-222-165-11.us-east-2.comput
 // gettingProviders data
 let URL_getServiceProviderData = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/orders/serviceprovider/get"
 // Service Provider Home bid data
-let URL_SPgetBidData = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/clients/new1"
-let URL_SPgetQuickJobData = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/clients/new2"
+let URL_SPgetBidData = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/bids/listing/noprice"
+let URL_SPgetQuickJobData = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/bids/listing/withprice"
 
 let URL_SPget_BidDetails = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/offer/individual"
