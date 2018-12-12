@@ -269,39 +269,43 @@ class messagesChat: UIViewController, UITableViewDelegate, UITableViewDataSource
         let findClientMessagesRef = dbRef.child("c_\(User.userInstance.Userid!)").child(self.dataObject.key!)
         
         
-        //findClientMessagesRef.observeSingleEvent(of: DataEventType.childAdded, with: <#T##(DataSnapshot) -> Void#>, withCancel: <#T##((Error) -> Void)?##((Error) -> Void)?##(Error) -> Void#>)
-        
-        findClientMessagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            print("snapshot is = \(snapshot)")
+        findClientMessagesRef.observeSingleEvent(of: DataEventType.childAdded, with: { (snapshot) in
             
             
-            let children = snapshot.children
-            var yourArray = [[String: Any]]()
-            while let rest = children.nextObject() as? DataSnapshot, let value = rest.value {
-                print("value: \(value)")
-                yourArray.append(value as! [String: Any])
-            }
-            
-            for data in yourArray{
-                
-                let message = clientChatModel()
-                
-                message.from = data["from"] as? String
-                message.message = data["message"] as? String
-                message.seen = data["seen"] as? Int
-                message.time = data["time"] as? Double
-                message.type = data["type"] as? String
-                
-                clientChatModel.instance.chatArray.append(message)
-            }
-            
-            dump(clientChatModel.instance.chatArray)
-            DispatchQueue.main.async {
-                self.messagesChatTableView.reloadData()
-                self.messagesChatTableView.scrollToRow(at: NSIndexPath(row: clientChatModel.instance.chatArray.count-1, section: 0) as IndexPath, at: .bottom, animated: true)
-            }
             
         }, withCancel: nil)
+        
+//        findClientMessagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+//            print("snapshot is = \(snapshot)")
+//
+//
+//            let children = snapshot.children
+//            var yourArray = [[String: Any]]()
+//            while let rest = children.nextObject() as? DataSnapshot, let value = rest.value {
+//                print("value: \(value)")
+//                yourArray.append(value as! [String: Any])
+//            }
+//
+//            for data in yourArray{
+//
+//                let message = clientChatModel()
+//
+//                message.from = data["from"] as? String
+//                message.message = data["message"] as? String
+//                message.seen = data["seen"] as? Int
+//                message.time = data["time"] as? Double
+//                message.type = data["type"] as? String
+//
+//                clientChatModel.instance.chatArray.append(message)
+//            }
+//
+//            dump(clientChatModel.instance.chatArray)
+//            DispatchQueue.main.async {
+//                self.messagesChatTableView.reloadData()
+//                self.messagesChatTableView.scrollToRow(at: NSIndexPath(row: clientChatModel.instance.chatArray.count-1, section: 0) as IndexPath, at: .bottom, animated: true)
+//            }
+//
+//        }, withCancel: nil)
         
     }
     

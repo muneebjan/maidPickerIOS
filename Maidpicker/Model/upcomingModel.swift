@@ -1,24 +1,24 @@
 //
-//  BiddingDataModel.swift
+//  upcomingModel.swift
 //  Maidpicker
 //
-//  Created by Apple on 13/11/2018.
+//  Created by Apple on 12/12/2018.
 //  Copyright © 2018 devstop. All rights reserved.
 //
 
 import Foundation
 
-class BiddingDataModel {
+class upcomingModel {
     
-    static let instance = BiddingDataModel()
+    static let instance = upcomingModel()
     
-    var biddingArray = [BiddingDataModel]()
+    var DataArray = [upcomingModel]()
     
     var bidID: Int = 0
     var day: Int = 0
     var month: Int = 0
     var price: Int = 0
-    var totalOffers: Int = 0
+    var name: String = ""
     var deepclean: Int?
     var insidecabinet: Int?
     var insidefridge: Int?
@@ -27,6 +27,4 @@ class BiddingDataModel {
     var InteriorWindow: Int?
     
     var DetailArray: [[String]] = []
-
-    
 }

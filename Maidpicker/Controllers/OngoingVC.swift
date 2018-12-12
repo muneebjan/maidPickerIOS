@@ -14,22 +14,49 @@ class OngoingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var ongoingTableView: UITableView!
     @IBOutlet weak var segmentcontrol: UISegmentedControl!
     
-    @IBAction func Segmented(_ sender: Any) {
-        ongoingTableView.reloadData()
-    }
+    let cellId = "CellID"
     
-    //  VIEW WILL APPEAR
-    override func viewWillAppear(_ animated: Bool) {
+    @IBAction func Segmented(_ sender: Any) {
         
-        BiddingDataModel.instance.biddingArray.removeAll()
-        
-        if let id = User.userInstance.Userid{
-            AuthServices.instance.getOffersData(id: Int(id)!) { (success) in
+        switch(segmentcontrol.selectedSegmentIndex)
+        {
+        case 0:
+            print("Upcoming")
+            self.ongoingTableView.reloadData()
+            break
+        case 1:
+            print("Past")
+            self.ongoingTableView.reloadData()
+            break
+        case 2:
+            print("Request")
+            BiddingDataModel.instance.biddingArray.removeAll()
+            AuthServices.instance.getOffersData(id: Int(User.userInstance.Userid!)!) { (success) in
                 if(success){
                     print("getting Offers Data 1")
                     self.ongoingTableView.reloadData()
                 }else{
                     print("not getting offer data")
+                }
+            }
+            break
+        default:
+            break
+        }
+        
+    }
+    
+    //  VIEW WILL APPEAR
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if let id = User.userInstance.Userid{
+            upcomingModel.instance.DataArray.removeAll()
+            AuthServices.instance.Ongoing_Upcoming_Data(userID: Int(id)!) { (sucess) in
+                if(sucess){
+                    print("api works perfectly")
+                    self.ongoingTableView.reloadData()
+                }else{
+                    print("not success")
                 }
             }
         }
@@ -45,6 +72,7 @@ class OngoingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         //offersObject = createOffersArray()
         print("this is userID: \(User.userInstance.Userid!)")
+        ongoingTableView.register(ongoingUpcomingTVC.self, forCellReuseIdentifier: cellId)
 
     }
     
@@ -57,7 +85,8 @@ class OngoingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         switch(segmentcontrol.selectedSegmentIndex)
         {
         case 0:
-            //returnValue = privateList.count
+            print("Upcoming Pressed")
+            returnValue = upcomingModel.instance.DataArray.count
             break
         case 1:
             //returnValue = friendsAndFamily.count
@@ -78,50 +107,81 @@ class OngoingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         //return offersObject.count
     }
+    var tableCell: UITableViewCell?
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        let bidArray = BiddingDataModel.instance.biddingArray[indexPath.row]
-
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "ongoingIdentifier") as? ongoingTVC{
+        switch(segmentcontrol.selectedSegmentIndex)
+        {
+        case 0:
+            let upcomingArray = upcomingModel.instance.DataArray[indexPath.row]
+            //let cell = tableView.dequeueReusableCell(withIdentifier: "ongoingIdentifier") as? ongoingTVC
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.cellId) as! ongoingUpcomingTVC
+            // CUSTOMIZE BUTTON
+            cell.orderMarkButton.backgroundColor = #colorLiteral(red: 0.6849097013, green: 0.8780232072, blue: 0.9137651324, alpha: 1)
+            cell.orderMarkButton.setTitle("Mark as Completed", for: UIControlState.normal)
+            // ADDING SUBVIEW
+            cell.addSubview(cell.offerNameLabel)
+            cell.addSubview(cell.offerDetailLabel)
+            cell.addSubview(cell.orderMarkButton)
+            // ADDING CONSTRAINTS
             
-            switch(segmentcontrol.selectedSegmentIndex)
-            {
-            case 0:
-                //returnValue = privateList.count
-                return cell
-                break
-            case 1:
-                //returnValue = friendsAndFamily.count
-                return cell
-                break
-                
-            case 2:
-//                cell.offerDetailLabel.text = offerobject.offerDetails
-                print("data: \(BiddingDataModel.instance.DetailArray[indexPath.row])")
-                cell.offerDetailLabel.text = BiddingDataModel.instance.DetailArray[indexPath.row].joined(separator: ", ")
-                cell.datetimeLabel.text = "\(bidArray.month) \(bidArray.day), 2018"
-                cell.priceLabel.text = "$\(bidArray.price)"
-                cell.offerLabel.text = "\(bidArray.totalOffers)"
-                cell.cellDelegate = self
-                cell.indexpath = indexPath
-                cell.bidID = bidArray.bidID
-                
-                return cell
-                break
-                
-            default:
-                return cell
-                break
-            }
+            // nameLabel
+            cell.offerNameLabel.translatesAutoresizingMaskIntoConstraints = false
+            cell.offerNameLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 16).isActive = true
+            cell.offerNameLabel.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 16).isActive = true
+            cell.offerNameLabel.bottomAnchor.constraint(equalTo: cell.offerDetailLabel.topAnchor, constant: -8).isActive = true
+            cell.offerNameLabel.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -16).isActive = true
             
-
-
+            //OfferDetailLabel
+            cell.offerDetailLabel.translatesAutoresizingMaskIntoConstraints = false
+            cell.offerDetailLabel.topAnchor.constraint(equalTo: cell.offerNameLabel.bottomAnchor).isActive = true
+            cell.offerDetailLabel.bottomAnchor.constraint(equalTo: cell.orderMarkButton.topAnchor, constant: -16).isActive = true
+            cell.offerDetailLabel.leadingAnchor.constraint(equalTo: cell.offerNameLabel.leadingAnchor).isActive = true
+            cell.offerDetailLabel.trailingAnchor.constraint(equalTo: cell.offerDetailLabel.trailingAnchor).isActive = true
+            
+            
+            cell.orderMarkButton.translatesAutoresizingMaskIntoConstraints = false
+            cell.orderMarkButton.topAnchor.constraint(equalTo: cell.offerDetailLabel.bottomAnchor).isActive = true
+            cell.orderMarkButton.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
+            cell.orderMarkButton.leadingAnchor.constraint(equalTo: cell.leadingAnchor).isActive = true
+            cell.orderMarkButton.trailingAnchor.constraint(equalTo: cell.trailingAnchor).isActive = true
+            
+            // ASSIGNING VALUES
+            cell.offerNameLabel.text = upcomingArray.name
+            cell.offerDetailLabel.text = upcomingModel.instance.DetailArray[indexPath.row].joined(separator: ", ")
+            tableCell = cell
+            return cell
+            break
+        case 1:
+            //returnValue = friendsAndFamily.count
+            //return cell
+            break
+            
+        case 2:
+            
+            let bidArray = BiddingDataModel.instance.biddingArray[indexPath.row]
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ongoingIdentifier") as? ongoingTVC
+                
+            print("data: \(BiddingDataModel.instance.DetailArray[indexPath.row])")
+            cell!.offerDetailLabel.text = BiddingDataModel.instance.DetailArray[indexPath.row].joined(separator: ", ")
+            cell!.datetimeLabel.text = "\(bidArray.month) \(bidArray.day), 2018"
+            cell!.priceLabel.text = "$\(bidArray.price)"
+            cell!.offerLabel.text = "\(bidArray.totalOffers)"
+            cell!.cellDelegate = self
+            cell!.indexpath = indexPath
+            cell!.bidID = bidArray.bidID
+            tableCell = cell!
+            return cell!
+            break
+            
+        default:
+            //return cell
+            break
         }
-        else{
-            return ongoingTVC()
-        }
+        return tableCell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -155,3 +215,26 @@ extension OngoingVC: tableviewbutton{
     }
 }
 
+class ongoingUpcomingTVC: UITableViewCell {
+    
+    // VARIABLES
+    
+//    var cellDelegate: tableviewbutton?
+    var indexpath: IndexPath?
+    var bidID: Int?
+    
+    // VIEWS IN TABLEVIEW CELL
+    
+    let offerNameLabel = UILabel()
+    let offerDetailLabel = UILabel()
+    let orderMarkButton = UIButton()
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}

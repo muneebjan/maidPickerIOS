@@ -421,6 +421,9 @@
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVW-NR-V8a">
                                                             <rect key="frame" x="0.0" y="0.0" width="355" height="35"/>
+                                                            <connections>
+                                                                <action selector="HireButtonPressed:" destination="9hO-xO-Jgq" eventType="touchUpInside" id="Tmr-nu-qjR"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HIRE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwX-PC-Z5l">
                                                             <rect key="frame" x="157.5" y="7.5" width="40" height="20"/>

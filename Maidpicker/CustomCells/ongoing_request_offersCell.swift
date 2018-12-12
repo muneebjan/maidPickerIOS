@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HirebuttonProtocol{
+    func bidHireButton(index: Int, bid: Int)
+}
+
 class ongoing_request_offersCell: UITableViewCell {
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -17,7 +21,15 @@ class ongoing_request_offersCell: UITableViewCell {
     @IBOutlet weak var Reviews: UILabel!
     @IBOutlet weak var OfferPrice: UILabel!
     @IBOutlet weak var starView: SwiftyStarRatingView!
-    
     @IBOutlet weak var HireButton: UIButton!
+    
+    var cellDelegate: HirebuttonProtocol?
+    var indexpath: IndexPath?
+    var bidID: Int?
 
+    @IBAction func HireButtonPressed(_ sender: Any) {
+        //cellDelegate?.bidButtonAction(index: (indexpath?.row)!)
+        cellDelegate?.bidHireButton(index: (indexpath?.row)!, bid: bidID!)
+    }
+    
 }

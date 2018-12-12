@@ -87,6 +87,7 @@
 		18A564BC21ABEC960023E06D /* ServiceProviderHome_QuickJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A564BB21ABEC960023E06D /* ServiceProviderHome_QuickJob.swift */; };
 		18A58459219D598600DC088F /* SwiftyStarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A58458219D598600DC088F /* SwiftyStarRatingView.swift */; };
 		18A5845C219D8A8600DC088F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A5845B219D8A8600DC088F /* GoogleService-Info.plist */; };
+		18A6E75121C1162900268B1F /* upcomingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A6E75021C1162900268B1F /* upcomingModel.swift */; };
 		18A8211F21635F69003501C6 /* CustomPicturesCollectioncell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8211E21635F69003501C6 /* CustomPicturesCollectioncell.swift */; };
 		18AE8335219424130099CBDC /* SpecialServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE8334219424130099CBDC /* SpecialServiceModel.swift */; };
 		18AED2D32177707D00D1E616 /* Home_SpecialServicesMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AED2D22177707D00D1E616 /* Home_SpecialServicesMainVC.swift */; };
@@ -195,6 +196,7 @@
 		18A58458219D598600DC088F /* SwiftyStarRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyStarRatingView.swift; sourceTree = "<group>"; };
 		18A5845A219D89BB00DC088F /* Maidpicker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Maidpicker.entitlements; sourceTree = "<group>"; };
 		18A5845B219D8A8600DC088F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18A6E75021C1162900268B1F /* upcomingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = upcomingModel.swift; sourceTree = "<group>"; };
 		18A8211E21635F69003501C6 /* CustomPicturesCollectioncell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicturesCollectioncell.swift; sourceTree = "<group>"; };
 		18AE8334219424130099CBDC /* SpecialServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialServiceModel.swift; sourceTree = "<group>"; };
 		18AED2D22177707D00D1E616 /* Home_SpecialServicesMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_SpecialServicesMainVC.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				18D9FCFD21AFC87400B96F80 /* clientChatModel.swift */,
 				1852AEE521B90F6D00927385 /* chatInboxModel.swift */,
 				1891831D21BA5FD200FABBE9 /* ServiceProviderChatModel.swift */,
+				18A6E75021C1162900268B1F /* upcomingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 				18A564BC21ABEC960023E06D /* ServiceProviderHome_QuickJob.swift in Sources */,
 				18C2641921A68D710006B902 /* ongoing_request_offersCell.swift in Sources */,
 				18A413A4216E286700A2EA8D /* WhenModel.swift in Sources */,
+				18A6E75121C1162900268B1F /* upcomingModel.swift in Sources */,
 				1833AE6921AE9D4F00515BBB /* ChooseProviderChat.swift in Sources */,
 				1832C5DD2153901700315A53 /* MapsViewController.swift in Sources */,
 				1891831C21BA5D5100FABBE9 /* ServiceProviderMessagesChat.swift in Sources */,

@@ -842,9 +842,7 @@ class AuthServices {
     func gettingAllOffersDataUnderRequests(bidID: Int, completion: @escaping CompletionHanlder){
         
         let parameters: Parameters = [
-            
             "id":bidID
-            
         ]
         
         Alamofire.request(URL_getOffersData_Requests, method: .get, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
@@ -891,6 +889,135 @@ class AuthServices {
             }
         }
     }
+    
+    func Ongoing_Request_Hire_Data(bidID: Int, completion: @escaping CompletionHanlder){
+        
+        let parameters: Parameters = [
+            
+            "bid":bidID
+            
+        ]
+        
+        Alamofire.request(URL_Ongoing_Request_HireApi, method: .get, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                
+                json = try JSON(data: data)
+                print("Json GETTING HIRED DATA = \(json)")
+                
+                // ================ for looop ==================
+                
+//                for i in 0..<json.count{
+//
+//                    let obj = offersDataModel()
+//                    obj.offerid = json[i]["id"].intValue
+//                    obj.name = json[i]["name"].stringValue
+//                    obj.image = json[i]["image"].stringValue
+//                    obj.hourlyrate = json[i]["hourlyrate"].intValue
+//                    obj.jobs = json[i]["jobs"].intValue
+//                    obj.rating = json[i]["rating"].intValue
+//                    obj.review = json[i]["reviews"].intValue
+//                    obj.bidID = json[i]["bidid"].intValue
+//                    obj.SPID = json[i]["spid"].intValue
+//                    obj.price = json[i]["price"].intValue
+//
+//                    offersDataModel.instance.totaloffersData.append(obj)
+//
+//                }
+                
+                
+                completion(true)
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+        }
+    }
+    
+    
+    func Ongoing_Upcoming_Data(userID: Int, completion: @escaping CompletionHanlder){
+        
+        let parameters: Parameters = [
+            "uid":userID
+        ]
+        
+        Alamofire.request(URL_Ongoing_Upcoming, method: .get, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                
+                json = try JSON(data: data)
+                print("Json GETTING UPCOMING DATA = \(json)")
+                
+                // ================ for looop ==================
+                
+                for i in 0..<json.count{
+                    
+                    var stringObj = [String]()
+                    let obj = upcomingModel()
+                    
+                    obj.deepclean = json[i]["deep"].intValue
+                    obj.name = json[i]["name"].stringValue //
+                    obj.month = json[i]["month"].intValue
+                    obj.bidID = json[i]["id"].intValue
+                    obj.laundry = json[i]["laundry"].intValue
+                    obj.insideoven = json[i]["oven"].intValue
+                    obj.price = json[i]["price"].intValue
+                    obj.insidecabinet = json[i]["cabinets"].intValue
+                    obj.insidefridge = json[i]["fridge"].intValue
+                    obj.InteriorWindow = json[i]["windows"].intValue
+                    obj.day = json[i]["day"].intValue
+                    
+                    if(obj.deepclean! >= 1){
+                        stringObj.append("Deep")
+                    }
+                    if(obj.insidecabinet! >= 1){
+                        stringObj.append("Inside Cabinet")
+                    }
+                    if(obj.insidefridge! >= 1){
+                        stringObj.append("Inside Fridge")
+                    }
+                    if(obj.insideoven! >= 1){
+                        stringObj.append("Inside Oven")
+                    }
+                    if(obj.laundry! >= 1){
+                        stringObj.append("Laundry")
+                    }
+                    if(obj.InteriorWindow! >= 1){
+                        stringObj.append("Interior Windows")
+                    }
+                    
+                    upcomingModel.instance.DetailArray.append(stringObj)
+                    upcomingModel.instance.DataArray.append(obj)
+                    
+                }
+                
+                
+                completion(true)
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+        }
+    }
+    
     
     
     

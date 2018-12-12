@@ -69,9 +69,8 @@ class Ongoing_Request_OffersVC: UIViewController, UITableViewDataSource, UITable
             cell.Reviews.text = "Reviews: \(offersobject.review)"
             cell.OfferPrice.text = "$\(offersobject.price)"
 //            cell.cellDelegate = self
-//            cell.indexpath = indexPath
-//            cell.price = offersobject.hourlyrate
-//            cell.serviceProviderID = offersobject.spID
+            cell.indexpath = indexPath
+            cell.bidID = offersobject.bidID
             
             return cell
             
@@ -80,6 +79,18 @@ class Ongoing_Request_OffersVC: UIViewController, UITableViewDataSource, UITable
             return ongoing_request_offersCell()
         }
     }
-    
-    
 }
+
+//extension Ongoing_Request_OffersVC: HirebuttonProtocol{
+//    func bidHireButton(index: Int, bid: Int) {
+//        print("this is index: \(index), bid ID: \(bid)")
+////        AuthServices.instance.Ongoing_Request_Hire_Data(bidID: bid) { (success) in
+////            if(success){
+////                print("Hire Data Api Successfull")
+////            }else{
+////                print("Not Successfull Hire API")
+////            }
+////        }
+//
+//    }
+//}

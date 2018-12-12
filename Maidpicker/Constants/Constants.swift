@@ -31,7 +31,10 @@ let URL_saveFcm_Token = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.co
 let URL_insert_Notification = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/notification/insert"
 // get offers data
 let URL_getOffersData_Requests = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/offer/provider"
-
+// Ongoing Request Hire API
+let URL_Ongoing_Request_HireApi = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/StatusCompleted"
+// Ongoing Upcoming Data API
+let URL_Ongoing_Upcoming = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/getOffersCompleted"
 
 
 // service provider
