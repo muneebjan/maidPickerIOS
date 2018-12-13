@@ -966,17 +966,20 @@ class AuthServices {
                     var stringObj = [String]()
                     let obj = upcomingModel()
                     
-                    obj.deepclean = json[i]["deep"].intValue
                     obj.name = json[i]["name"].stringValue //
-                    obj.month = json[i]["month"].intValue
-                    obj.bidID = json[i]["id"].intValue
-                    obj.laundry = json[i]["laundry"].intValue
-                    obj.insideoven = json[i]["oven"].intValue
-                    obj.price = json[i]["price"].intValue
+                    obj.spID = json[i]["spid"].intValue
+                    obj.image = json[i]["Image"].stringValue
+                    obj.id = json[i]["id"].intValue
                     obj.insidecabinet = json[i]["cabinets"].intValue
+                    obj.deepclean = json[i]["deep"].intValue
                     obj.insidefridge = json[i]["fridge"].intValue
                     obj.InteriorWindow = json[i]["windows"].intValue
+                    obj.price = json[i]["price"].intValue
+                    obj.laundry = json[i]["laundry"].intValue
+                    obj.insideoven = json[i]["oven"].intValue
                     obj.day = json[i]["day"].intValue
+                    obj.month = json[i]["month"].intValue
+
                     
                     if(obj.deepclean! >= 1){
                         stringObj.append("Deep")
@@ -1017,6 +1020,112 @@ class AuthServices {
             }
         }
     }
+    
+    // Mark as complete API
+    
+    func Ongoing_Upcoming_MarkAsComplete(bid: Int, completion: @escaping CompletionHanlder) {
+        let parameters: Parameters = [
+            "bid": bid
+        ]
+        Alamofire.request(URL_Ongoing_Upcoming_markComplete, method: .post, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                
+                json = try JSON(data: data)
+                print("Json Marked as Completed Data = \(json)")
+                completion(true)
+                
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+            
+        }
+        
+    }
+   
+    // Review Posting API
+    // spid=10&rating=5&remarks=good
+    func Ongoing_Upcoming_ReviewPosting(spid: Int, rating: Int, remarks: String, completion: @escaping CompletionHanlder) {
+        let parameters: Parameters = [
+            "spid": spid,
+            "rating": rating,
+            "remarks": remarks
+        ]
+        Alamofire.request(URL_Ongoing_Upcoming_Review, method: .post, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                
+                json = try JSON(data: data)
+                print("Json REview POsting Data = \(json)")
+                completion(true)
+                
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+            
+        }
+        
+    }
+    
+    //  =================================================================
+    //  =====================  NOTIFICATION APIS ========================
+    //  =================================================================
+    
+    func Get_Notifications(myNotificationUrl: String, senderId: Int, receiverId: Int, type: String, completion: @escaping CompletionHanlder) {
+        let parameters: Parameters = [
+            "senderId": senderId,
+            "receiverId": receiverId,
+            "type": type
+        ]
+        Alamofire.request(myNotificationUrl, method: .get, parameters: parameters, encoding:URLEncoding.queryString, headers: nil).responseJSON {
+            
+            (response) in //Reponse is a temporary Variable where we get the result . we can write anything
+            guard let data = response.data else{return}
+            let json: JSON
+            do{
+                
+                json = try JSON(data: data)
+                print("Notification Json Data = \(json)")
+                completion(true)
+                
+            }
+            catch
+            {
+                if response.result.error == nil{
+                    completion(true)
+                }
+                else{
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+                }
+            }
+            
+        }
+        
+    }
+    
     
     
     

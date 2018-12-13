@@ -14,17 +14,27 @@ class upcomingModel {
     
     var DataArray = [upcomingModel]()
     
-    var bidID: Int = 0
+    var name: String = ""
+    var spID: Int = 0
+    var image: String = ""
+    var id: Int = 0
+    var insidecabinet: Int?
+    var deepclean: Int?
+    var insidefridge: Int?
+    var InteriorWindow: Int?
+    var price: Int = 0
+    var laundry: Int?
+    var insideoven: Int?
     var day: Int = 0
     var month: Int = 0
-    var price: Int = 0
-    var name: String = ""
-    var deepclean: Int?
-    var insidecabinet: Int?
-    var insidefridge: Int?
-    var insideoven: Int?
-    var laundry: Int?
-    var InteriorWindow: Int?
+    
+    
+    
+    
+    
+    
+    
+    
     
     var DetailArray: [[String]] = []
 }

@@ -34,10 +34,29 @@ let URL_getOffersData_Requests = "http://ec2-18-222-165-11.us-east-2.compute.ama
 // Ongoing Request Hire API
 let URL_Ongoing_Request_HireApi = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/StatusCompleted"
 // Ongoing Upcoming Data API
-let URL_Ongoing_Upcoming = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/getOffersCompleted"
+let URL_Ongoing_Upcoming = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/getOffersBooked"
+// ongoing upcoming Mark as complete
+let URL_Ongoing_Upcoming_markComplete = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/client/StatusCompleted"
+// review posting API
+let URL_Ongoing_Upcoming_Review = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/order/rating/update"
+
+// ================= NOTIFICATION APIS =================
+
+let URL_Send_Message = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/notification/send/message"
+
+let URL_Place_Order = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/notification/place/order"
+
+let URL_Place_Offer = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/notification/place/offer"
+
+let URL_Quick_Job = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/notification/quick/job"
+
+let URL_Order_Complete = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/notification/order/complete"
+
+let URL_Order_Review = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/notification/order/review"
 
 
-// service provider
+
+// ==================== SERVICE PROVIDER APIS =========================
 
 let URL_SPLogin = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/provider/login"
 let URL_SPSignUP = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/provider/signup"
@@ -62,3 +81,6 @@ let URL_SPgetBidData = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com
 let URL_SPgetQuickJobData = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/bids/listing/withprice"
 
 let URL_SPget_BidDetails = "http://ec2-18-222-165-11.us-east-2.compute.amazonaws.com:\(port)/api/v1/offer/individual"
+
+//Notification Constants
+

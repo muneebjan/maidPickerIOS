@@ -186,34 +186,40 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
         
         // ================================================
         self.observeMessages()
-        self.messageTextField.endEditing(true)
+        AuthServices.instance.Get_Notifications(myNotificationUrl: URL_Send_Message, senderId: Int(User.userInstance.Userid!)!, receiverId: self.dataObject.spID, type: "clients") { (success) in
+            if(success){
+                print("Message Notification Sent Successfull")
+            }else{
+                print("Message Notification Not sent Successfull")
+            }
+        }
         
     }
     
+    // keyboard height
+    var keyBoardHeight: CGFloat?
+    
     @objc func keyboardWillAppear(notification: Notification){
         
-        if let userInfo = notification.userInfo as? Dictionary<String,AnyObject>{
-            let frame = userInfo[UIKeyboardFrameEndUserInfoKey]
-            let keyboardRect = frame?.cgRectValue
-            let keyBoardHeight = keyboardRect?.height
-//            if let height = keyBoardHeight{
-//                self.heightconstraints = height
-//            }
-            self.containerView.translatesAutoresizingMaskIntoConstraints = false
-            //            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: self.heightconstraints).isActive = true
-            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -keyBoardHeight!).isActive = true
-            self.chatTableBottom.constant = keyBoardHeight!+50
-            
-        }
+        // keyboard height
+        
+        let userInfo = notification.userInfo as? Dictionary<String,AnyObject>
+        let frame = userInfo![UIKeyboardFrameEndUserInfoKey]
+        let keyboardRect = frame?.cgRectValue
+        keyBoardHeight = keyboardRect?.height
+        
+        self.view.frame.origin.y = -keyBoardHeight!
+        
+        print("keyboard will appear")
+        
         
     }
     
     @objc func keyboardWillDisappear(notification: Notification){
         
-        self.containerView.translatesAutoresizingMaskIntoConstraints = false
-        self.containerView.topAnchor.constraint(equalTo: self.chooseProviderChat.bottomAnchor, constant: 0).isActive = true
-//        self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -keyBoardHeight!).isActive = true
-        self.chatTableBottom.constant = 50
+        self.view.frame.origin.y = 0
+        
+        print("keyboard will Disappear")
         
     }
     
@@ -233,25 +239,15 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
             NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillAppear(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillDisappear(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
             
-//            self.containerView.translatesAutoresizingMaskIntoConstraints = false
-//            self.containerView.backgroundColor = .green
-////            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: self.heightconstraints).isActive = true
-//            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -350).isActive = true
-//            self.chatTableBottom.constant = 400
-            
-            
         }, completion: nil)
         
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-//        self.view.layoutIfNeeded()
+
         UIView.animate(withDuration: 0.5, animations: {
-            
-//            self.containerView.translatesAutoresizingMaskIntoConstraints = false
-//            self.containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-//            self.view.layoutIfNeeded()
+
             
         }, completion: nil)
         
@@ -306,16 +302,44 @@ class ChooseProviderChat: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clientChatModel.instance.chatArray.count
-//        return messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let messagesArray = clientChatModel.instance.chatArray[indexPath.row]
-//        let messagesArray = messages[indexPath.row]
         
         let cell = self.chooseProviderChat.dequeueReusableCell(withIdentifier: cellId) as! baseCell
+        
+        // =============== ADDING CONSTRAINTS ====================
+        
+        cell.bubbleBackgroundView.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+        cell.bubbleBackgroundView.layer.cornerRadius = 10
+        cell.bubbleBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        
+        cell.bubbleBackgroundView.removeFromSuperview()
+        cell.messageLabel.removeFromSuperview()
+        
+        cell.addSubview(cell.bubbleBackgroundView)
+        cell.addSubview(cell.messageLabel)
+        
+        cell.messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        cell.messageLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 32).isActive = true
+        cell.messageLabel.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -32).isActive = true
+        if(clientChatModel.instance.chatArray[indexPath.row].from! == "c_\(User.userInstance.Userid!)"){
+            cell.messageLabel.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -32).isActive = true
+            cell.bubbleBackgroundView.backgroundColor = #colorLiteral(red: 0.6849098206, green: 0.8780232072, blue: 0.9137650728, alpha: 1)
+        }else{
+            cell.messageLabel.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 32).isActive = true
+        }
+        cell.messageLabel.widthAnchor.constraint(lessThanOrEqualTo: cell.widthAnchor, multiplier: 0.65).isActive = true
+        
+        cell.bubbleBackgroundView.topAnchor.constraint(equalTo: cell.messageLabel.topAnchor, constant: -16).isActive = true
+        cell.bubbleBackgroundView.leadingAnchor.constraint(equalTo: cell.messageLabel.leadingAnchor, constant: -16).isActive = true
+        cell.bubbleBackgroundView.bottomAnchor.constraint(equalTo: cell.messageLabel.bottomAnchor, constant: 16).isActive = true
+        cell.bubbleBackgroundView.trailingAnchor.constraint(equalTo: cell.messageLabel.trailingAnchor, constant: 16).isActive = true
+        
+        // =============== ENDING CONSTRAINTS ====================
         cell.messageLabel.text = messagesArray.message
-//        cell.messageLabel.text = messagesArray
         cell.backgroundColor = UIColor.clear
         cell.messageLabel.numberOfLines = 0
         
@@ -341,30 +365,26 @@ class baseCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         //
-        bubbleBackgroundView.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
-        bubbleBackgroundView.layer.cornerRadius = 10
-        bubbleBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+//        bubbleBackgroundView.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+//        bubbleBackgroundView.layer.cornerRadius = 10
+//        bubbleBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        addSubview(bubbleBackgroundView)
+//        addSubview(messageLabel)
+//
+//        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+//
+//        messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 32).isActive = true
+//        messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
+//        messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32).isActive = true
+//        messageLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.65).isActive = true
+//
+//
+//        bubbleBackgroundView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -16).isActive = true
+//        bubbleBackgroundView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -16).isActive = true
+//        bubbleBackgroundView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 16).isActive = true
+//        bubbleBackgroundView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 16).isActive = true
         
-        addSubview(bubbleBackgroundView)
-        addSubview(messageLabel)
-//        messageLabel.backgroundColor = .red
-        
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 32).isActive = true
-        messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
-        messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32).isActive = true
-        messageLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.65).isActive = true
-        
-        //messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32).isActive = true
-        //messageLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.65).isActive = true
-        
-        bubbleBackgroundView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -16).isActive = true
-        bubbleBackgroundView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -16).isActive = true
-        bubbleBackgroundView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 16).isActive = true
-        bubbleBackgroundView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 16).isActive = true
-        
-//        messageLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
     }
     
     required init?(coder aDecoder: NSCoder) {

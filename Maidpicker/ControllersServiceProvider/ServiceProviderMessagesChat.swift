@@ -366,26 +366,6 @@ class ServiceProviderChatbaseCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
-        
-//        bubbleBackgroundView.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
-//        bubbleBackgroundView.layer.cornerRadius = 10
-//        bubbleBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        addSubview(bubbleBackgroundView)
-//        addSubview(messageLabel)
-//
-//        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-//
-//        messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 32).isActive = true
-//        messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32).isActive = true
-//        messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32).isActive = true
-//        messageLabel.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: 0.65).isActive = true
-//
-//        bubbleBackgroundView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -16).isActive = true
-//        bubbleBackgroundView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -16).isActive = true
-//        bubbleBackgroundView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 16).isActive = true
-//        bubbleBackgroundView.trailingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 16).isActive = true
 
     }
     

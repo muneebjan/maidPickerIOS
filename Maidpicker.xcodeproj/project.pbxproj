@@ -99,6 +99,8 @@
 		18C2641721A68C0E0006B902 /* Ongoing_Request_OffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2641621A68C0E0006B902 /* Ongoing_Request_OffersVC.swift */; };
 		18C2641921A68D710006B902 /* ongoing_request_offersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2641821A68D710006B902 /* ongoing_request_offersCell.swift */; };
 		18C2641B21A695210006B902 /* offersDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2641A21A695210006B902 /* offersDataModel.swift */; };
+		18C26A7221C2685F009C816F /* UpcomingChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26A7121C2685F009C816F /* UpcomingChat.swift */; };
+		18C26A7421C287DC009C816F /* Ongoing_Upcoming_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C26A7321C287DC009C816F /* Ongoing_Upcoming_Review.swift */; };
 		18CB3B68213FEE070008D6F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB3B67213FEE070008D6F0 /* AppDelegate.swift */; };
 		18CB3B6A213FEE070008D6F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB3B69213FEE070008D6F0 /* ViewController.swift */; };
 		18CB3B6D213FEE070008D6F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18CB3B6B213FEE070008D6F0 /* Main.storyboard */; };
@@ -208,6 +210,8 @@
 		18C2641621A68C0E0006B902 /* Ongoing_Request_OffersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ongoing_Request_OffersVC.swift; sourceTree = "<group>"; };
 		18C2641821A68D710006B902 /* ongoing_request_offersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ongoing_request_offersCell.swift; sourceTree = "<group>"; };
 		18C2641A21A695210006B902 /* offersDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = offersDataModel.swift; sourceTree = "<group>"; };
+		18C26A7121C2685F009C816F /* UpcomingChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingChat.swift; sourceTree = "<group>"; };
+		18C26A7321C287DC009C816F /* Ongoing_Upcoming_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ongoing_Upcoming_Review.swift; sourceTree = "<group>"; };
 		18CB3B64213FEE070008D6F0 /* Maidpicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maidpicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CB3B67213FEE070008D6F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18CB3B69213FEE070008D6F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +337,8 @@
 				1866341321873806008F8770 /* ChooseProvider.swift */,
 				1833AE6821AE9D4F00515BBB /* ChooseProviderChat.swift */,
 				1890035B219AA7BB00D23FC8 /* OngoingVC.swift */,
+				18C26A7321C287DC009C816F /* Ongoing_Upcoming_Review.swift */,
+				18C26A7121C2685F009C816F /* UpcomingChat.swift */,
 				18C2641621A68C0E0006B902 /* Ongoing_Request_OffersVC.swift */,
 				1899AF5221A2CBB300DA5704 /* Notification_MessagesVC.swift */,
 				1852AEE721B9302E00927385 /* messagesChat.swift */,
@@ -691,6 +697,7 @@
 				18AED723217F16ED00F98B2C /* ServiceProvderUser.swift in Sources */,
 				18F0126F21A81D70001D12D5 /* ServiceProvider_BidDetail.swift in Sources */,
 				18900360219AE33F00D23FC8 /* BiddingDataModel.swift in Sources */,
+				18C26A7221C2685F009C816F /* UpcomingChat.swift in Sources */,
 				1852AEE621B90F6D00927385 /* chatInboxModel.swift in Sources */,
 				1866868D2142824100194B4D /* Constants.swift in Sources */,
 				18CB3B6A213FEE070008D6F0 /* ViewController.swift in Sources */,
@@ -753,6 +760,7 @@
 				18AED2D52177729300D1E616 /* SpecialServicesCVCell.swift in Sources */,
 				183B1F89219C34F600D72AF0 /* ChooseProviderModel.swift in Sources */,
 				18A3F89F219565890050B6B6 /* SetPriceVC.swift in Sources */,
+				18C26A7421C287DC009C816F /* Ongoing_Upcoming_Review.swift in Sources */,
 				1869A5D121833BF10064D7DA /* ServiceProviderSettingVC.swift in Sources */,
 				187472B6214BCA4700F3F6AE /* DesignableTextFields.swift in Sources */,
 				18331F44215242EF005A265B /* Extras.swift in Sources */,
